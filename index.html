@@ -114,6 +114,93 @@
         .nav-link:hover::after {
             width: 100%;
         }
+
+        /* Badge de Carga en Vivo (Glassmorphism) */
+        .iframe-loader {
+            position: absolute;
+            top: 1.25rem;
+            left: 1.25rem;
+            z-index: 20;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.5rem 0.8rem;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: 6px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            /* Arranca invisible; JS lo activa al entrar en viewport */
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.4s;
+            pointer-events: none;
+        }
+
+        .iframe-loader.loader-visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .iframe-loader.loader-hidden {
+            opacity: 0 !important;
+            visibility: hidden !important;
+            transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.8s;
+        }
+
+        .iframe-loader .pulse-dot {
+            width: 7px;
+            height: 7px;
+            background-color: #10B981;
+            border-radius: 50%;
+            position: relative;
+        }
+
+        .iframe-loader .pulse-dot::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            border-radius: 50%;
+            background-color: #10B981;
+            animation: badge-pulse 1.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+        }
+
+        @keyframes badge-pulse {
+            0% { transform: scale(1); opacity: 0.8; }
+            100% { transform: scale(3.5); opacity: 0; }
+        }
+
+        /* Barra de progreso superior del iframe */
+        .iframe-progress {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 2px;
+            width: 0%;
+            z-index: 30;
+            background: linear-gradient(90deg, #2563EB, #10B981);
+            opacity: 0;
+            /* Estado inicial sin transición para que el reset sea instantáneo */
+            transition: none;
+        }
+
+        .iframe-progress.progress-running {
+            opacity: 1;
+            width: 85%;
+            /* Curva ease-out: arranca rápido, se frena hacia el final (simula carga real) */
+            transition: opacity 0.3s ease, width 14s cubic-bezier(0.05, 0.5, 0.1, 1);
+        }
+
+        .iframe-progress.progress-complete {
+            width: 100%;
+            transition: width 0.25s ease-in;
+        }
+
+        .iframe-progress.progress-fade {
+            opacity: 0;
+            transition: opacity 0.5s ease 0.25s;
+        }
     </style>
 </head>
 <body class="bg-brand-offwhite text-brand-navy min-h-screen">
@@ -172,8 +259,13 @@
                     </p>
                 </div>
                 <!-- iFrame Power BI #1 -->
-                <div class="aspect-[600/373.5] bg-slate-50 rounded-md border border-slate-100 overflow-hidden shadow-inner">
-                    <iframe title="Nacer en el campo  Nacer desconectado" class="w-full h-full" src="https://app.powerbi.com/view?r=eyJrIjoiMGU5NTViMDgtMzAwNS00NzA4LThlMTQtOGVjNDZjYTQzY2ZhIiwidCI6IjM0MzAzNTQxLTc0ZWMtNGQ0YS04YzVhLTgwNDlkMmZkNmNlNiIsImMiOjR9" frameborder="0" allowFullScreen="true"></iframe>
+                <div class="relative aspect-[600/373.5] bg-slate-50 rounded-md border border-slate-100 overflow-hidden shadow-inner pbi-container">
+                    <div class="iframe-progress"></div>
+                    <div class="iframe-loader">
+                        <div class="pulse-dot"></div>
+                        <span class="text-[10px] font-bold tracking-widest text-brand-navy">Estableciendo conexión...</span>
+                    </div>
+                    <iframe title="Nacer en el campo  Nacer desconectado" class="w-full h-full" data-src="https://app.powerbi.com/view?r=eyJrIjoiMGU5NTViMDgtMzAwNS00NzA4LThlMTQtOGVjNDZjYTQzY2ZhIiwidCI6IjM0MzAzNTQxLTc0ZWMtNGQ0YS04YzVhLTgwNDlkMmZkNmNlNiIsImMiOjR9" frameborder="0" allowFullScreen="true"></iframe>
                 </div>
             </section>
 
@@ -189,8 +281,13 @@
                     </p>
                 </div>
                 <!-- iFrame Power BI #2 -->
-                <div class="aspect-[600/373.5] bg-slate-50 rounded-md border border-slate-100 overflow-hidden shadow-inner">
-                    <iframe title="UsuariosRedesSocialesQuickViz" class="w-full h-full" src="https://app.powerbi.com/view?r=eyJrIjoiMDY0YTY4NjUtNzE2Zi00NjEzLWE5NDUtMWFiNTA2MjBjYTRiIiwidCI6IjM0MzAzNTQxLTc0ZWMtNGQ0YS04YzVhLTgwNDlkMmZkNmNlNiIsImMiOjR9" frameborder="0" allowFullScreen="true"></iframe>
+                <div class="relative aspect-[600/373.5] bg-slate-50 rounded-md border border-slate-100 overflow-hidden shadow-inner pbi-container">
+                    <div class="iframe-progress"></div>
+                    <div class="iframe-loader">
+                        <div class="pulse-dot"></div>
+                        <span class="text-[10px] font-bold tracking-widest text-brand-navy">Estableciendo conexión...</span>
+                    </div>
+                    <iframe title="UsuariosRedesSocialesQuickViz" class="w-full h-full" data-src="https://app.powerbi.com/view?r=eyJrIjoiMDY0YTY4NjUtNzE2Zi00NjEzLWE5NDUtMWFiNTA2MjBjYTRiIiwidCI6IjM0MzAzNTQxLTc0ZWMtNGQ0YS04YzVhLTgwNDlkMmZkNmNlNiIsImMiOjR9" frameborder="0" allowFullScreen="true"></iframe>
                 </div>
             </section>
 
@@ -204,8 +301,13 @@
                     </p>
                 </div>
                 <!-- iFrame Power BI #3 -->
-                <div class="aspect-[600/373.5] bg-slate-50 rounded-md border border-slate-100 overflow-hidden shadow-inner">
-                    <iframe title="Edificios mas altos del mundo" class="w-full h-full" src="https://app.powerbi.com/view?r=eyJrIjoiZGRiY2IwNjUtNmYyMS00NjYwLWJkYzgtNGZhZTNiNTk5MmE5IiwidCI6IjM0MzAzNTQxLTc0ZWMtNGQ0YS04YzVhLTgwNDlkMmZkNmNlNiIsImMiOjR9" frameborder="0" allowFullScreen="true"></iframe>
+                <div class="relative aspect-[600/373.5] bg-slate-50 rounded-md border border-slate-100 overflow-hidden shadow-inner pbi-container">
+                    <div class="iframe-progress"></div>
+                    <div class="iframe-loader">
+                        <div class="pulse-dot"></div>
+                        <span class="text-[10px] font-bold tracking-widest text-brand-navy">Estableciendo conexión...</span>
+                    </div>
+                    <iframe title="Edificios mas altos del mundo" class="w-full h-full" data-src="https://app.powerbi.com/view?r=eyJrIjoiZGRiY2IwNjUtNmYyMS00NjYwLWJkYzgtNGZhZTNiNTk5MmE5IiwidCI6IjM0MzAzNTQxLTc0ZWMtNGQ0YS04YzVhLTgwNDlkMmZkNmNlNiIsImMiOjR9" frameborder="0" allowFullScreen="true"></iframe>
                 </div>
             </section>
 
@@ -219,8 +321,13 @@
                     </p>
                 </div>
                 <!-- iFrame Power BI #4 -->
-                <div class="aspect-[600/373.5] bg-slate-50 rounded-md border border-slate-100 overflow-hidden shadow-inner">
-                    <iframe title="Reporte de seguimiento estrategias del cuidado" class="w-full h-full" src="https://app.powerbi.com/view?r=eyJrIjoiOTIwN2MxMTQtYjNjMy00MGU1LTk5OWYtYTY4MzQ2MmE1ZGMzIiwidCI6IjM0MzAzNTQxLTc0ZWMtNGQ0YS04YzVhLTgwNDlkMmZkNmNlNiIsImMiOjR9" frameborder="0" allowFullScreen="true"></iframe>
+                <div class="relative aspect-[600/373.5] bg-slate-50 rounded-md border border-slate-100 overflow-hidden shadow-inner pbi-container">
+                    <div class="iframe-progress"></div>
+                    <div class="iframe-loader">
+                        <div class="pulse-dot"></div>
+                        <span class="text-[10px] font-bold tracking-widest text-brand-navy">Estableciendo conexión...</span>
+                    </div>
+                    <iframe title="Reporte de seguimiento estrategias del cuidado" class="w-full h-full" data-src="https://app.powerbi.com/view?r=eyJrIjoiOTIwN2MxMTQtYjNjMy00MGU1LTk5OWYtYTY4MzQ2MmE1ZGMzIiwidCI6IjM0MzAzNTQxLTc0ZWMtNGQ0YS04YzVhLTgwNDlkMmZkNmNlNiIsImMiOjR9" frameborder="0" allowFullScreen="true"></iframe>
                 </div>
             </section>
 
@@ -342,6 +449,52 @@
             if (e.key === 'ArrowLeft') moveSlide(-1);
             if (e.key === 'ArrowRight') moveSlide(1);
         });
+    </script>
+
+    <!-- IntersectionObserver: Carga Power BI por tablero al hacer scroll -->
+    <script>
+        const pbiObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+
+                const container = entry.target;
+                const iframe = container.querySelector('iframe[data-src]');
+                const badge = container.querySelector('.iframe-loader');
+                const bar = container.querySelector('.iframe-progress');
+
+                if (!iframe) return; // Ya fue procesado
+
+                // 1. Mostrar badge y arrancar la barra de progreso
+                badge.classList.add('loader-visible');
+                // Forzar reflow para que la transición CSS se anime desde 0
+                bar.getBoundingClientRect();
+                bar.classList.add('progress-running');
+
+                // 2. Inyectar el src real para iniciar la conexión
+                iframe.src = iframe.dataset.src;
+                iframe.removeAttribute('data-src');
+
+                // 3. Al terminar de cargar: completar barra → fade badge
+                iframe.addEventListener('load', () => {
+                    // Completar la barra al 100%
+                    bar.classList.remove('progress-running');
+                    bar.classList.add('progress-complete');
+
+                    // Desvanecer badge
+                    badge.classList.remove('loader-visible');
+                    badge.classList.add('loader-hidden');
+
+                    // Desvanecer barra tras completar
+                    setTimeout(() => bar.classList.add('progress-fade'), 50);
+                }, { once: true });
+
+                pbiObserver.unobserve(container);
+            });
+        }, {
+            threshold: 0.2
+        });
+
+        document.querySelectorAll('.pbi-container').forEach(el => pbiObserver.observe(el));
     </script>
 </body>
 </html>
