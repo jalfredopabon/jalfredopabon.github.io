@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alfredo Pabón | Análisis de Datos e Impacto Social</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Playfair Display (Serif) & Inter (Sans) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-navy': '#0A192F',
+                        'brand-offwhite': '#F8FAFC',
+                        'brand-slate': '#475569',
+                        'brand-accent': '#2563EB', // Azul Cobalto para vivos
+                    },
+                    fontFamily: {
+                        'serif': ['"Playfair Display"', 'serif'],
+                        'sans': ['"Inter"', 'sans-serif'],
+                    },
+                    borderRadius: {
+                        'premium': '8px',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style type="text/css">
+        body {
+            background-color: #F8FAFC;
+            color: #0A192F;
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        .title-serif {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Suavizado de tipografía premium */
+        * {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Tarjetas de datos planas (Estilo M&E Institucional) */
+        .glass-card {
+            background: #FFFFFF;
+            border: 2px solid transparent; /* Transparente por defecto pero manteniendo la caja estructural */
+            transition: border-color 0.2s ease-in-out;
+        }
+
+        .status-badge {
+            background-color: #FFFFFF !important;
+            border: 1px solid #0a66c2 !important;
+            color: #0a66c2 !important;
+            font-size: 12px !important;
+            border-radius: 6px !important;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .status-badge:hover {
+            background-color: #0a66c2 !important;
+            color: #FFFFFF !important;
+            transform: translateY(-1px);
+        }
+
+        /* Estilos Carrusel */
+        .carousel-container {
+            position: relative;
+            overflow: hidden;
+        }
+        .carousel-slide {
+            display: none;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        .carousel-slide.active {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.98); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        
+        .glass-card:hover, .glass-card:focus-within {
+            border-color: #0A192F; /* Azul oscuro del footer */
+        }
+
+        /* Efecto de línea animada para el índice */
+        .nav-link {
+            position: relative;
+            padding-bottom: 2px;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #2563EB; /* brand-accent */
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+    </style>
+</head>
+<body class="bg-brand-offwhite text-brand-navy min-h-screen">
+
+    <!-- Header / Hero Section -->
+    <header class="pt-24 pb-16 md:pt-32 md:pb-24 px-6 max-w-7xl mx-auto">
+        <div class="flex flex-col items-center md:items-start space-y-4">
+            <!-- Etiqueta superior opcional -->
+            <!-- Etiqueta superior opcional -->
+            <span class="text-xs font-semibold tracking-widest text-brand-accent mb-2">Portfolio digital</span>
+            
+            <!-- Nombre en Serif (V2) -->
+            <h1 class="title-serif text-5xl md:text-7xl lg:text-8xl font-medium tracking-tight text-brand-navy">
+                Alfredo Pabón
+            </h1>
+            
+            <!-- Subtítulo en Sans (V1/V2 mix) -->
+            <p class="text-brand-slate text-lg md:text-2xl font-light max-w-2xl leading-relaxed text-center md:text-left">
+                Transformo datos en  <span class="text-brand-navy font-normal">decisiones estratégicas</span>.
+            </p>
+
+            <!-- Ajuste 1: Manifiesto Técnico orientando a ONGs -->
+            <div class="pt-4 md:pt-6 w-full">
+                <p class="text-brand-slate text-base md:text-lg leading-relaxed text-left border-l-2 border-brand-accent pl-5 w-full">
+                    Intervengo en el ciclo completo de los datos: desde el diseño y recolección en terreno (KoboToolbox), pasando por el procesamiento estructurado (Power Query, DAX), hasta la visualización en tableros interactivos (Power BI, UX). Construyo plataformas para dar visibilidad clara a los indicadores de campo y operacionales.
+                </p>
+            </div>
+
+            <!-- Ajuste 2: Índice de Vuelo (Enlaces Ancla Clásicos) -->
+            <div class="pt-8 flex flex-wrap justify-center md:justify-start gap-4 md:gap-8 text-sm font-semibold tracking-wide text-brand-slate">
+                <a href="#operativo" class="nav-link hover:text-brand-accent transition-colors duration-300">Operativo</a>
+                <a href="#redes-sociales" class="nav-link hover:text-brand-accent transition-colors duration-300">Interactividad</a>
+                <a href="#tallest-buildings" class="nav-link hover:text-brand-accent transition-colors duration-300">Global</a>
+                <a href="#territorial" class="nav-link hover:text-brand-accent transition-colors duration-300">Territorial</a>
+                <a href="#presentacion" class="nav-link hover:text-brand-accent transition-colors duration-300">Gobernanza</a>
+            </div>
+        </div>
+    </header>
+
+
+    <!-- Main Content: Analítica -->
+    <main class="max-w-7xl mx-auto px-6 pb-32">
+        <div id="analitica-grid" class="grid grid-cols-1 gap-12 lg:gap-16">
+            
+            <!-- Tarjeta Power BI 1 -->
+            <section id="operativo" class="glass-card p-8 rounded-premium flex flex-col space-y-6 scroll-mt-12">
+                <div>
+                    <span class="status-badge inline-block px-3 py-1 rounded-premium text-xs tracking-wider font-bold mb-4 cursor-default">Gráfico de barras</span>
+                    <h3 class="text-2xl font-semibold text-brand-navy mb-2">Nacer en el campo = Nacer desconectado</h3>
+                    <p class="text-brand-slate text-sm leading-relaxed">
+                        Este gráfico de barras se basa en datos de la plataforma CEPALSTAT de la Comisión Económica para América Latina y el Caribe (CEPAL), utilizando el indicador sobre "personas en hogares con acceso a internet por grupo etario" en la región [<a href="https://bit.ly/3LFuBmY" target="_blank" class="text-brand-accent hover:underline">Link para acceder a los datos</a>].
+                        <br><br>
+                        La visualización tiene como fin estratégico no solo mostrar la conectividad por edad, sino también evidenciar la crítica brecha digital urbano-rural, la mayor del mundo con 38 puntos porcentuales. Al desagregar el acceso, se subraya cómo esta desigualdad territorial impacta directamente el acceso a oportunidades como la educación, salud, empleo; en distintos grupos generacionales, justificando la urgencia de inversión para cerrar esta profunda disparidad.
+                        <br><br>
+                        El gráfico fue intencionalmente diseñado para ofrecer una narrativa clara y un entendimiento inmediato en una sola imagen, prescindiendo de segmentadores y filtros adicionales.
+                    </p>
+                </div>
+                <!-- iFrame Power BI #1 -->
+                <div class="aspect-[600/373.5] bg-slate-50 rounded-md border border-slate-100 overflow-hidden shadow-inner">
+                    <iframe title="Nacer en el campo  Nacer desconectado" class="w-full h-full" src="https://app.powerbi.com/view?r=eyJrIjoiMGU5NTViMDgtMzAwNS00NzA4LThlMTQtOGVjNDZjYTQzY2ZhIiwidCI6IjM0MzAzNTQxLTc0ZWMtNGQ0YS04YzVhLTgwNDlkMmZkNmNlNiIsImMiOjR9" frameborder="0" allowFullScreen="true"></iframe>
+                </div>
+            </section>
+
+            <!-- Tarjeta Power BI 2 -->
+            <section id="redes-sociales" class="glass-card p-8 rounded-premium flex flex-col space-y-6 scroll-mt-12">
+                <div>
+                    <span class="status-badge inline-block px-3 py-1 rounded-premium text-xs tracking-wider font-bold mb-4 cursor-default">Gráfico de líneas</span>
+                    <h3 class="text-2xl font-semibold text-brand-navy mb-2">Usuarios de redes sociales</h3>
+                    <p class="text-brand-slate text-sm leading-relaxed">
+                        Gráfico de líneas que visualiza la evolución de usuarios de redes sociales a lo largo del tiempo (datos sintéticos basados en años de lanzamiento y tendencias de mercado). 
+                        <br><br>
+                        Incluye leyenda interactiva con switches que permiten activar/desactivar cada red social (las líneas activas mantienen su color, las inactivas se muestran en gris). Cuenta con un botón de cambio de idioma en la esquina superior derecha para alternar entre español e inglés. La interactividad se logra sin el uso de marcadores ni parámetros de campo.
+                    </p>
+                </div>
+                <!-- iFrame Power BI #2 -->
+                <div class="aspect-[600/373.5] bg-slate-50 rounded-md border border-slate-100 overflow-hidden shadow-inner">
+                    <iframe title="UsuariosRedesSocialesQuickViz" class="w-full h-full" src="https://app.powerbi.com/view?r=eyJrIjoiMDY0YTY4NjUtNzE2Zi00NjEzLWE5NDUtMWFiNTA2MjBjYTRiIiwidCI6IjM0MzAzNTQxLTc0ZWMtNGQ0YS04YzVhLTgwNDlkMmZkNmNlNiIsImMiOjR9" frameborder="0" allowFullScreen="true"></iframe>
+                </div>
+            </section>
+
+            <!-- Tarjeta Power BI 3 -->
+            <section id="tallest-buildings" class="glass-card p-8 rounded-premium flex flex-col space-y-6 scroll-mt-12">
+                <div>
+                    <span class="status-badge inline-block px-3 py-1 rounded-premium text-xs tracking-wider font-bold mb-4 cursor-default">Tabla</span>
+                    <h3 class="text-2xl font-semibold text-brand-navy mb-2">Racing to the Sky: A Global Analysis of the World's 300 Tallest Buildings</h3>
+                    <p class="text-brand-slate text-sm leading-relaxed">
+                        Tabla interactiva de los 300 edificios más altos del mundo basada en datos del Council on Tall Buildings and Urban Habitat (CTBUH) [<a href="https://www.skyscrapercenter.com/buildings?status=completed&material=all&function=all&location=world" target="_blank" class="text-brand-accent hover:underline">Acceso a fuente oficial</a>]. Compara 100 completados, 100 en construcción y 100 propuestos. Incluye un sistema de altura dinámica (m/ft) mediante parámetros de campo, filtros multidimensionales por estado, material, función y ubicación geográfica, además de tooltips con definiciones técnicas oficiales. El diseño facilita la identificación de patrones globales en el desarrollo arquitectónico, preferencias estructurales y funciones urbanas, destacando cómo diferentes regiones conquistan la verticalidad con soluciones distintas.
+                    </p>
+                </div>
+                <!-- iFrame Power BI #3 -->
+                <div class="aspect-[600/373.5] bg-slate-50 rounded-md border border-slate-100 overflow-hidden shadow-inner">
+                    <iframe title="Edificios mas altos del mundo" class="w-full h-full" src="https://app.powerbi.com/view?r=eyJrIjoiZGRiY2IwNjUtNmYyMS00NjYwLWJkYzgtNGZhZTNiNTk5MmE5IiwidCI6IjM0MzAzNTQxLTc0ZWMtNGQ0YS04YzVhLTgwNDlkMmZkNmNlNiIsImMiOjR9" frameborder="0" allowFullScreen="true"></iframe>
+                </div>
+            </section>
+
+            <!-- Tarjeta Power BI 4 -->
+            <section id="territorial" class="glass-card p-8 rounded-premium flex flex-col space-y-6 scroll-mt-12">
+                <div>
+                    <span class="status-badge inline-block px-3 py-1 rounded-premium text-xs tracking-wider font-bold mb-4 cursor-default">Informe estático</span>
+                    <h3 class="text-2xl font-semibold text-brand-navy mb-2">Informe de territorialización del Sistema Nacional de Cuidado</h3>
+                    <p class="text-brand-slate text-sm leading-relaxed">
+                        Informe estático sobre los avances de la territorialización del Sistema Nacional de Cuidado en el área metropolitana de Cúcuta. En el desarrollo de este tablero se ha aplicado un enfoque riguroso de UI/UX, priorizando una arquitectura de información limpia que facilita la navegación y comprensión de indicadores territoriales críticos.
+                    </p>
+                </div>
+                <!-- iFrame Power BI #4 -->
+                <div class="aspect-[600/373.5] bg-slate-50 rounded-md border border-slate-100 overflow-hidden shadow-inner">
+                    <iframe title="Reporte de seguimiento estrategias del cuidado" class="w-full h-full" src="https://app.powerbi.com/view?r=eyJrIjoiOTIwN2MxMTQtYjNjMy00MGU1LTk5OWYtYTY4MzQ2MmE1ZGMzIiwidCI6IjM0MzAzNTQxLTc0ZWMtNGQ0YS04YzVhLTgwNDlkMmZkNmNlNiIsImMiOjR9" frameborder="0" allowFullScreen="true"></iframe>
+                </div>
+            </section>
+
+            <!-- Tarjeta PowerPoint (Ancho Completo) -->
+            <section id="presentacion" class="glass-card p-8 rounded-premium flex flex-col space-y-6 scroll-mt-12">
+                <div>
+                    <span class="status-badge inline-block px-3 py-1 rounded-full text-[10px] tracking-wider font-bold mb-4 cursor-default">Power Point</span>
+                    <h3 class="text-2xl font-semibold text-brand-navy mb-2">Resultados de las metodologías: Cambio cultural y Redes de cuidadores</h3>
+                    <p class="text-brand-slate text-sm leading-relaxed">
+                        Presentación interactiva sobre los avances en la territorialización del Sistema Nacional de Cuidado (15 diapositivas). Este documento detalla el impacto social de las estrategias implementadas, centrándose en la transformación cultural y el fortalecimiento de las redes de cuidadores. Se ha puesto especial énfasis en el diseño visual y la síntesis de información, asegurando que los hallazgos estratégicos se comuniquen con una claridad y elegancia que facilita la toma de decisiones informadas.
+                    </p>
+                </div>
+                <!-- Carrusel de Imágenes Elite -->
+                <div class="carousel-container bg-slate-50 rounded-md border border-slate-100 shadow-inner group">
+                    <div class="aspect-video relative">
+                        <!-- Diapositivas -->
+                        <div id="carouselSlides">
+                            <!-- Se generarán por JS o manualmente -->
+                            <img src="diapositivas/Diapositiva1.webp" class="carousel-slide active w-full h-full object-contain" alt="Diapositiva 1">
+                            <img src="diapositivas/Diapositiva2.webp" class="carousel-slide w-full h-full object-contain" alt="Diapositiva 2">
+                            <img src="diapositivas/Diapositiva3.webp" class="carousel-slide w-full h-full object-contain" alt="Diapositiva 3">
+                            <img src="diapositivas/Diapositiva4.webp" class="carousel-slide w-full h-full object-contain" alt="Diapositiva 4">
+                            <img src="diapositivas/Diapositiva5.webp" class="carousel-slide w-full h-full object-contain" alt="Diapositiva 5">
+                            <img src="diapositivas/Diapositiva6.webp" class="carousel-slide w-full h-full object-contain" alt="Diapositiva 6">
+                            <img src="diapositivas/Diapositiva7.webp" class="carousel-slide w-full h-full object-contain" alt="Diapositiva 7">
+                            <img src="diapositivas/Diapositiva8.webp" class="carousel-slide w-full h-full object-contain" alt="Diapositiva 8">
+                            <img src="diapositivas/Diapositiva9.webp" class="carousel-slide w-full h-full object-contain" alt="Diapositiva 9">
+                            <img src="diapositivas/Diapositiva10.webp" class="carousel-slide w-full h-full object-contain" alt="Diapositiva 10">
+                            <img src="diapositivas/Diapositiva11.webp" class="carousel-slide w-full h-full object-contain" alt="Diapositiva 11">
+                            <img src="diapositivas/Diapositiva12.webp" class="carousel-slide w-full h-full object-contain" alt="Diapositiva 12">
+                            <img src="diapositivas/Diapositiva13.webp" class="carousel-slide w-full h-full object-contain" alt="Diapositiva 13">
+                            <img src="diapositivas/Diapositiva14.webp" class="carousel-slide w-full h-full object-contain" alt="Diapositiva 14">
+                            <img src="diapositivas/Diapositiva15.webp" class="carousel-slide w-full h-full object-contain" alt="Diapositiva 15">
+                        </div>
+
+                        <!-- Controles de Navegación -->
+                        <button onclick="moveSlide(-1)" class="absolute left-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-brand-navy p-2 rounded-full shadow-lg transition-all opacity-0 group-hover:opacity-100 focus:opacity-100">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg>
+                        </button>
+                        <button onclick="moveSlide(1)" class="absolute right-4 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-brand-navy p-2 rounded-full shadow-lg transition-all opacity-0 group-hover:opacity-100 focus:opacity-100">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+                        </button>
+
+                        <!-- Indicador de Páginas -->
+                        <div class="absolute bottom-4 right-4 bg-brand-navy/80 text-white px-3 py-1 rounded-full text-xs font-mono">
+                            <span id="currentSlideNum">1</span> / 15
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- CTA Banner -->
+    <section class="py-20 px-6 bg-brand-offwhite border-t border-slate-100">
+        <div class="max-w-2xl mx-auto text-center space-y-6">
+            <h2 class="title-serif text-4xl md:text-5xl text-brand-navy leading-snug">
+                ¿Necesita datos confiables para su proyecto?
+            </h2>
+            <p class="text-brand-slate text-lg leading-relaxed">
+                Le ayudo a estructurar el ciclo completo de los datos, desde el terreno hasta el tablero.
+            </p>
+            <div class="pt-2">
+                <a href="https://www.linkedin.com/in/jalfredopabon" target="_blank"
+                   class="inline-flex items-center gap-3 bg-[#0a66c2] hover:bg-[#0958a8] text-white font-semibold px-6 py-3 rounded-md transition-all duration-300">
+                    <svg class="w-5 h-5 fill-current flex-shrink-0" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                    Conectar en LinkedIn
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="mt-8 bg-brand-navy py-16 text-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start text-center md:text-left">
+                <!-- Columna 1: Identidad -->
+                <div class="space-y-3">
+                    <h3 class="title-serif text-3xl tracking-tight">Alfredo Pabón</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed max-w-sm mx-auto md:mx-0">
+                        Transformando datos en activos estratégicos para el sector social y proyectos de impacto territorial.
+                    </p>
+                </div>
+
+                <!-- Columna 2: Social y Crédito -->
+                <div class="flex flex-col gap-8 text-center md:text-right">
+                    <!-- Sígueme + LinkedIn -->
+                    <div class="space-y-3">
+                        <span class="block text-xs tracking-widest font-bold text-slate-500">Sígueme</span>
+                        <div class="flex justify-center md:justify-end gap-4">
+                            <a href="https://www.linkedin.com/in/jalfredopabon" target="_blank" class="w-10 h-10 rounded-full border border-slate-600 flex items-center justify-center hover:border-brand-accent hover:bg-brand-accent/10 transition-all text-slate-300">
+                                <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- Crédito -->
+                    <p class="text-sm text-slate-500 opacity-70">Página creada por: Alfredo Pabón</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Lógica del Carrusel -->
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.carousel-slide');
+        const slideNumDisplay = document.getElementById('currentSlideNum');
+
+        function moveSlide(direction) {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + direction + slides.length) % slides.length;
+            slides[currentSlide].classList.add('active');
+            slideNumDisplay.textContent = currentSlide + 1;
+        }
+
+        // Navegación con teclado
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') moveSlide(-1);
+            if (e.key === 'ArrowRight') moveSlide(1);
+        });
+    </script>
+</body>
+</html>

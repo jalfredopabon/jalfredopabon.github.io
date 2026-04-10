@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Alfredo Pabón - Portfolio</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Noto+Serif:ital,wght@0,700;1,700&amp;display=swap" rel="stylesheet"/>
+<!-- Icons -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Scripts -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary": "#c8ffe0",
+                    "surface-container-highest": "#d9dde0",
+                    "surface-container-high": "#dfe3e6",
+                    "inverse-surface": "#0b0f10",
+                    "secondary-fixed": "#c4d0ff",
+                    "on-secondary": "#f1f2ff",
+                    "on-primary-container": "#4a5167",
+                    "on-primary-fixed": "#373f54",
+                    "on-tertiary-container": "#005a3c",
+                    "on-secondary-fixed-variant": "#0047bd",
+                    "surface-container-low": "#eef1f3",
+                    "on-secondary-fixed": "#002d80",
+                    "outline": "#747779",
+                    "surface-container-lowest": "#ffffff",
+                    "error": "#b31b25",
+                    "primary": "#535b71",
+                    "surface-dim": "#d0d5d8",
+                    "on-surface": "#2c2f31",
+                    "primary-fixed": "#dae2fd",
+                    "tertiary": "#006947",
+                    "on-tertiary-fixed": "#00452d",
+                    "tertiary-fixed": "#69f6b8",
+                    "tertiary-container": "#69f6b8",
+                    "surface-bright": "#f5f7f9",
+                    "surface-container": "#e5e9eb",
+                    "secondary": "#0050d4",
+                    "outline-variant": "#abadaf",
+                    "surface-variant": "#d9dde0",
+                    "on-surface-variant": "#595c5e",
+                    "tertiary-dim": "#005c3d",
+                    "primary-container": "#dae2fd",
+                    "tertiary-fixed-dim": "#58e7ab",
+                    "on-background": "#2c2f31",
+                    "error-container": "#fb5151",
+                    "primary-dim": "#484f65",
+                    "error-dim": "#9f0519",
+                    "on-error": "#ffefee",
+                    "on-secondary-container": "#003ea9",
+                    "surface": "#f5f7f9",
+                    "on-primary-fixed-variant": "#535b71",
+                    "secondary-fixed-dim": "#b0c2ff",
+                    "inverse-on-surface": "#9a9d9f",
+                    "on-primary": "#f0f2ff",
+                    "secondary-dim": "#0046bb",
+                    "on-tertiary-fixed-variant": "#006544",
+                    "on-error-container": "#570008",
+                    "primary-fixed-dim": "#ccd4ee",
+                    "inverse-primary": "#dae2fd",
+                    "secondary-container": "#c4d0ff",
+                    "surface-tint": "#535b71",
+                    "background": "#f5f7f9"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Noto Serif"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .mesh-gradient {
+            background-color: #f5f7f9;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(37, 99, 235, 0.08) 0px, transparent 50%),
+                radial-gradient(at 100% 0%, rgba(0, 105, 71, 0.08) 0px, transparent 50%),
+                radial-gradient(at 50% 100%, rgba(37, 99, 235, 0.05) 0px, transparent 50%);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .luminous-border {
+            border: 1px solid rgba(171, 173, 175, 0.15);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body selection:bg-secondary/20 overflow-x-hidden">
+<!-- Background Layer -->
+<div class="fixed inset-0 mesh-gradient -z-10"></div>
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl border-b border-white/20 dark:border-slate-800/20 shadow-xl shadow-blue-900/5 flex justify-between items-center px-6 py-4">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-blue-600 dark:text-blue-400 scale-95 active:scale-90 transition-transform cursor-pointer">menu</span>
+<h1 class="text-2xl font-serif italic tracking-tight text-slate-900 dark:text-slate-50">Alfredo Pabón</h1>
+</div>
+<div class="flex items-center">
+<span class="material-symbols-outlined text-blue-600 dark:text-blue-400 scale-95 active:scale-90 transition-transform cursor-pointer">analytics</span>
+</div>
+</header>
+<main class="pt-28 pb-32 px-6">
+<!-- Hero Section -->
+<section class="mb-16">
+<div class="space-y-4">
+<h2 class="text-5xl font-serif italic text-on-background tracking-tighter leading-[1.1]">
+                    Alfredo <br/> Pabón
+                </h2>
+<p class="text-lg font-body text-on-surface-variant max-w-[280px] leading-relaxed">
+                    Especialista en Monitoreo y Evaluación
+                </p>
+<div class="flex gap-4 pt-4">
+<button class="bg-gradient-to-r from-secondary to-secondary-dim text-white px-6 py-3 rounded-xl font-semibold shadow-lg shadow-secondary/20 flex items-center gap-2 active:scale-95 transition-all">
+<span>Ver Portafolio</span>
+<span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Dashboard Gallery / Bento Grid -->
+<section class="space-y-6">
+<div class="flex items-end justify-between mb-4">
+<h3 class="text-xl font-serif italic text-on-surface">Proyectos Destacados</h3>
+<span class="text-xs font-label font-bold uppercase tracking-widest text-secondary">Q3 2024</span>
+</div>
+<!-- Card 1: Power BI Operativo -->
+<div class="glass-card luminous-border rounded-[2rem] p-6 shadow-[0_8px_30px_rgb(0,0,0,0.04)] active:scale-[0.98] transition-transform">
+<div class="flex justify-between items-start mb-6">
+<span class="bg-tertiary-container text-on-tertiary-fixed px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider">Operativo</span>
+<span class="material-symbols-outlined text-secondary opacity-40">query_stats</span>
+</div>
+<div class="aspect-video rounded-2xl mb-6 overflow-hidden bg-surface-container-low">
+<img alt="Dashboard visualization" class="w-full h-full object-cover" data-alt="high-tech power bi dashboard showing complex operational performance metrics with sleek line charts and neon blue accents" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDCPnrIfCE_yuKsmmQyhRZ_by4LXqOzFsDc-Z50osXaz55TzamvOWwtGR0O_rbhKu5EguiXeDEfW7ZPnUcRfOWdzJOnPkRqmrs-XgWwBIDbUO2Co5htpohLpRC8Zl_Mri9JUCgYp-EyJgOMkNkMfKdLWpI2x6j9dP0p4PPQjVztW8CLNsXx1jsPrjCXioE2MaylOQzCQ9lqzpp1IWKfxEcOs8aOkv2X2VPTh1a3DutA71HA5OST5D6MHoMspZj0rCL4mjKst9Ye2g"/>
+</div>
+<h4 class="text-xl font-serif italic text-on-surface mb-2 leading-tight">Rendimiento Operativo Q3</h4>
+<p class="text-sm text-on-surface-variant leading-relaxed">Visualización avanzada de KPIs logísticos y eficiencia de cadena de suministro.</p>
+</div>
+<!-- Card 2: Impacto Social -->
+<div class="glass-card luminous-border rounded-[2rem] p-6 shadow-[0_8px_30px_rgb(0,0,0,0.04)] active:scale-[0.98] transition-transform">
+<div class="flex justify-between items-start mb-6">
+<span class="bg-primary-container text-on-primary-fixed px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider">Social</span>
+<span class="material-symbols-outlined text-secondary opacity-40">public</span>
+</div>
+<div class="aspect-video rounded-2xl mb-6 overflow-hidden bg-surface-container-low">
+<img alt="Impact analytics" class="w-full h-full object-cover" data-alt="clean infographic style dashboard representing social impact data with vibrant green and teal heat maps on a white background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBziXXQBrO3xLWtIydh9DqFJ8DQfUWgSV1hzIwlItYYncsXIlXUX6fpCJoxL9axPMTv6bnMDDnqbv1JdqiYOytRMgCkEUa6k5BEWXiZUhGspU2NN_QVd8C8lJw9sV0tKSdSGPhcvOsSV0e8NcZ_BMtuccskskWHEYZLqNFxx9fX2vKgnnY1PT-_mcu8a7ood5oljWPB0YdTwEXiXW580nSncSudQCMRnVYM4L6-tijlidmd8CyXiuPXIpw6t-56pxEwuJc16hQEaQ"/>
+</div>
+<h4 class="text-xl font-serif italic text-on-surface mb-2 leading-tight">Análisis de Impacto Social</h4>
+<p class="text-sm text-on-surface-variant leading-relaxed">Monitoreo de alcance poblacional y métricas de beneficio comunitario en tiempo real.</p>
+</div>
+<!-- Card 3: Optimización Presupuesto -->
+<div class="glass-card luminous-border rounded-[2rem] p-6 shadow-[0_8px_30px_rgb(0,0,0,0.04)] active:scale-[0.98] transition-transform">
+<div class="flex justify-between items-start mb-6">
+<span class="bg-secondary-container text-on-secondary-fixed px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider">Financiero</span>
+<span class="material-symbols-outlined text-secondary opacity-40">payments</span>
+</div>
+<div class="aspect-video rounded-2xl mb-6 overflow-hidden bg-surface-container-low">
+<img alt="Budget tracking" class="w-full h-full object-cover" data-alt="professional financial dashboard with bar charts and percentage indicators in deep navy and electric blue tones" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCBYp7pJLdKmxaVOSsWz_Xn9iuZrP79T1hVQLKBi8TxMWYMh490GvOBNk1A35hcYKJ5oiu7fihck-HiQFrW1OXN5lTYqLYUsI2Zk5Pj4TbXyAWfQi5n35ZDTYv6Mz4e9DANq63Ltqzy4t9DABLZG78XTpp3DETE0TTibeAMf-3BUlbwUNgtbLFLO0dDnlvqugTREUxDVkhF_3NxJNU3jOe5tKcOt9p329xG5ub6JVWPTpzKJjxDngivj_noAkhxEaZFjWsx3fE4-w"/>
+</div>
+<h4 class="text-xl font-serif italic text-on-surface mb-2 leading-tight">Optimización de Presupuesto</h4>
+<p class="text-sm text-on-surface-variant leading-relaxed">Modelado predictivo de gastos y detección de desviaciones presupuestarias críticas.</p>
+</div>
+<!-- Card 4: Presentaciones -->
+<div class="glass-card luminous-border rounded-[2rem] p-6 shadow-[0_8px_30px_rgb(0,0,0,0.04)] active:scale-[0.98] transition-transform bg-gradient-to-br from-white/90 to-blue-50/50">
+<div class="flex justify-between items-start mb-4">
+<span class="bg-surface-container-highest text-on-surface px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider">Estrategia</span>
+<span class="material-symbols-outlined text-secondary">present_to_all</span>
+</div>
+<h4 class="text-xl font-serif italic text-on-surface mb-2">Presentaciones Ejecutivas</h4>
+<p class="text-sm text-on-surface-variant mb-6">Storytelling de datos para juntas directivas y stakeholders de alto nivel.</p>
+<div class="flex -space-x-3 overflow-hidden">
+<div class="inline-block h-10 w-10 rounded-full ring-4 ring-white">
+<img alt="Exec profile 1" class="h-full w-full object-cover rounded-full" data-alt="professional portrait of a business executive in a high-key studio setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA4KOVWjPuFcyVKu6fnxgC2qlOwmcbYlblg7ffkDsqTSSZAahL34b-4maGRnKD1CMgQCBfzwnABtnYIaFzfb_27lG74zi8YpBcwFZsb3wXq0IDp0Fm9bxcMM8dMTtrFdPgCiNv-qw1JBby0tDBd3MAoRRLYisZjl2mjeWe-W2yKfRZcpHFpduqdt8yhy0xjR3QzOo6hf4TyquUQi6eaV1aucwUE29B_7q6XvSRn9Wc8uJ5OUjMrcMnutS-8JYWZxXybfxzZNKnNOA"/>
+</div>
+<div class="inline-block h-10 w-10 rounded-full ring-4 ring-white">
+<img alt="Exec profile 2" class="h-full w-full object-cover rounded-full" data-alt="modern corporate office meeting setting with soft lighting and professional atmosphere" src="https://lh3.googleusercontent.com/aida-public/AB6AXuChPFOSa3R38SuJbJbVrqYXnFgx9Kzv2Z41NI-RKMCKDIWFdue1hsLRhSm13ZrHxmV4xWCgiqNFxOrejZwyoLlnrIaeMqxKykp4xHqjRKu7ehnLywP1X_Ar-HhGjvrqzdOAfLnHo38QMtTBOGYce5Xlp9IGuG1cw78917saY_EScbJeFTk2cd1m-4XkYbeB_8WxxRyj_H8XZslKvy0kI2txKeqVAb4xItX25zb2thZv9rdfhXJnLm3WA_xeo-lSRhbOI3hUCZDEDg"/>
+</div>
+<div class="h-10 w-10 rounded-full ring-4 ring-white bg-secondary-container flex items-center justify-center text-[10px] font-bold text-on-secondary-container">
+                        +12
+                    </div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-6 pt-3 bg-white/60 dark:bg-slate-900/60 backdrop-blur-2xl border-t border-white/20 dark:border-slate-800/20 shadow-[0_-8px_30px_rgb(0,0,0,0.04)] z-50">
+<!-- Ledger Active -->
+<div class="flex flex-col items-center justify-center bg-blue-600/10 dark:bg-blue-400/10 text-blue-700 dark:text-blue-300 rounded-2xl px-5 py-2 active:scale-95 duration-200 cursor-pointer">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">account_balance_wallet</span>
+<span class="font-sans text-[11px] font-bold uppercase tracking-wider mt-1">Ledger</span>
+</div>
+<!-- Insights Inactive -->
+<div class="flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 px-5 py-2 hover:text-blue-500 transition-all active:scale-95 duration-200 cursor-pointer">
+<span class="material-symbols-outlined">query_stats</span>
+<span class="font-sans text-[11px] font-bold uppercase tracking-wider mt-1">Insights</span>
+</div>
+<!-- Contact Inactive -->
+<div class="flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 px-5 py-2 hover:text-blue-500 transition-all active:scale-95 duration-200 cursor-pointer">
+<span class="material-symbols-outlined">alternate_email</span>
+<span class="font-sans text-[11px] font-bold uppercase tracking-wider mt-1">Contact</span>
+</div>
+</nav>
+</body></html>
