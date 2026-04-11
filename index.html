@@ -207,7 +207,7 @@
 
     <!-- Header / Hero Section -->
     <header class="pt-24 pb-16 md:pt-32 md:pb-24 px-8 md:px-24 max-w-6xl mx-auto">
-        <div class="flex flex-col items-center md:items-start space-y-4">
+        <div class="flex flex-col items-start space-y-4">
             <!-- Etiqueta superior opcional -->
             <span class="text-xs tracking-widest text-brand-accent mb-2">Portfolio digital</span>
             
@@ -217,7 +217,7 @@
             </h1>
             
             <!-- Subtítulo en Sans (V1/V2 mix) -->
-            <p class="text-brand-slate text-lg md:text-2xl font-light max-w-2xl leading-relaxed text-center md:text-left">
+            <p class="text-brand-slate text-lg md:text-2xl font-light max-w-2xl leading-relaxed text-left">
                 Transformo datos en  <span class="text-brand-navy font-normal">decisiones estratégicas</span>.
             </p>
 
@@ -229,12 +229,12 @@
             </div>
 
             <!-- Ajuste 2: Índice de Vuelo (Enlaces Ancla Clásicos) -->
-            <div class="pt-8 flex flex-wrap justify-center md:justify-start gap-4 md:gap-8 text-sm font-semibold tracking-wide text-brand-slate">
+            <div class="pt-8 flex flex-wrap justify-start gap-4 md:gap-8 text-sm font-semibold tracking-wide text-brand-slate">
                 <a href="#brecha-digital" class="nav-link hover:text-brand-accent transition-colors duration-300">Social</a>
                 <a href="#redes-sociales" class="nav-link hover:text-brand-accent transition-colors duration-300">Tendencias</a>
                 <a href="#tallest-buildings" class="nav-link hover:text-brand-accent transition-colors duration-300">Global</a>
-                <a href="#territorial" class="nav-link hover:text-brand-accent transition-colors duration-300">Territorial</a>
                 <a href="#presentacion" class="nav-link hover:text-brand-accent transition-colors duration-300">Impacto</a>
+                <a href="#territorial" class="nav-link hover:text-brand-accent transition-colors duration-300">Territorial</a>
                 <a href="#diseno-web" class="nav-link hover:text-brand-accent transition-colors duration-300">Diseño web</a>
             </div>
         </div>
@@ -313,30 +313,8 @@
                 </div>
             </section>
 
-            <!-- Tarjeta Power BI 4 -->
-            <section id="territorial" class="bg-[#F1F5F9] py-24 md:py-48 scroll-mt-12">
-                <div class="max-w-6xl mx-auto px-8 md:px-24 flex flex-col space-y-16 md:space-y-24">
-                    <div class="max-w-3xl">
-                        <span class="status-badge inline-block px-3 py-1 rounded-premium text-xs tracking-wider mb-4 cursor-default">Monitoreo territorial</span>
-                        <h3 class="text-3xl md:text-4xl font-semibold text-brand-navy mb-6">Territorialización del sistema nacional de cuidado</h3>
-                        <p class="text-brand-slate text-base md:text-lg leading-relaxed">
-                            Informe sobre los avances de territorialización en el área metropolitana de Cúcuta. Prioriza una arquitectura de información limpia para facilitar la comprensión de indicadores territoriales críticos.
-                        </p>
-                    </div>
-                    <!-- iFrame Power BI #4 -->
-                    <div class="pbi-container relative aspect-[600/373.5] w-full overflow-hidden">
-                        <div class="iframe-progress"></div>
-                        <div class="iframe-loader">
-                            <div class="pulse-dot"></div>
-                            <span class="text-[10px] tracking-widest text-brand-navy">Estableciendo conexión...</span>
-                        </div>
-                        <iframe title="Reporte de seguimiento estrategias del cuidado" class="w-full h-full" data-src="https://app.powerbi.com/view?r=eyJrIjoiOTIwN2MxMTQtYjNjMy00MGU1LTk5OWYtYTY4MzQ2MmE1ZGMzIiwidCI6IjM0MzAzNTQxLTc0ZWMtNGQ0YS04YzVhLTgwNDlkMmZkNmNlNiIsImMiOjR9" frameborder="0" allowFullScreen="true"></iframe>
-                    </div>
-                </div>
-            </section>
-
             <!-- Tarjeta PowerPoint (Ancho Completo) -->
-            <section id="presentacion" class="bg-white py-24 md:py-48 scroll-mt-12">
+            <section id="presentacion" class="bg-[#F1F5F9] py-24 md:py-48 scroll-mt-12">
                 <div class="max-w-6xl mx-auto px-8 md:px-24 flex flex-col space-y-16 md:space-y-24">
                     <div class="max-w-3xl">
                         <span class="status-badge inline-block px-3 py-1 rounded-premium text-xs tracking-wider mb-4 cursor-default">Impacto social</span>
@@ -381,6 +359,27 @@
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
                         </button>
                     </div>
+                </div>
+            </section>
+
+            <!-- Tarjeta Power BI 4 -->
+            <section id="territorial" class="bg-white py-24 md:py-48 scroll-mt-12">
+                <div class="max-w-6xl mx-auto px-8 md:px-24 flex flex-col space-y-16 md:space-y-24">
+                    <div class="max-w-3xl">
+                        <span class="status-badge inline-block px-3 py-1 rounded-premium text-xs tracking-wider mb-4 cursor-default">Monitoreo territorial</span>
+                        <h3 class="text-3xl md:text-4xl font-semibold text-brand-navy mb-6">Territorialización del sistema nacional de cuidado</h3>
+                        <p class="text-brand-slate text-base md:text-lg leading-relaxed">
+                            Informe sobre los avances de territorialización en el área metropolitana de Cúcuta. Prioriza una arquitectura de información limpia para facilitar la comprensión de indicadores territoriales críticos.
+                        </p>
+                    </div>
+                    <!-- iFrame Power BI #4 -->
+                    <div class="pbi-container relative aspect-[600/373.5] w-full overflow-hidden">
+                        <div class="iframe-progress"></div>
+                        <div class="iframe-loader">
+                            <div class="pulse-dot"></div>
+                            <span class="text-[10px] tracking-widest text-brand-navy">Estableciendo conexión...</span>
+                        </div>
+                        <iframe title="Reporte de seguimiento estrategias del cuidado" class="w-full h-full" data-src="https://app.powerbi.com/view?r=eyJrIjoiOTIwN2MxMTQtYjNjMy00MGU1LTk5OWYtYTY4MzQ2MmE1ZGMzIiwidCI6IjM0MzAzNTQxLTc0ZWMtNGQ0YS04YzVhLTgwNDlkMmZkNmNlNiIsImMiOjR9" frameborder="0" allowFullScreen="true"></iframe>
                     </div>
                 </div>
             </section>
@@ -439,7 +438,7 @@
 
     <!-- CTA Banner -->
     <section class="py-24 px-8 md:px-24 bg-brand-offwhite border-t border-slate-100">
-        <div class="max-w-2xl mx-auto text-center space-y-6">
+        <div class="max-w-2xl mx-auto text-left space-y-6">
             <h2 class="title-serif text-4xl md:text-5xl text-brand-navy leading-snug">
                 ¿Necesita datos confiables para su proyecto?
             </h2>
@@ -459,17 +458,17 @@
     <!-- Footer -->
     <footer class="mt-8 bg-brand-navy py-16 text-white">
         <div class="max-w-6xl mx-auto px-8 md:px-24">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start text-center md:text-left">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start text-left">
                 <!-- Columna 1: Identidad -->
                 <div class="space-y-3">
                     <h3 class="title-serif text-3xl tracking-tight">Alfredo Pabón</h3>
-                    <p class="text-slate-400 text-sm leading-relaxed max-w-sm mx-auto md:mx-0">
+                    <p class="text-slate-400 text-sm leading-relaxed max-w-sm mx-0">
                         Transformando datos en activos estratégicos para el sector social y proyectos de impacto territorial.
                     </p>
                 </div>
 
                 <!-- Columna 2: Social y Crédito -->
-                <div class="flex flex-col md:flex-row items-center md:justify-end gap-6">
+                <div class="flex flex-col md:flex-row items-start md:items-center md:justify-end gap-6">
                     <!-- Crédito -->
                     <a href="https://www.linkedin.com/in/jalfredopabon/" target="_blank" rel="noopener noreferrer" class="text-xs tracking-widest text-slate-500 hover:text-white transition-colors group">
                         Creado por <span class="text-slate-300 group-hover:text-brand-accent transition-colors">Alfredo Pabón</span>
