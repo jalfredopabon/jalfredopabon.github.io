@@ -206,7 +206,7 @@
 <body class="bg-brand-offwhite text-brand-navy min-h-screen">
 
     <!-- Header / Hero Section -->
-    <header class="pt-20 pb-12 md:pt-20 md:pb-12 px-8 md:px-24 max-w-6xl mx-auto">
+    <header class="pt-12 pb-8 md:pt-20 md:pb-12 px-8 md:px-24 max-w-6xl mx-auto">
         <div class="flex flex-col items-start space-y-4">
             <!-- Etiqueta superior opcional -->
             <span class="text-xs tracking-widest text-brand-accent mb-2">Portfolio digital</span>
@@ -223,8 +223,8 @@
 
             <!-- Ajuste 1: Manifiesto Técnico orientando a ONGs -->
             <div class="pt-4 md:pt-6 w-full max-w-3xl">
-                <p class="text-brand-slate text-base md:text-lg leading-relaxed text-left border-l-2 border-brand-accent pl-5">
-                    Soy psicólogo y analista de datos enfocado en el sector social y humanitario. Actúo como puente entre los números y la realidad gestionando el ciclo integral de información: desde la recolección empática en terreno (KoboToolbox), pasando por el procesamiento en Excel y Power Query junto al desarrollo analítico en SQL y Python (vía Google Antigravity), hasta la entrega de soluciones visuales en Power BI con un enfoque UI/UX intuitivo y orientado a la acción.
+                <p class="text-brand-slate text-base md:text-lg leading-relaxed text-left border-l-2 border-brand-accent pl-4 md:pl-5 py-1">
+                    Soy <span class="text-brand-navy font-medium">psicólogo y analista de datos</span> enfocado en el sector social y humanitario. Actúo como puente entre los números y la realidad gestionando el ciclo integral de información: desde la recolección empática en terreno (<span class="text-brand-navy font-medium">KoboToolbox</span>), pasando por el procesamiento en <span class="text-brand-navy font-medium">Excel</span> y Power Query junto al desarrollo analítico en <span class="text-brand-navy font-medium">SQL</span> y <span class="text-brand-navy font-medium">Python</span> (vía Google Antigravity), hasta la entrega de soluciones visuales en <span class="text-brand-navy font-medium">Power BI</span> con un enfoque UI/UX intuitivo y orientado a la acción.
                 </p>
             </div>
 
@@ -246,7 +246,7 @@
         <div id="analitica-grid">
             
             <!-- Tarjeta Power BI 1 -->
-            <section id="brecha-digital" class="bg-white py-20 md:py-32 scroll-mt-12">
+            <section id="brecha-digital" class="bg-white py-16 md:py-32 scroll-mt-12">
                 <div class="max-w-6xl mx-auto px-8 md:px-24 flex flex-col space-y-16 md:space-y-24">
                     <div class="max-w-3xl">
                         <span class="status-badge inline-block px-3 py-1 rounded-premium text-xs tracking-wider mb-4 cursor-default">Análisis social</span>
@@ -256,7 +256,7 @@
                         </p>
                     </div>
                     <!-- iFrame Power BI #1 -->
-                    <div class="pbi-container relative aspect-[600/373.5] w-full overflow-hidden">
+                    <div class="pbi-container relative aspect-[600/373.5] w-full overflow-hidden rounded-premium shadow-sm hover:shadow-md transition-shadow duration-500">
                         <div class="iframe-progress"></div>
                         <div class="iframe-loader">
                             <div class="pulse-dot"></div>
@@ -268,7 +268,7 @@
             </section>
 
             <!-- Tarjeta Power BI 2 -->
-            <section id="redes-sociales" class="bg-[#F1F5F9] py-20 md:py-32 scroll-mt-12">
+            <section id="redes-sociales" class="bg-[#F1F5F9] py-16 md:py-32 scroll-mt-12">
                 <div class="max-w-6xl mx-auto px-8 md:px-24 flex flex-col space-y-16 md:space-y-24">
                     <div class="max-w-3xl">
                         <span class="status-badge inline-block px-3 py-1 rounded-premium text-xs tracking-wider mb-4 cursor-default">Tendencias digitales</span>
@@ -292,7 +292,7 @@
             </section>
 
             <!-- Tarjeta Power BI 3 -->
-            <section id="tallest-buildings" class="bg-white py-20 md:py-32 scroll-mt-12">
+            <section id="tallest-buildings" class="bg-white py-16 md:py-32 scroll-mt-12">
                 <div class="max-w-6xl mx-auto px-8 md:px-24 flex flex-col space-y-16 md:space-y-24">
                     <div class="max-w-3xl">
                         <span class="status-badge inline-block px-3 py-1 rounded-premium text-xs tracking-wider mb-4 cursor-default">Análisis comparativo</span>
@@ -314,7 +314,7 @@
             </section>
 
             <!-- Tarjeta PowerPoint (Ancho Completo) -->
-            <section id="presentacion" class="bg-[#F1F5F9] py-20 md:py-32 scroll-mt-12">
+            <section id="presentacion" class="bg-[#F1F5F9] py-16 md:py-32 scroll-mt-12">
                 <div class="max-w-6xl mx-auto px-8 md:px-24 flex flex-col space-y-16 md:space-y-24">
                     <div class="max-w-3xl">
                         <span class="status-badge inline-block px-3 py-1 rounded-premium text-xs tracking-wider mb-4 cursor-default">Impacto social</span>
@@ -328,21 +328,21 @@
                         <!-- Contenedor con overflow para las diapositivas -->
                         <div class="carousel-container relative aspect-video overflow-hidden rounded-lg">
                             <div class="carousel-slides-wrapper h-full">
-                                <img src="imagenes/diapositivas/Diapositiva1.webp" class="carousel-slide active w-full h-full object-contain" alt="Diapositiva 1">
-                                <img src="imagenes/diapositivas/Diapositiva2.webp" class="carousel-slide w-full h-full object-contain" alt="Diapositiva 2">
-                                <img src="imagenes/diapositivas/Diapositiva3.webp" class="carousel-slide w-full h-full object-contain" alt="Diapositiva 3">
-                                <img src="imagenes/diapositivas/Diapositiva4.webp" class="carousel-slide w-full h-full object-contain" alt="Diapositiva 4">
-                                <img src="imagenes/diapositivas/Diapositiva5.webp" class="carousel-slide w-full h-full object-contain" alt="Diapositiva 5">
-                                <img src="imagenes/diapositivas/Diapositiva6.webp" class="carousel-slide w-full h-full object-contain" alt="Diapositiva 6">
-                                <img src="imagenes/diapositivas/Diapositiva7.webp" class="carousel-slide w-full h-full object-contain" alt="Diapositiva 7">
-                                <img src="imagenes/diapositivas/Diapositiva8.webp" class="carousel-slide w-full h-full object-contain" alt="Diapositiva 8">
-                                <img src="imagenes/diapositivas/Diapositiva9.webp" class="carousel-slide w-full h-full object-contain" alt="Diapositiva 9">
-                                <img src="imagenes/diapositivas/Diapositiva10.webp" class="carousel-slide w-full h-full object-contain" alt="Diapositiva 10">
-                                <img src="imagenes/diapositivas/Diapositiva11.webp" class="carousel-slide w-full h-full object-contain" alt="Diapositiva 11">
-                                <img src="imagenes/diapositivas/Diapositiva12.webp" class="carousel-slide w-full h-full object-contain" alt="Diapositiva 12">
-                                <img src="imagenes/diapositivas/Diapositiva13.webp" class="carousel-slide w-full h-full object-contain" alt="Diapositiva 13">
-                                <img src="imagenes/diapositivas/Diapositiva14.webp" class="carousel-slide w-full h-full object-contain" alt="Diapositiva 14">
-                                <img src="imagenes/diapositivas/Diapositiva15.webp" class="carousel-slide w-full h-full object-contain" alt="Diapositiva 15">
+                                <img src="imagenes/diapositivas/Diapositiva1.webp" class="carousel-slide active w-full h-full object-contain" alt="Diapositiva 1" loading="lazy">
+                                <img src="imagenes/diapositivas/Diapositiva2.webp" class="carousel-slide w-full h-full object-contain" alt="Diapositiva 2" loading="lazy">
+                                <img src="imagenes/diapositivas/Diapositiva3.webp" class="carousel-slide w-full h-full object-contain" alt="Diapositiva 3" loading="lazy">
+                                <img src="imagenes/diapositivas/Diapositiva4.webp" class="carousel-slide w-full h-full object-contain" alt="Diapositiva 4" loading="lazy">
+                                <img src="imagenes/diapositivas/Diapositiva5.webp" class="carousel-slide w-full h-full object-contain" alt="Diapositiva 5" loading="lazy">
+                                <img src="imagenes/diapositivas/Diapositiva6.webp" class="carousel-slide w-full h-full object-contain" alt="Diapositiva 6" loading="lazy">
+                                <img src="imagenes/diapositivas/Diapositiva7.webp" class="carousel-slide w-full h-full object-contain" alt="Diapositiva 7" loading="lazy">
+                                <img src="imagenes/diapositivas/Diapositiva8.webp" class="carousel-slide w-full h-full object-contain" alt="Diapositiva 8" loading="lazy">
+                                <img src="imagenes/diapositivas/Diapositiva9.webp" class="carousel-slide w-full h-full object-contain" alt="Diapositiva 9" loading="lazy">
+                                <img src="imagenes/diapositivas/Diapositiva10.webp" class="carousel-slide w-full h-full object-contain" alt="Diapositiva 10" loading="lazy">
+                                <img src="imagenes/diapositivas/Diapositiva11.webp" class="carousel-slide w-full h-full object-contain" alt="Diapositiva 11" loading="lazy">
+                                <img src="imagenes/diapositivas/Diapositiva12.webp" class="carousel-slide w-full h-full object-contain" alt="Diapositiva 12" loading="lazy">
+                                <img src="imagenes/diapositivas/Diapositiva13.webp" class="carousel-slide w-full h-full object-contain" alt="Diapositiva 13" loading="lazy">
+                                <img src="imagenes/diapositivas/Diapositiva14.webp" class="carousel-slide w-full h-full object-contain" alt="Diapositiva 14" loading="lazy">
+                                <img src="imagenes/diapositivas/Diapositiva15.webp" class="carousel-slide w-full h-full object-contain" alt="Diapositiva 15" loading="lazy">
                             </div>
 
                             <!-- Indicador de Páginas -->
@@ -352,10 +352,10 @@
                         </div>
 
                         <!-- Controles de Navegación (Semi-flotantes) -->
-                        <button onclick="handleCarousel(this, -1)" class="absolute -left-3 md:-left-6 top-1/2 -translate-y-1/2 bg-white border border-slate-100 text-brand-navy p-3 rounded-full shadow-xl transition-all opacity-60 hover:opacity-100 focus:opacity-100 z-20">
+                        <button onclick="handleCarousel(this, -1)" aria-label="Anterior" class="absolute -left-3 md:-left-6 top-1/2 -translate-y-1/2 bg-white border border-slate-100 text-brand-navy p-3 rounded-full shadow-xl transition-all opacity-60 hover:opacity-100 focus:opacity-100 focus-visible:ring-2 focus-visible:ring-brand-accent outline-none z-20 flex items-center justify-center">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg>
                         </button>
-                        <button onclick="handleCarousel(this, 1)" class="absolute -right-3 md:-right-6 top-1/2 -translate-y-1/2 bg-white border border-slate-100 text-brand-navy p-3 rounded-full shadow-xl transition-all opacity-60 hover:opacity-100 focus:opacity-100 z-20">
+                        <button onclick="handleCarousel(this, 1)" aria-label="Siguiente" class="absolute -right-3 md:-right-6 top-1/2 -translate-y-1/2 bg-white border border-slate-100 text-brand-navy p-3 rounded-full shadow-xl transition-all opacity-60 hover:opacity-100 focus:opacity-100 focus-visible:ring-2 focus-visible:ring-brand-accent outline-none z-20 flex items-center justify-center">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
                         </button>
                     </div>
@@ -363,7 +363,7 @@
             </section>
 
             <!-- Tarjeta Power BI 4 -->
-            <section id="territorial" class="bg-white py-20 md:py-32 scroll-mt-12">
+            <section id="territorial" class="bg-white py-16 md:py-32 scroll-mt-12">
                 <div class="max-w-6xl mx-auto px-8 md:px-24 flex flex-col space-y-16 md:space-y-24">
                     <div class="max-w-3xl">
                         <span class="status-badge inline-block px-3 py-1 rounded-premium text-xs tracking-wider mb-4 cursor-default">Monitoreo territorial</span>
@@ -385,7 +385,7 @@
             </section>
 
             <!-- Tarjeta Diseño Web / UI·UX -->
-            <section id="diseno-web" class="bg-[#F1F5F9] py-20 md:py-32 scroll-mt-12">
+            <section id="diseno-web" class="bg-[#F1F5F9] py-16 md:py-32 scroll-mt-12">
                 <div class="max-w-6xl mx-auto px-8 md:px-24 flex flex-col space-y-16 md:space-y-24">
                     <div class="max-w-3xl">
                         <span class="status-badge inline-block px-3 py-1 rounded-premium text-xs tracking-wider mb-4 cursor-default">Diseño UI/UX</span>
@@ -399,11 +399,11 @@
                         <!-- Contenedor con overflow para las diapositivas -->
                         <div class="carousel-container relative aspect-video overflow-hidden rounded-lg bg-slate-100">
                             <div class="carousel-slides-wrapper h-full">
-                                <img src="imagenes/vademecum/1. lista_precios.webp" class="carousel-slide active w-full h-full object-contain" alt="Lista de precios">
-                                <img src="imagenes/vademecum/2. sedes_contacto.webp" class="carousel-slide w-full h-full object-contain" alt="Sedes y contacto">
-                                <img src="imagenes/vademecum/3. vademecum.webp" class="carousel-slide w-full h-full object-contain" alt="Vademecum Home">
-                                <img src="imagenes/vademecum/4. carrito.webp" class="carousel-slide w-full h-full object-contain" alt="Carrito de compras">
-                                <img src="imagenes/vademecum/5. modulo.webp" class="carousel-slide w-full h-full object-contain" alt="Módulos de consulta">
+                                <img src="imagenes/vademecum/1. lista_precios.webp" class="carousel-slide active w-full h-full object-contain" alt="Lista de precios" loading="lazy">
+                                <img src="imagenes/vademecum/2. sedes_contacto.webp" class="carousel-slide w-full h-full object-contain" alt="Sedes y contacto" loading="lazy">
+                                <img src="imagenes/vademecum/3. vademecum.webp" class="carousel-slide w-full h-full object-contain" alt="Vademecum Home" loading="lazy">
+                                <img src="imagenes/vademecum/4. carrito.webp" class="carousel-slide w-full h-full object-contain" alt="Carrito de compras" loading="lazy">
+                                <img src="imagenes/vademecum/5. modulo.webp" class="carousel-slide w-full h-full object-contain" alt="Módulos de consulta" loading="lazy">
                             </div>
 
                             <!-- Indicador de Páginas (dentro de la caja) -->
@@ -413,10 +413,10 @@
                         </div>
 
                         <!-- Controles de Navegación (Semi-flotantes) -->
-                        <button onclick="handleCarousel(this, -1)" class="absolute -left-3 md:-left-6 top-1/2 -translate-y-1/2 bg-white border border-slate-100 text-brand-navy p-3 rounded-full shadow-xl transition-all opacity-60 hover:opacity-100 focus:opacity-100 z-20">
+                        <button onclick="handleCarousel(this, -1)" aria-label="Anterior" class="absolute -left-3 md:-left-6 top-1/2 -translate-y-1/2 bg-white border border-slate-100 text-brand-navy p-3 rounded-full shadow-xl transition-all opacity-60 hover:opacity-100 focus:opacity-100 focus-visible:ring-2 focus-visible:ring-brand-accent outline-none z-20 flex items-center justify-center">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M15 19l-7-7 7-7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
                         </button>
-                        <button onclick="handleCarousel(this, 1)" class="absolute -right-3 md:-right-6 top-1/2 -translate-y-1/2 bg-white border border-slate-100 text-brand-navy p-3 rounded-full shadow-xl transition-all opacity-60 hover:opacity-100 focus:opacity-100 z-20">
+                        <button onclick="handleCarousel(this, 1)" aria-label="Siguiente" class="absolute -right-3 md:-right-6 top-1/2 -translate-y-1/2 bg-white border border-slate-100 text-brand-navy p-3 rounded-full shadow-xl transition-all opacity-60 hover:opacity-100 focus:opacity-100 focus-visible:ring-2 focus-visible:ring-brand-accent outline-none z-20 flex items-center justify-center">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M9 5l7 7-7 7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
                         </button>
                     </div>
