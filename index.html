@@ -201,12 +201,45 @@
             opacity: 0;
             transition: opacity 0.5s ease 0.25s;
         }
+
+        /* Tech Stack Section (Impeccable) */
+        .tech-stack-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.75rem;
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            filter: grayscale(1) contrast(0.85);
+            opacity: 0.45;
+        }
+
+        .tech-stack-item:hover {
+            filter: grayscale(0) contrast(1);
+            opacity: 1;
+            transform: translateY(-3px);
+        }
+
+        .tech-stack-name {
+            font-size: 0.65rem;
+            letter-spacing: 0.12em;
+            color: #475569; /* brand-slate */
+            font-weight: 500;
+            text-transform: capitalize;
+            transition: color 0.3s ease;
+        }
+
+        .tech-stack-item:hover .tech-stack-name {
+            color: #0A192F; /* brand-navy */
+        }
     </style>
 </head>
 <body class="bg-brand-offwhite text-brand-navy min-h-screen">
 
-    <!-- Header / Hero Section -->
-    <header class="pt-12 pb-8 md:pt-20 md:pb-12 px-8 md:px-24 max-w-6xl mx-auto">
+    <!-- Header / Hero Section (Full Viewport Centering) -->
+    <header class="min-h-screen flex flex-col justify-center px-8 md:px-24 max-w-6xl mx-auto py-12">
+        <div class="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-12 items-center w-full">
+        
+        <!-- Lado Izquierdo: Contenido Editorial -->
         <div class="flex flex-col items-start space-y-4">
             <!-- Etiqueta superior opcional -->
             <span class="text-xs tracking-widest text-brand-accent mb-2">Portfolio digital</span>
@@ -221,14 +254,14 @@
                 Transformo datos en  <span class="text-brand-navy font-normal">decisiones estratégicas</span>.
             </p>
 
-            <!-- Ajuste 1: Manifiesto Técnico orientando a ONGs -->
+            <!-- Manifiesto Técnico -->
             <div class="pt-4 md:pt-6 w-full max-w-3xl">
                 <p class="text-brand-slate text-base md:text-lg leading-relaxed text-left border-l-2 border-brand-accent pl-4 md:pl-5 py-1">
-                    Soy <span class="text-brand-navy font-medium">psicólogo y analista de datos</span> enfocado en el sector social y humanitario. Actúo como puente entre los números y la realidad gestionando el ciclo integral de información: desde la recolección empática en terreno (<span class="text-brand-navy font-medium">KoboToolbox</span>), pasando por el procesamiento en <span class="text-brand-navy font-medium">Excel</span> y Power Query junto al desarrollo analítico en <span class="text-brand-navy font-medium">SQL</span> y <span class="text-brand-navy font-medium">Python</span> (vía Google Antigravity), hasta la entrega de soluciones visuales en <span class="text-brand-navy font-medium">Power BI</span> con un enfoque UI/UX intuitivo y orientado a la acción.
+                    Soy <span class="text-brand-navy font-medium">psicólogo y analista de datos</span> enfocado en el sector social y humanitario. Actúo como puente entre los números y la realidad gestionando el ciclo integral de información: desde la recolección en terreno (<span class="text-brand-navy font-medium">KoboToolbox</span>), pasando por el procesamiento en <span class="text-brand-navy font-medium">Excel</span> y Power Query junto al desarrollo analítico en <span class="text-brand-navy font-medium">SQL</span> y <span class="text-brand-navy font-medium">Python</span>, hasta la entrega de soluciones visuales en <span class="text-brand-navy font-medium">Power BI</span> con un enfoque UI/UX intuitivo.
                 </p>
             </div>
 
-            <!-- Ajuste 2: Índice de Vuelo (Enlaces Ancla Clásicos) -->
+            <!-- Índice de Navegación -->
             <div class="pt-8 flex flex-wrap justify-start gap-4 md:gap-8 text-sm font-semibold tracking-wide text-brand-slate">
                 <a href="#brecha-digital" class="nav-link hover:text-brand-accent transition-colors duration-300">Social</a>
                 <a href="#redes-sociales" class="nav-link hover:text-brand-accent transition-colors duration-300">Tendencias</a>
@@ -238,9 +271,55 @@
                 <a href="#diseno-web" class="nav-link hover:text-brand-accent transition-colors duration-300">Diseño web</a>
             </div>
         </div>
+
+        <!-- Lado Derecho: Columna Técnica (Toolkit) -->
+        <div class="flex md:flex-col flex-wrap justify-between items-center gap-10 md:gap-7 bg-white/30 p-8 rounded-premium border border-slate-100/50 backdrop-blur-sm shadow-sm md:self-stretch md:justify-center">
+            <!-- Power BI -->
+            <div class="tech-stack-item">
+                <svg class="h-7 w-auto" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M7.125 16.125H3.375V21H7.125V16.125ZM13.875 10.125H10.125V21H13.875V10.125ZM20.625 4.125H16.875V21H20.625V4.125Z"/>
+                </svg>
+                <span class="tech-stack-name">Power BI</span>
+            </div>
+            <!-- Excel -->
+            <div class="tech-stack-item">
+                <svg class="h-7 w-auto" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M14.25 1.5H5.25C4.01 1.5 3 2.51 3 3.75V20.25C3 21.49 4.01 22.5 5.25 22.5H18.75C19.99 22.5 21 21.49 21 20.25V8.25L14.25 1.5ZM5.25 20.25V3.75H13.5V9H18.75V20.25H5.25ZM9.75 12H11.25V13.5H12.75V12H14.25V10.5H12.75V9H11.25V10.5H9.75V12ZM9.75 16.5H11.25V18H12.75V16.5H14.25V15H12.75V13.5H11.25V15H9.75V16.5Z"/>
+                </svg>
+                <span class="tech-stack-name">Excel</span>
+            </div>
+            <!-- PowerPoint -->
+            <div class="tech-stack-item">
+                <svg class="h-7 w-auto" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/>
+                </svg>
+                <span class="tech-stack-name">PowerPoint</span>
+            </div>
+            <!-- KoboToolbox -->
+            <div class="tech-stack-item">
+                <svg class="h-7 w-auto" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2L2 7v10l10 5 10-5V7L12 2zm0 2.8L19.2 8.4 12 12 4.8 8.4 12 4.8zM4 15.6V9.6l7 3.5V19l-7-3.4zm9 3.4v-5.9l7-3.5v6l-7 3.4z"/>
+                </svg>
+                <span class="tech-stack-name">KoboToolbox</span>
+            </div>
+            <!-- Google Sheets -->
+            <div class="tech-stack-item">
+                <svg class="h-7 w-auto" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm4 18H6V4h7v5h5v11zM7 11h10v2H7v-2zm0 4h10v2H7v-2z"/>
+                </svg>
+                <span class="tech-stack-name">Google Sheets</span>
+            </div>
+            <!-- Looker Studio -->
+            <div class="tech-stack-item">
+                <svg class="h-7 w-auto" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 14h-2v-2h2v2zm0-4h-2V7h2v5z"/>
+                </svg>
+                <span class="tech-stack-name">Looker Studio</span>
+            </div>
+        </div>
+        </div>
     </header>
-
-
+    
     <!-- Main Content: Analítica -->
     <main>
         <div id="analitica-grid">
@@ -249,7 +328,10 @@
             <section id="brecha-digital" class="bg-white py-16 md:py-32 scroll-mt-12">
                 <div class="max-w-6xl mx-auto px-8 md:px-24 flex flex-col space-y-16 md:space-y-24">
                     <div class="max-w-3xl">
-                        <span class="status-badge inline-block px-3 py-1 rounded-premium text-xs tracking-wider mb-4 cursor-default">Análisis social</span>
+                        <div class="flex items-center mb-4">
+                            <span class="status-badge inline-block px-3 py-1 rounded-premium text-xs tracking-wider cursor-default">Análisis social</span>
+                            <span class="text-[11px] text-brand-slate/60 border-l border-slate-300 ml-3 pl-3">Excel + Power BI</span>
+                        </div>
                         <h3 class="text-3xl md:text-4xl font-semibold text-brand-navy mb-6">Brecha digital: desafío urbano vs rural</h3>
                         <p class="text-brand-slate text-base md:text-lg leading-relaxed">
                             Visualización de datos sobre el acceso a internet en hogares móviles y fijos en América Latina. El análisis destaca la disparidad crítica entre zonas urbanas y rurales (2022), revelando cómo la conectividad sigue siendo un privilegio geográfico.
@@ -264,6 +346,16 @@
                         </div>
                         <iframe title="Nacer en el campo  Nacer desconectado" class="w-full h-full" data-src="https://app.powerbi.com/view?r=eyJrIjoiMGU5NTViMDgtMzAwNS00NzA4LThlMTQtOGVjNDZjYTQzY2ZhIiwidCI6IjM0MzAzNTQxLTc0ZWMtNGQ0YS04YzVhLTgwNDlkMmZkNmNlNiIsImMiOjR9" frameborder="0" allowFullScreen="true"></iframe>
                     </div>
+                    <!-- CTA -->
+                    <div class="flex justify-end pt-4">
+                        <a href="https://app.powerbi.com/view?r=eyJrIjoiMGU5NTViMDgtMzAwNS00NzA4LThlMTQtOGVjNDZjYTQzY2ZhIiwidCI6IjM0MzAzNTQxLTc0ZWMtNGQ0YS04YzVhLTgwNDlkMmZkNmNlNiIsImMiOjR9" target="_blank" rel="noopener noreferrer"
+                           class="inline-flex items-center gap-2 text-sm font-semibold text-brand-accent hover:bg-brand-accent hover:text-white border border-brand-accent px-5 py-2.5 rounded-md transition-all duration-300 group/btn">
+                            Ver proyecto
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                            </svg>
+                        </a>
+                    </div>
                 </div>
             </section>
 
@@ -271,7 +363,10 @@
             <section id="redes-sociales" class="bg-[#F1F5F9] py-16 md:py-32 scroll-mt-12">
                 <div class="max-w-6xl mx-auto px-8 md:px-24 flex flex-col space-y-16 md:space-y-24">
                     <div class="max-w-3xl">
-                        <span class="status-badge inline-block px-3 py-1 rounded-premium text-xs tracking-wider mb-4 cursor-default">Tendencias digitales</span>
+                        <div class="flex items-center mb-4">
+                            <span class="status-badge inline-block px-3 py-1 rounded-premium text-xs tracking-wider cursor-default">Tendencias digitales</span>
+                            <span class="text-[11px] text-brand-slate/60 border-l border-slate-300 ml-3 pl-3">Excel + Power BI</span>
+                        </div>
                         <h3 class="text-3xl md:text-4xl font-semibold text-brand-navy mb-6">Usuarios de redes sociales</h3>
                         <p class="text-brand-slate text-base md:text-lg leading-relaxed">
                             Gráfico de líneas que visualiza la evolución de usuarios de redes sociales a lo largo del tiempo (datos sintéticos basados en años de lanzamiento y tendencias de mercado). 
@@ -288,6 +383,16 @@
                         </div>
                         <iframe title="UsuariosRedesSocialesQuickViz" class="w-full h-full" data-src="https://app.powerbi.com/view?r=eyJrIjoiMDY0YTY4NjUtNzE2Zi00NjEzLWE5NDUtMWFiNTA2MjBjYTRiIiwidCI6IjM0MzAzNTQxLTc0ZWMtNGQ0YS04YzVhLTgwNDlkMmZkNmNlNiIsImMiOjR9" frameborder="0" allowFullScreen="true"></iframe>
                     </div>
+                    <!-- CTA -->
+                    <div class="flex justify-end pt-4">
+                        <a href="https://app.powerbi.com/view?r=eyJrIjoiMDY0YTY4NjUtNzE2Zi00NjEzLWE5NDUtMWFiNTA2MjBjYTRiIiwidCI6IjM0MzAzNTQxLTc0ZWMtNGQ0YS04YzVhLTgwNDlkMmZkNmNlNiIsImMiOjR9" target="_blank" rel="noopener noreferrer"
+                           class="inline-flex items-center gap-2 text-sm font-semibold text-brand-accent hover:bg-brand-accent hover:text-white border border-brand-accent px-5 py-2.5 rounded-md transition-all duration-300 group/btn">
+                            Ver proyecto
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                            </svg>
+                        </a>
+                    </div>
                 </div>
             </section>
 
@@ -295,7 +400,10 @@
             <section id="tallest-buildings" class="bg-white py-16 md:py-32 scroll-mt-12">
                 <div class="max-w-6xl mx-auto px-8 md:px-24 flex flex-col space-y-16 md:space-y-24">
                     <div class="max-w-3xl">
-                        <span class="status-badge inline-block px-3 py-1 rounded-premium text-xs tracking-wider mb-4 cursor-default">Análisis comparativo</span>
+                        <div class="flex items-center mb-4">
+                            <span class="status-badge inline-block px-3 py-1 rounded-premium text-xs tracking-wider cursor-default">Análisis comparativo</span>
+                            <span class="text-[11px] text-brand-slate/60 border-l border-slate-300 ml-3 pl-3">Excel + Power BI</span>
+                        </div>
                         <h3 class="text-3xl md:text-4xl font-semibold text-brand-navy mb-6">Carrera hacia el cielo: los edificios más altos del mundo</h3>
                         <p class="text-brand-slate text-base md:text-lg leading-relaxed">
                             Análisis comparativo de los 300 edificios más altos del mundo (completados, en construcción y propuestos). Incluye sistema de altura dinámica (m/ft) y filtros multidimensionales para entender las tendencias de verticalidad urbana global.
@@ -310,6 +418,16 @@
                         </div>
                         <iframe title="Edificios mas altos del mundo" class="w-full h-full" data-src="https://app.powerbi.com/view?r=eyJrIjoiZGRiY2IwNjUtNmYyMS00NjYwLWJkYzgtNGZhZTNiNTk5MmE5IiwidCI6IjM0MzAzNTQxLTc0ZWMtNGQ0YS04YzVhLTgwNDlkMmZkNmNlNiIsImMiOjR9" frameborder="0" allowFullScreen="true"></iframe>
                     </div>
+                    <!-- CTA -->
+                    <div class="flex justify-end pt-4">
+                        <a href="https://app.powerbi.com/view?r=eyJrIjoiZGRiY2IwNjUtNmYyMS00NjYwLWJkYzgtNGZhZTNiNTk5MmE5IiwidCI6IjM0MzAzNTQxLTc0ZWMtNGQ0YS04YzVhLTgwNDlkMmZkNmNlNiIsImMiOjR9" target="_blank" rel="noopener noreferrer"
+                           class="inline-flex items-center gap-2 text-sm font-semibold text-brand-accent hover:bg-brand-accent hover:text-white border border-brand-accent px-5 py-2.5 rounded-md transition-all duration-300 group/btn">
+                            Ver proyecto
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                            </svg>
+                        </a>
+                    </div>
                 </div>
             </section>
 
@@ -317,7 +435,10 @@
             <section id="presentacion" class="bg-[#F1F5F9] py-16 md:py-32 scroll-mt-12">
                 <div class="max-w-6xl mx-auto px-8 md:px-24 flex flex-col space-y-16 md:space-y-24">
                     <div class="max-w-3xl">
-                        <span class="status-badge inline-block px-3 py-1 rounded-premium text-xs tracking-wider mb-4 cursor-default">Impacto social</span>
+                        <div class="flex items-center mb-4">
+                            <span class="status-badge inline-block px-3 py-1 rounded-premium text-xs tracking-wider cursor-default">Impacto social</span>
+                            <span class="text-[11px] text-brand-slate/60 border-l border-slate-300 ml-3 pl-3">Excel + Power Point</span>
+                        </div>
                         <h3 class="text-3xl md:text-4xl font-semibold text-brand-navy mb-6">Metodologías de Cambio Cultural</h3>
                         <p class="text-brand-slate text-base md:text-lg leading-relaxed">
                             Presentación interactiva sobre el impacto social de las estrategias implementadas en el Sistema Nacional de Cuidado. Detalla la transformación cultural y el fortalecimiento de las redes de cuidadores con claridad estratégica.
@@ -359,6 +480,16 @@
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
                         </button>
                     </div>
+                    <!-- CTA -->
+                    <div class="flex justify-end pt-4">
+                        <a href="https://onedrive.live.com/personal/0ce6b5c393c0054c/_layouts/15/Doc.aspx?sourcedoc=%7B14d58818-a1db-46c2-808c-2772e014e325%7D&action=embedview&redeem=aHR0cHM6Ly8xZHJ2Lm1zL3AvYy8wY2U2YjVjMzkzYzAwNTRjL0lRQVlpTlVVMjZIQ1JvQ01KM0xnRk9NbEFVdXBSZmY1QVlzTWp4aWJ6MkcxLXRVP2U9czJlZlhCJmFjdGlvbj1lbWJlZHZpZXc&slrid=bd0a09a2-a0de-c000-71e6-58b6e2d5d5c4&originalPath=aHR0cHM6Ly9vbmVkcml2ZS5saXZlLmNvbS86cDovZy9wZXJzb25hbC8wY2U2YjVjMzkzYzAwNTRjL0lRQVlpTlVVMjZIQ1JvQ01KM0xnRk9NbEFVdXBSZmY1QVlzTWp4aWJ6MkcxLXRVP3J0aW1lPXNqaWtPUk9ZM2tnJnJlZGVlbT1hSFIwY0hNNkx5OHhaSEoyTG0xekwzQXZZeTh3WTJVMllqVmpNemt6WXpBd05UUmpMMGxSUVZscFRsVlZNalpJUTFKdlEwMUtNMHhuUms5TmJFRlZkWEJTWm1ZMVFWbHpUV3A0YVdKNk1rY3hMWFJWUDJVOWN6SmxabGhDSm1GamRHbHZiajFsYldKbFpIWnBaWGM&CID=d550ebba-cbc4-4175-9762-75acfe7bd4d1&_SRM=0%3AG%3A50&file=Avances.pptx" target="_blank" rel="noopener noreferrer"
+                           class="inline-flex items-center gap-2 text-sm font-semibold text-brand-accent hover:bg-brand-accent hover:text-white border border-brand-accent px-5 py-2.5 rounded-md transition-all duration-300 group/btn">
+                            Ver proyecto
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                            </svg>
+                        </a>
+                    </div>
                 </div>
             </section>
 
@@ -366,7 +497,10 @@
             <section id="territorial" class="bg-white py-16 md:py-32 scroll-mt-12">
                 <div class="max-w-6xl mx-auto px-8 md:px-24 flex flex-col space-y-16 md:space-y-24">
                     <div class="max-w-3xl">
-                        <span class="status-badge inline-block px-3 py-1 rounded-premium text-xs tracking-wider mb-4 cursor-default">Monitoreo territorial</span>
+                        <div class="flex items-center mb-4">
+                            <span class="status-badge inline-block px-3 py-1 rounded-premium text-xs tracking-wider cursor-default">Monitoreo territorial</span>
+                            <span class="text-[11px] text-brand-slate/60 border-l border-slate-300 ml-3 pl-3">Excel + Kobo Toolbox + Power BI</span>
+                        </div>
                         <h3 class="text-3xl md:text-4xl font-semibold text-brand-navy mb-6">Territorialización del sistema nacional de cuidado</h3>
                         <p class="text-brand-slate text-base md:text-lg leading-relaxed">
                             Informe sobre los avances de territorialización en el área metropolitana de Cúcuta. Prioriza una arquitectura de información limpia para facilitar la comprensión de indicadores territoriales críticos.
@@ -381,6 +515,16 @@
                         </div>
                         <iframe title="Reporte de seguimiento estrategias del cuidado" class="w-full h-full" data-src="https://app.powerbi.com/view?r=eyJrIjoiOTIwN2MxMTQtYjNjMy00MGU1LTk5OWYtYTY4MzQ2MmE1ZGMzIiwidCI6IjM0MzAzNTQxLTc0ZWMtNGQ0YS04YzVhLTgwNDlkMmZkNmNlNiIsImMiOjR9" frameborder="0" allowFullScreen="true"></iframe>
                     </div>
+                    <!-- CTA -->
+                    <div class="flex justify-end pt-4">
+                        <a href="https://app.powerbi.com/view?r=eyJrIjoiOTIwN2MxMTQtYjNjMy00MGU1LTk5OWYtYTY4MzQ2MmE1ZGMzIiwidCI6IjM0MzAzNTQxLTc0ZWMtNGQ0YS04YzVhLTgwNDlkMmZkNmNlNiIsImMiOjR9" target="_blank" rel="noopener noreferrer"
+                           class="inline-flex items-center gap-2 text-sm font-semibold text-brand-accent hover:bg-brand-accent hover:text-white border border-brand-accent px-5 py-2.5 rounded-md transition-all duration-300 group/btn">
+                            Ver proyecto
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                            </svg>
+                        </a>
+                    </div>
                 </div>
             </section>
 
@@ -388,7 +532,10 @@
             <section id="diseno-web" class="bg-[#F1F5F9] py-16 md:py-32 scroll-mt-12">
                 <div class="max-w-6xl mx-auto px-8 md:px-24 flex flex-col space-y-16 md:space-y-24">
                     <div class="max-w-3xl">
-                        <span class="status-badge inline-block px-3 py-1 rounded-premium text-xs tracking-wider mb-4 cursor-default">Diseño UI/UX</span>
+                        <div class="flex items-center mb-4">
+                            <span class="status-badge inline-block px-3 py-1 rounded-premium text-xs tracking-wider cursor-default">Diseño UI/UX</span>
+                            <span class="text-[11px] text-brand-slate/60 border-l border-slate-300 ml-3 pl-3">Astro + UI/UX</span>
+                        </div>
                         <h3 class="text-3xl md:text-4xl font-semibold text-brand-navy mb-6">Mundo Homeopático: UI/UX Re-design</h3>
                         <p class="text-brand-slate text-base md:text-lg leading-relaxed">
                             Transformación de un catálogo estático en una plataforma interactiva. Estructura de información densa resuelta mediante sistemas de filtrado inteligente y una jerarquía visual orientada a la legibilidad.
