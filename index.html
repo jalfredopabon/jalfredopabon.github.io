@@ -206,11 +206,11 @@
 <body class="bg-brand-offwhite text-brand-navy min-h-screen">
 
     <!-- Header / Hero Section -->
-    <header class="pt-24 pb-16 md:pt-32 md:pb-24 px-6 max-w-7xl mx-auto">
+    <header class="pt-24 pb-16 md:pt-32 md:pb-24 px-8 md:px-24 max-w-6xl mx-auto">
         <div class="flex flex-col items-center md:items-start space-y-4">
             <!-- Etiqueta superior opcional -->
             <!-- Etiqueta superior opcional -->
-            <span class="text-xs font-semibold tracking-widest text-brand-accent mb-2">Portfolio digital</span>
+            <span class="text-xs tracking-widest text-brand-accent mb-2">Portfolio digital</span>
             
             <!-- Nombre en Serif (V2) -->
             <h1 class="title-serif text-5xl md:text-7xl lg:text-8xl font-medium tracking-tight text-brand-navy">
@@ -223,8 +223,8 @@
             </p>
 
             <!-- Ajuste 1: Manifiesto Técnico orientando a ONGs -->
-            <div class="pt-4 md:pt-6 w-full">
-                <p class="text-brand-slate text-base md:text-lg leading-relaxed text-left border-l-2 border-brand-accent pl-5 w-full">
+            <div class="pt-4 md:pt-6 w-full max-w-3xl">
+                <p class="text-brand-slate text-base md:text-lg leading-relaxed text-left border-l-2 border-brand-accent pl-5">
                     Intervengo en el ciclo completo de los datos: desde el diseño y recolección en terreno (KoboToolbox), pasando por el procesamiento estructurado (Power Query, DAX), hasta la visualización en tableros interactivos (Power BI, UX). Construyo plataformas para dar visibilidad clara a los indicadores de campo y operacionales.
                 </p>
             </div>
@@ -243,108 +243,112 @@
 
 
     <!-- Main Content: Analítica -->
-    <main class="max-w-7xl mx-auto px-6 pb-32">
-        <div id="analitica-grid" class="grid grid-cols-1 gap-12 lg:gap-16">
+    <main class="pb-32">
+        <div id="analitica-grid">
             
             <!-- Tarjeta Power BI 1 -->
-            <section id="operativo" class="glass-card p-8 rounded-premium flex flex-col space-y-6 scroll-mt-12">
-                <div>
-                    <span class="status-badge inline-block px-3 py-1 rounded-premium text-xs tracking-wider font-bold mb-4 cursor-default">Brecha digital</span>
-                    <h3 class="text-2xl font-semibold text-brand-navy mb-2">Nacer en el campo = Nacer desconectado</h3>
-                    <p class="text-brand-slate text-sm leading-relaxed">
-                        Este gráfico de barras se basa en datos de la plataforma CEPALSTAT de la Comisión Económica para América Latina y el Caribe (CEPAL), utilizando el indicador sobre "personas en hogares con acceso a internet por grupo etario" en la región [<a href="https://bit.ly/3LFuBmY" target="_blank" class="text-brand-accent hover:underline">Link para acceder a los datos</a>].
-                        <br><br>
-                        La visualización tiene como fin estratégico no solo mostrar la conectividad por edad, sino también evidenciar la crítica brecha digital urbano-rural, la mayor del mundo con 38 puntos porcentuales. Al desagregar el acceso, se subraya cómo esta desigualdad territorial impacta directamente el acceso a oportunidades como la educación, salud, empleo; en distintos grupos generacionales, justificando la urgencia de inversión para cerrar esta profunda disparidad.
-                        <br><br>
-                        El gráfico fue intencionalmente diseñado para ofrecer una narrativa clara y un entendimiento inmediato en una sola imagen, prescindiendo de segmentadores y filtros adicionales.
-                    </p>
-                </div>
-                <!-- iFrame Power BI #1 -->
-                <div class="relative aspect-[600/373.5] bg-slate-50 rounded-md border border-slate-100 overflow-hidden shadow-inner pbi-container">
-                    <div class="iframe-progress"></div>
-                    <div class="iframe-loader">
-                        <div class="pulse-dot"></div>
-                        <span class="text-[10px] font-bold tracking-widest text-brand-navy">Estableciendo conexión...</span>
+            <section id="brecha-digital" class="bg-[#F8FAFC] py-24 md:py-48 scroll-mt-12">
+                <div class="max-w-6xl mx-auto px-8 md:px-24 flex flex-col space-y-16 md:space-y-24">
+                    <div class="max-w-3xl">
+                        <span class="status-badge inline-block px-3 py-1 rounded-premium text-xs tracking-wider mb-4 cursor-default">Análisis Social</span>
+                        <h3 class="text-3xl md:text-4xl font-semibold text-brand-navy mb-6">Brecha Digital: Desafío Urbano vs Rural</h3>
+                        <p class="text-brand-slate text-base md:text-lg leading-relaxed">
+                            Visualización de datos sobre la penetración de internet en hogares móviles y fijos en América Latina. El análisis destaca la disparidad crítica entre zonas urbanas y rurales (2022), revelando cómo la conectividad sigue siendo un privilegio geográfico.
+                        </p>
                     </div>
-                    <iframe title="Nacer en el campo  Nacer desconectado" class="w-full h-full" data-src="https://app.powerbi.com/view?r=eyJrIjoiMGU5NTViMDgtMzAwNS00NzA4LThlMTQtOGVjNDZjYTQzY2ZhIiwidCI6IjM0MzAzNTQxLTc0ZWMtNGQ0YS04YzVhLTgwNDlkMmZkNmNlNiIsImMiOjR9" frameborder="0" allowFullScreen="true"></iframe>
+                    <!-- iFrame Power BI #1 -->
+                    <div class="pbi-container relative aspect-[600/373.5] w-full overflow-hidden">
+                        <div class="iframe-progress"></div>
+                        <div class="iframe-loader">
+                            <div class="pulse-dot"></div>
+                            <span class="text-[10px] tracking-widest text-brand-navy">Estableciendo conexión...</span>
+                        </div>
+                        <iframe title="Nacer en el campo  Nacer desconectado" class="w-full h-full" data-src="https://app.powerbi.com/view?r=eyJrIjoiMGU5NTViMDgtMzAwNS00NzA4LThlMTQtOGVjNDZjYTQzY2ZhIiwidCI6IjM0MzAzNTQxLTc0ZWMtNGQ0YS04YzVhLTgwNDlkMmZkNmNlNiIsImMiOjR9" frameborder="0" allowFullScreen="true"></iframe>
+                    </div>
                 </div>
             </section>
 
             <!-- Tarjeta Power BI 2 -->
-            <section id="redes-sociales" class="glass-card p-8 rounded-premium flex flex-col space-y-6 scroll-mt-12">
-                <div>
-                    <span class="status-badge inline-block px-3 py-1 rounded-premium text-xs tracking-wider font-bold mb-4 cursor-default">Tendencias</span>
-                    <h3 class="text-2xl font-semibold text-brand-navy mb-2">Usuarios de redes sociales</h3>
-                    <p class="text-brand-slate text-sm leading-relaxed">
-                        Gráfico de líneas que visualiza la evolución de usuarios de redes sociales a lo largo del tiempo (datos sintéticos basados en años de lanzamiento y tendencias de mercado). 
-                        <br><br>
-                        Incluye leyenda interactiva con switches que permiten activar/desactivar cada red social (las líneas activas mantienen su color, las inactivas se muestran en gris). Cuenta con un botón de cambio de idioma en la esquina superior derecha para alternar entre español e inglés. La interactividad se logra sin el uso de marcadores ni parámetros de campo.
-                    </p>
-                </div>
-                <!-- iFrame Power BI #2 -->
-                <div class="relative aspect-[600/373.5] bg-slate-50 rounded-md border border-slate-100 overflow-hidden shadow-inner pbi-container">
-                    <div class="iframe-progress"></div>
-                    <div class="iframe-loader">
-                        <div class="pulse-dot"></div>
-                        <span class="text-[10px] font-bold tracking-widest text-brand-navy">Estableciendo conexión...</span>
+            <section id="redes-sociales" class="bg-[#F1F5F9] py-24 md:py-48 scroll-mt-12">
+                <div class="max-w-6xl mx-auto px-8 md:px-24 flex flex-col space-y-16 md:space-y-24">
+                    <div class="max-w-3xl">
+                        <span class="status-badge inline-block px-3 py-1 rounded-premium text-xs tracking-wider mb-4 cursor-default">Tendencias</span>
+                        <h3 class="text-3xl md:text-4xl font-semibold text-brand-navy mb-6">Usuarios de redes sociales</h3>
+                        <p class="text-brand-slate text-base md:text-lg leading-relaxed">
+                            Gráfico de líneas que visualiza la evolución de usuarios de redes sociales a lo largo del tiempo (datos sintéticos basados en años de lanzamiento y tendencias de mercado). 
+                            <br><br>
+                            Incluye leyenda interactiva con switches que permiten activar/desactivar cada red social. Cuenta con un botón de cambio de idioma en la esquina superior derecha para alternar entre español e inglés. La interactividad se logra de forma nativa sin el uso de marcadores.
+                        </p>
                     </div>
-                    <iframe title="UsuariosRedesSocialesQuickViz" class="w-full h-full" data-src="https://app.powerbi.com/view?r=eyJrIjoiMDY0YTY4NjUtNzE2Zi00NjEzLWE5NDUtMWFiNTA2MjBjYTRiIiwidCI6IjM0MzAzNTQxLTc0ZWMtNGQ0YS04YzVhLTgwNDlkMmZkNmNlNiIsImMiOjR9" frameborder="0" allowFullScreen="true"></iframe>
+                    <!-- iFrame Power BI #2 -->
+                    <div class="pbi-container relative aspect-[600/373.5] w-full overflow-hidden">
+                        <div class="iframe-progress"></div>
+                        <div class="iframe-loader">
+                            <div class="pulse-dot"></div>
+                            <span class="text-[10px] tracking-widest text-brand-navy">Estableciendo conexión...</span>
+                        </div>
+                        <iframe title="UsuariosRedesSocialesQuickViz" class="w-full h-full" data-src="https://app.powerbi.com/view?r=eyJrIjoiMDY0YTY4NjUtNzE2Zi00NjEzLWE5NDUtMWFiNTA2MjBjYTRiIiwidCI6IjM0MzAzNTQxLTc0ZWMtNGQ0YS04YzVhLTgwNDlkMmZkNmNlNiIsImMiOjR9" frameborder="0" allowFullScreen="true"></iframe>
+                    </div>
                 </div>
             </section>
 
             <!-- Tarjeta Power BI 3 -->
-            <section id="tallest-buildings" class="glass-card p-8 rounded-premium flex flex-col space-y-6 scroll-mt-12">
-                <div>
-                    <span class="status-badge inline-block px-3 py-1 rounded-premium text-xs tracking-wider font-bold mb-4 cursor-default">Big data</span>
-                    <h3 class="text-2xl font-semibold text-brand-navy mb-2">Racing to the Sky: A Global Analysis of the World's 300 Tallest Buildings</h3>
-                    <p class="text-brand-slate text-sm leading-relaxed">
-                        Tabla interactiva de los 300 edificios más altos del mundo basada en datos del Council on Tall Buildings and Urban Habitat (CTBUH) [<a href="https://www.skyscrapercenter.com/buildings?status=completed&material=all&function=all&location=world" target="_blank" class="text-brand-accent hover:underline">Acceso a fuente oficial</a>]. Compara 100 completados, 100 en construcción y 100 propuestos. Incluye un sistema de altura dinámica (m/ft) mediante parámetros de campo, filtros multidimensionales por estado, material, función y ubicación geográfica, además de tooltips con definiciones técnicas oficiales. El diseño facilita la identificación de patrones globales en el desarrollo arquitectónico, preferencias estructurales y funciones urbanas, destacando cómo diferentes regiones conquistan la verticalidad con soluciones distintas.
-                    </p>
-                </div>
-                <!-- iFrame Power BI #3 -->
-                <div class="relative aspect-[600/373.5] bg-slate-50 rounded-md border border-slate-100 overflow-hidden shadow-inner pbi-container">
-                    <div class="iframe-progress"></div>
-                    <div class="iframe-loader">
-                        <div class="pulse-dot"></div>
-                        <span class="text-[10px] font-bold tracking-widest text-brand-navy">Estableciendo conexión...</span>
+            <section id="tallest-buildings" class="bg-white py-24 md:py-48 scroll-mt-12">
+                <div class="max-w-6xl mx-auto px-8 md:px-24 flex flex-col space-y-16 md:space-y-24">
+                    <div class="max-w-3xl">
+                        <span class="status-badge inline-block px-3 py-1 rounded-premium text-xs tracking-wider mb-4 cursor-default">Big data</span>
+                        <h3 class="text-3xl md:text-4xl font-semibold text-brand-navy mb-6">Racing to the Sky: World's Tallest Buildings</h3>
+                        <p class="text-brand-slate text-base md:text-lg leading-relaxed">
+                            Análisis comparativo de los 300 edificios más altos del mundo (completados, en construcción y propuestos). Incluye sistema de altura dinámica (m/ft) y filtros multidimensionales para entender las tendencias de verticalidad urbana global.
+                        </p>
                     </div>
-                    <iframe title="Edificios mas altos del mundo" class="w-full h-full" data-src="https://app.powerbi.com/view?r=eyJrIjoiZGRiY2IwNjUtNmYyMS00NjYwLWJkYzgtNGZhZTNiNTk5MmE5IiwidCI6IjM0MzAzNTQxLTc0ZWMtNGQ0YS04YzVhLTgwNDlkMmZkNmNlNiIsImMiOjR9" frameborder="0" allowFullScreen="true"></iframe>
+                    <!-- iFrame Power BI #3 -->
+                    <div class="pbi-container relative aspect-[600/373.5] w-full overflow-hidden">
+                        <div class="iframe-progress"></div>
+                        <div class="iframe-loader">
+                            <div class="pulse-dot"></div>
+                            <span class="text-[10px] tracking-widest text-brand-navy">Estableciendo conexión...</span>
+                        </div>
+                        <iframe title="Edificios mas altos del mundo" class="w-full h-full" data-src="https://app.powerbi.com/view?r=eyJrIjoiZGRiY2IwNjUtNmYyMS00NjYwLWJkYzgtNGZhZTNiNTk5MmE5IiwidCI6IjM0MzAzNTQxLTc0ZWMtNGQ0YS04YzVhLTgwNDlkMmZkNmNlNiIsImMiOjR9" frameborder="0" allowFullScreen="true"></iframe>
+                    </div>
                 </div>
             </section>
 
             <!-- Tarjeta Power BI 4 -->
-            <section id="territorial" class="glass-card p-8 rounded-premium flex flex-col space-y-6 scroll-mt-12">
-                <div>
-                    <span class="status-badge inline-block px-3 py-1 rounded-premium text-xs tracking-wider font-bold mb-4 cursor-default">Estrategia</span>
-                    <h3 class="text-2xl font-semibold text-brand-navy mb-2">Informe de territorialización del Sistema Nacional de Cuidado</h3>
-                    <p class="text-brand-slate text-sm leading-relaxed">
-                        Informe estático sobre los avances de la territorialización del Sistema Nacional de Cuidado en el área metropolitana de Cúcuta. En el desarrollo de este tablero se ha aplicado un enfoque riguroso de UI/UX, priorizando una arquitectura de información limpia que facilita la navegación y comprensión de indicadores territoriales críticos.
-                    </p>
-                </div>
-                <!-- iFrame Power BI #4 -->
-                <div class="relative aspect-[600/373.5] bg-slate-50 rounded-md border border-slate-100 overflow-hidden shadow-inner pbi-container">
-                    <div class="iframe-progress"></div>
-                    <div class="iframe-loader">
-                        <div class="pulse-dot"></div>
-                        <span class="text-[10px] font-bold tracking-widest text-brand-navy">Estableciendo conexión...</span>
+            <section id="territorial" class="bg-[#F1F5F9] py-24 md:py-48 scroll-mt-12">
+                <div class="max-w-6xl mx-auto px-8 md:px-24 flex flex-col space-y-16 md:space-y-24">
+                    <div class="max-w-3xl">
+                        <span class="status-badge inline-block px-3 py-1 rounded-premium text-xs tracking-wider mb-4 cursor-default">Estrategia</span>
+                        <h3 class="text-3xl md:text-4xl font-semibold text-brand-navy mb-6">Territorialización del Sistema Nacional de Cuidado</h3>
+                        <p class="text-brand-slate text-base md:text-lg leading-relaxed">
+                            Informe sobre los avances de territorialización en el área metropolitana de Cúcuta. Prioriza una arquitectura de información limpia para facilitar la comprensión de indicadores territoriales críticos.
+                        </p>
                     </div>
-                    <iframe title="Reporte de seguimiento estrategias del cuidado" class="w-full h-full" data-src="https://app.powerbi.com/view?r=eyJrIjoiOTIwN2MxMTQtYjNjMy00MGU1LTk5OWYtYTY4MzQ2MmE1ZGMzIiwidCI6IjM0MzAzNTQxLTc0ZWMtNGQ0YS04YzVhLTgwNDlkMmZkNmNlNiIsImMiOjR9" frameborder="0" allowFullScreen="true"></iframe>
+                    <!-- iFrame Power BI #4 -->
+                    <div class="pbi-container relative aspect-[600/373.5] w-full overflow-hidden">
+                        <div class="iframe-progress"></div>
+                        <div class="iframe-loader">
+                            <div class="pulse-dot"></div>
+                            <span class="text-[10px] tracking-widest text-brand-navy">Estableciendo conexión...</span>
+                        </div>
+                        <iframe title="Reporte de seguimiento estrategias del cuidado" class="w-full h-full" data-src="https://app.powerbi.com/view?r=eyJrIjoiOTIwN2MxMTQtYjNjMy00MGU1LTk5OWYtYTY4MzQ2MmE1ZGMzIiwidCI6IjM0MzAzNTQxLTc0ZWMtNGQ0YS04YzVhLTgwNDlkMmZkNmNlNiIsImMiOjR9" frameborder="0" allowFullScreen="true"></iframe>
+                    </div>
                 </div>
             </section>
 
             <!-- Tarjeta PowerPoint (Ancho Completo) -->
-            <section id="presentacion" class="glass-card p-8 rounded-premium flex flex-col space-y-6 scroll-mt-12">
-                <div>
-                    <span class="status-badge inline-block px-3 py-1 rounded-full text-[10px] tracking-wider font-bold mb-4 cursor-default">Impacto social</span>
-                    <h3 class="text-2xl font-semibold text-brand-navy mb-2">Resultados de las metodologías: Cambio cultural y Redes de cuidadores</h3>
-                    <p class="text-brand-slate text-sm leading-relaxed">
-                        Presentación interactiva sobre los avances en la territorialización del Sistema Nacional de Cuidado (15 diapositivas). Este documento detalla el impacto social de las estrategias implementadas, centrándose en la transformación cultural y el fortalecimiento de las redes de cuidadores. Se ha puesto especial énfasis en el diseño visual y la síntesis de información, asegurando que los hallazgos estratégicos se comuniquen con una claridad y elegancia que facilita la toma de decisiones informadas.
-                    </p>
-                </div>
-                <!-- Carrusel de Imágenes Elite -->
-                <div class="carousel-container bg-slate-50 rounded-md border border-slate-100 shadow-inner group">
-                    <div class="aspect-video relative">
-                        <!-- Diapositivas -->
+            <section id="presentacion" class="bg-white py-24 md:py-48 scroll-mt-12">
+                <div class="max-w-6xl mx-auto px-8 md:px-24 flex flex-col space-y-16 md:space-y-24">
+                    <div class="max-w-3xl">
+                        <span class="status-badge inline-block px-3 py-1 rounded-full text-[10px] tracking-wider mb-4 cursor-default">Impacto social</span>
+                        <h3 class="text-3xl md:text-4xl font-semibold text-brand-navy mb-6">Metodologías de Cambio Cultural</h3>
+                        <p class="text-brand-slate text-base md:text-lg leading-relaxed">
+                            Presentación interactiva sobre el impacto social de las estrategias implementadas en el Sistema Nacional de Cuidado. Detalla la transformación cultural y el fortalecimiento de las redes de cuidadores con claridad estratégica.
+                        </p>
+                    </div>
+                    <!-- Carrusel de Imágenes Elite -->
+                    <div class="relative aspect-video overflow-hidden group">
+                        <!-- Diapositivas ... (content remains same) -->
                         <div id="carouselSlides">
                             <img src="imagenes/diapositivas/Diapositiva1.webp" class="carousel-slide active w-full h-full object-contain" alt="Diapositiva 1">
                             <img src="imagenes/diapositivas/Diapositiva2.webp" class="carousel-slide w-full h-full object-contain" alt="Diapositiva 2">
@@ -380,31 +384,33 @@
             </section>
 
             <!-- Tarjeta Diseño Web / UI·UX -->
-            <section id="diseno-web" class="glass-card p-8 rounded-premium flex flex-col space-y-6 scroll-mt-12">
-                <div>
-                    <span class="status-badge inline-block px-3 py-1 rounded-premium text-xs tracking-wider font-bold mb-4 cursor-default">Diseño UI/UX</span>
-                    <h3 class="text-2xl font-semibold text-brand-navy mb-2">Catálogo Digital y Vademécum: UI/UX para Mundo Homeopático</h3>
-                    <p class="text-brand-slate text-sm leading-relaxed">
-                        Tomé un catálogo estático en PDF y datos médicos dispersos para transformarlos en una plataforma web interactiva. Diseñé toda la interfaz (UI/UX) enfocándome en el orden y la legibilidad. El mayor logro fue estructurar información muy densa creando un sistema de múltiples filtros, permitiendo a los usuarios consultar más de 300 tratamientos y precios de forma intuitiva, rápida y sin cansancio visual.
-                    </p>
-                </div>
-                <!-- Imagen de Preview -->
-                <div class="relative rounded-md border border-slate-100 overflow-hidden shadow-inner bg-slate-50 group">
-                    <img
-                        src="imagenes/imagenes/6. web.webp"
-                        alt="Preview del proyecto de diseño web"
-                        class="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.02]"
-                    >
-                </div>
-                <!-- CTA -->
-                <div class="flex justify-end pt-2">
-                    <a href="https://mundo-homeopatico-v2.pages.dev/" target="_blank" rel="noopener noreferrer"
-                       class="inline-flex items-center gap-2 text-sm font-semibold text-brand-accent hover:bg-brand-accent hover:text-white border border-brand-accent px-5 py-2.5 rounded-md transition-all duration-300 group/btn">
-                        Ver proyecto
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transition-transform duration-300 group-hover/btn:-translate-y-0.5 group-hover/btn:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                        </svg>
-                    </a>
+            <section id="diseno-web" class="bg-[#F1F5F9] py-24 md:py-48 scroll-mt-12">
+                <div class="max-w-6xl mx-auto px-8 md:px-24 flex flex-col space-y-16 md:space-y-24">
+                    <div class="max-w-3xl">
+                        <span class="status-badge inline-block px-3 py-1 rounded-premium text-xs tracking-wider mb-4 cursor-default">Diseño UI/UX</span>
+                        <h3 class="text-3xl md:text-4xl font-semibold text-brand-navy mb-6">Mundo Homeopático: UI/UX Re-design</h3>
+                        <p class="text-brand-slate text-base md:text-lg leading-relaxed">
+                            Transformación de un catálogo estático en una plataforma interactiva. Estructura de información densa resuelta mediante sistemas de filtrado inteligente y una jerarquía visual orientada a la legibilidad.
+                        </p>
+                    </div>
+                    <!-- Imagen de Preview -->
+                    <div class="relative overflow-hidden">
+                        <img
+                            src="imagenes/imagenes/6. web.webp"
+                            alt="Preview del proyecto de diseño web"
+                            class="w-full h-full object-cover object-top"
+                        >
+                    </div>
+                    <!-- CTA -->
+                    <div class="flex justify-end pt-2">
+                        <a href="https://mundo-homeopatico-v2.pages.dev/" target="_blank" rel="noopener noreferrer"
+                           class="inline-flex items-center gap-2 text-sm font-semibold text-brand-accent hover:bg-brand-accent hover:text-white border border-brand-accent px-5 py-2.5 rounded-md transition-all duration-300 group/btn">
+                            Ver proyecto
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                            </svg>
+                        </a>
+                    </div>
                 </div>
             </section>
 
@@ -412,7 +418,7 @@
     </main>
 
     <!-- CTA Banner -->
-    <section class="py-20 px-6 bg-brand-offwhite border-t border-slate-100">
+    <section class="py-24 px-8 md:px-24 bg-brand-offwhite border-t border-slate-100">
         <div class="max-w-2xl mx-auto text-center space-y-6">
             <h2 class="title-serif text-4xl md:text-5xl text-brand-navy leading-snug">
                 ¿Necesita datos confiables para su proyecto?
@@ -432,7 +438,7 @@
 
     <!-- Footer -->
     <footer class="mt-8 bg-brand-navy py-16 text-white">
-        <div class="max-w-7xl mx-auto px-6">
+        <div class="max-w-6xl mx-auto px-8 md:px-24">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start text-center md:text-left">
                 <!-- Columna 1: Identidad -->
                 <div class="space-y-3">
