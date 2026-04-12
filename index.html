@@ -241,9 +241,9 @@
             inset: 0;
             pointer-events: none;
             z-index: -1;
-            background-image: radial-gradient(circle, #1E8FED 2px, transparent 2px);
+            background-image: radial-gradient(circle, #38BDF8 2px, transparent 2px);
             background-size: 32px 32px;
-            opacity: 0.35;
+            opacity: 0.45;
             mask-image: radial-gradient(circle 200px at var(--mouse-x, 50%) var(--mouse-y, 50%), black 20%, transparent 100%);
             -webkit-mask-image: radial-gradient(circle 200px at var(--mouse-x, 50%) var(--mouse-y, 50%), black 20%, transparent 100%);
             transition: opacity 0.5s ease;
@@ -254,9 +254,9 @@
             content: '';
             position: absolute;
             inset: 0;
-            background-image: radial-gradient(circle, #1E8FED 1px, transparent 1px);
+            background-image: radial-gradient(circle, #38BDF8 1.2px, transparent 1.2px);
             background-size: 32px 32px;
-            opacity: 0.12;
+            opacity: 0.1;
             pointer-events: none;
             z-index: -1;
         }
@@ -776,15 +776,15 @@
                 
                 grid.style.setProperty('--mouse-x', `${x}px`);
                 grid.style.setProperty('--mouse-y', `${y}px`);
-                grid.style.opacity = '0.4';
+                grid.style.opacity = '0.45';
             });
 
             hero.addEventListener('mouseleave', () => {
-                grid.style.opacity = '0.12';
+                grid.style.opacity = '0.1';
             });
 
             hero.addEventListener('mouseenter', () => {
-                grid.style.opacity = '0.4';
+                grid.style.opacity = '0.45';
             });
         }
     </script>
