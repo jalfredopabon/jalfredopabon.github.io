@@ -209,7 +209,7 @@
             align-items: center;
             gap: 0.6rem;
             transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-            filter: grayscale(1) opacity(0.5);
+            filter: grayscale(1) opacity(0.7);
             cursor: default;
         }
 
@@ -223,6 +223,8 @@
             font-size: 0.875rem;
             font-weight: 600;
             color: #475569; /* brand-slate */
+            background-color: #F8FAFC;
+            padding: 0 0.2rem;
             letter-spacing: -0.01em;
             transition: color 0.3s ease;
         }
@@ -230,6 +232,25 @@
         .tech-stack-item:hover .tech-stack-name {
             color: #0A192F; /* brand-navy */
         }
+
+        /* High-Contrast Blocking (Editorial Plates) */
+        .editorial-plate {
+            background-color: #F8FAFC;
+            padding: 0.15em 0.4em;
+            box-decoration-break: clone;
+            -webkit-box-decoration-break: clone;
+            display: inline;
+            line-height: 1.6;
+        }
+
+        .editorial-plate-block {
+            background-color: #F8FAFC;
+            padding: 1.5rem 2rem;
+            display: block;
+            width: fit-content;
+            max-width: 100%;
+        }
+
         /* Cursor Spotlight Grid Effect */
         .hero-section {
             position: relative;
@@ -241,11 +262,11 @@
             inset: 0;
             pointer-events: none;
             z-index: -1;
-            background-image: radial-gradient(circle, #BAE6FD 2px, transparent 2px);
+            background-image: radial-gradient(circle, #BAE6FD 2.5px, transparent 2.5px);
             background-size: 32px 32px;
-            opacity: 0.5;
-            mask-image: radial-gradient(circle 200px at var(--mouse-x, 50%) var(--mouse-y, 50%), black 20%, transparent 100%);
-            -webkit-mask-image: radial-gradient(circle 200px at var(--mouse-x, 50%) var(--mouse-y, 50%), black 20%, transparent 100%);
+            opacity: 0.9;
+            mask-image: radial-gradient(circle 200px at var(--mouse-x, 50%) var(--mouse-y, 50%), black 50%, transparent 100%);
+            -webkit-mask-image: radial-gradient(circle 200px at var(--mouse-x, 50%) var(--mouse-y, 50%), black 50%, transparent 100%);
             transition: opacity 0.5s ease;
         }
 
@@ -256,7 +277,7 @@
             inset: 0;
             background-image: radial-gradient(circle, #BAE6FD 1.2px, transparent 1.2px);
             background-size: 32px 32px;
-            opacity: 0.15;
+            opacity: 0.2;
             pointer-events: none;
             z-index: -1;
         }
@@ -276,33 +297,37 @@
         <!-- Lado Izquierdo: Contenido Editorial -->
         <div class="flex flex-col items-start space-y-4">
             <!-- Etiqueta superior opcional -->
-            <span class="text-xs tracking-widest text-brand-accent mb-2">Portfolio digital</span>
+            <div class="bg-brand-offwhite px-0 py-0 inline-block mb-2">
+                <span class="text-[10px] tracking-widest text-brand-navy/60 font-bold uppercase">Portfolio digital</span>
+            </div>
             
             <!-- Nombre en Serif (V2) -->
             <h1 class="title-serif text-5xl md:text-7xl lg:text-8xl font-medium tracking-tight text-brand-navy">
-                Alfredo Pabón
+                <span class="bg-brand-offwhite px-0 py-0 leading-tight inline-block">Alfredo Pabón</span>
             </h1>
             
             <!-- Subtítulo en Sans (V1/V2 mix) -->
-            <p class="text-brand-slate text-lg md:text-2xl font-light max-w-2xl leading-relaxed text-left">
-                Transformo datos en  <span class="text-brand-navy font-normal">decisiones estratégicas</span>.
+            <p class="text-brand-slate text-lg md:text-2xl font-light leading-relaxed text-left">
+                <span class="bg-brand-offwhite px-0 py-0 inline-block">Transformo datos en  <span class="text-brand-navy font-normal italic">decisiones estratégicas</span>.</span>
             </p>
 
             <!-- Manifiesto Técnico -->
             <div class="pt-2 md:pt-4 w-full max-w-3xl">
-                <p class="text-brand-slate text-base md:text-lg leading-relaxed text-left border-l-2 border-brand-accent pl-4 md:pl-5 py-1">
-                    Soy <span class="text-brand-navy font-medium">psicólogo y analista de datos</span> enfocado en el sector social y humanitario. Actúo como puente entre los números y la realidad gestionando el ciclo integral de información: desde la recolección en terreno (<span class="text-brand-navy font-medium">KoboToolbox</span>), pasando por el procesamiento en <span class="text-brand-navy font-medium">Excel</span> y Power Query junto al desarrollo analítico en <span class="text-brand-navy font-medium">SQL</span> y <span class="text-brand-navy font-medium">Python</span>, hasta la entrega de soluciones visuales en <span class="text-brand-navy font-medium">Power BI</span> con un enfoque UI/UX intuitivo.
-                </p>
+                <div class="bg-brand-offwhite p-0 py-4 shadow-none border-l-4 border-brand-accent">
+                    <p class="text-brand-navy/80 text-base md:text-lg leading-relaxed text-left pl-6">
+                        Soy <span class="text-brand-navy font-medium">psicólogo y analista de datos</span> enfocado en el sector social y humanitario. Actúo como puente entre los números y la realidad gestionando el ciclo integral de información: desde la recolección en terreno (<span class="text-brand-navy font-medium">KoboToolbox</span>), pasando por el procesamiento en <span class="text-brand-navy font-medium">Excel</span> y Power Query junto al desarrollo analítico en <span class="text-brand-navy font-medium">SQL</span> y <span class="text-brand-navy font-medium">Python</span>, hasta la entrega de soluciones visuales en <span class="text-brand-navy font-medium">Power BI</span> con un enfoque UI/UX intuitivo.
+                    </p>
+                </div>
             </div>
 
             <!-- Índice de Navegación -->
-            <div class="pt-4 flex flex-wrap justify-start gap-4 md:gap-8 text-sm font-semibold tracking-wide text-brand-slate">
-                <a href="#brecha-digital" class="nav-link hover:text-brand-accent transition-colors duration-300">Social</a>
-                <a href="#redes-sociales" class="nav-link hover:text-brand-accent transition-colors duration-300">Tendencias</a>
-                <a href="#tallest-buildings" class="nav-link hover:text-brand-accent transition-colors duration-300">Global</a>
-                <a href="#presentacion" class="nav-link hover:text-brand-accent transition-colors duration-300">Impacto</a>
-                <a href="#territorial" class="nav-link hover:text-brand-accent transition-colors duration-300">Territorial</a>
-                <a href="#diseno-web" class="nav-link hover:text-brand-accent transition-colors duration-300">Diseño web</a>
+            <div class="pt-4 flex flex-wrap justify-start gap-3">
+                <a href="#brecha-digital" class="px-4 py-2 bg-brand-offwhite text-[10px] font-bold uppercase tracking-widest text-brand-navy/60 hover:text-brand-accent transition-all duration-300">Social</a>
+                <a href="#redes-sociales" class="px-4 py-2 bg-brand-offwhite text-[10px] font-bold uppercase tracking-widest text-brand-navy/60 hover:text-brand-accent transition-all duration-300">Tendencias</a>
+                <a href="#tallest-buildings" class="px-4 py-2 bg-brand-offwhite text-[10px] font-bold uppercase tracking-widest text-brand-navy/60 hover:text-brand-accent transition-all duration-300">Global</a>
+                <a href="#presentacion" class="px-4 py-2 bg-brand-offwhite text-[10px] font-bold uppercase tracking-widest text-brand-navy/60 hover:text-brand-accent transition-all duration-300">Impacto</a>
+                <a href="#territorial" class="px-4 py-2 bg-brand-offwhite text-[10px] font-bold uppercase tracking-widest text-brand-navy/60 hover:text-brand-accent transition-all duration-300">Territorial</a>
+                <a href="#diseno-web" class="px-4 py-2 bg-brand-offwhite text-[10px] font-bold uppercase tracking-widest text-brand-navy/60 hover:text-brand-accent transition-all duration-300">Diseño web</a>
             </div>
         </div>
 
@@ -776,15 +801,15 @@
                 
                 grid.style.setProperty('--mouse-x', `${x}px`);
                 grid.style.setProperty('--mouse-y', `${y}px`);
-                grid.style.opacity = '0.5';
+                grid.style.opacity = '0.9';
             });
 
             hero.addEventListener('mouseleave', () => {
-                grid.style.opacity = '0.15';
+                grid.style.opacity = '0.2';
             });
 
             hero.addEventListener('mouseenter', () => {
-                grid.style.opacity = '0.5';
+                grid.style.opacity = '0.9';
             });
         }
     </script>
