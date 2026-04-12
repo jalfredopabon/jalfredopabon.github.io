@@ -216,11 +216,10 @@
         .tech-stack-item:hover {
             filter: grayscale(0) contrast(1);
             opacity: 1;
-            transform: translateY(-3px);
         }
 
         .tech-stack-name {
-            font-size: 0.65rem;
+            font-size: 0.75rem;
             letter-spacing: 0.12em;
             color: #475569; /* brand-slate */
             font-weight: 500;
@@ -231,13 +230,48 @@
         .tech-stack-item:hover .tech-stack-name {
             color: #0A192F; /* brand-navy */
         }
+        /* Cursor Spotlight Grid Effect */
+        .hero-section {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .dot-grid {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            z-index: -1;
+            background-image: radial-gradient(circle, #1E8FED 2px, transparent 2px);
+            background-size: 32px 32px;
+            opacity: 0.35;
+            mask-image: radial-gradient(circle 200px at var(--mouse-x, 50%) var(--mouse-y, 50%), black 20%, transparent 100%);
+            -webkit-mask-image: radial-gradient(circle 200px at var(--mouse-x, 50%) var(--mouse-y, 50%), black 20%, transparent 100%);
+            transition: opacity 0.5s ease;
+        }
+
+        /* Subtle base grid always visible */
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(circle, #1E8FED 1px, transparent 1px);
+            background-size: 32px 32px;
+            opacity: 0.12;
+            pointer-events: none;
+            z-index: -1;
+        }
     </style>
 </head>
 <body class="bg-brand-offwhite text-brand-navy min-h-screen">
 
-    <!-- Header / Hero Section (Full Viewport Centering) -->
-    <header class="min-h-screen flex flex-col justify-center px-8 md:px-24 max-w-6xl mx-auto py-12">
-        <div class="grid grid-cols-1 md:grid-cols-[1fr_auto] gap-12 items-center w-full">
+    <!-- Header / Hero Section (Full Width Background) -->
+    <header class="hero-section min-h-screen flex flex-col justify-center w-full py-8">
+        <!-- Interactive Spotlight Grid -->
+        <div class="dot-grid" id="hero-grid"></div>
+        
+        <!-- Centered Content Wrapper -->
+        <div class="max-w-6xl mx-auto px-8 md:px-24 w-full relative z-10">
+            <div class="flex flex-col items-start space-y-6 w-full">
         
         <!-- Lado Izquierdo: Contenido Editorial -->
         <div class="flex flex-col items-start space-y-4">
@@ -255,14 +289,14 @@
             </p>
 
             <!-- Manifiesto Técnico -->
-            <div class="pt-4 md:pt-6 w-full max-w-3xl">
+            <div class="pt-2 md:pt-4 w-full max-w-3xl">
                 <p class="text-brand-slate text-base md:text-lg leading-relaxed text-left border-l-2 border-brand-accent pl-4 md:pl-5 py-1">
                     Soy <span class="text-brand-navy font-medium">psicólogo y analista de datos</span> enfocado en el sector social y humanitario. Actúo como puente entre los números y la realidad gestionando el ciclo integral de información: desde la recolección en terreno (<span class="text-brand-navy font-medium">KoboToolbox</span>), pasando por el procesamiento en <span class="text-brand-navy font-medium">Excel</span> y Power Query junto al desarrollo analítico en <span class="text-brand-navy font-medium">SQL</span> y <span class="text-brand-navy font-medium">Python</span>, hasta la entrega de soluciones visuales en <span class="text-brand-navy font-medium">Power BI</span> con un enfoque UI/UX intuitivo.
                 </p>
             </div>
 
             <!-- Índice de Navegación -->
-            <div class="pt-8 flex flex-wrap justify-start gap-4 md:gap-8 text-sm font-semibold tracking-wide text-brand-slate">
+            <div class="pt-4 flex flex-wrap justify-start gap-4 md:gap-8 text-sm font-semibold tracking-wide text-brand-slate">
                 <a href="#brecha-digital" class="nav-link hover:text-brand-accent transition-colors duration-300">Social</a>
                 <a href="#redes-sociales" class="nav-link hover:text-brand-accent transition-colors duration-300">Tendencias</a>
                 <a href="#tallest-buildings" class="nav-link hover:text-brand-accent transition-colors duration-300">Global</a>
@@ -272,11 +306,11 @@
             </div>
         </div>
 
-        <!-- Lado Derecho: Columna Técnica (Toolkit) -->
-        <div class="flex md:flex-col flex-wrap justify-between items-center gap-10 md:gap-7 p-8 md:self-stretch md:justify-center">
+        <!-- Toolkit (Centered Tech Dock) -->
+        <div class="flex flex-wrap justify-center items-center gap-x-12 gap-y-8 w-full opacity-80 pt-5 relative z-10">
             <!-- Power BI (Oficial) -->
             <div class="tech-stack-item">
-                <svg class="h-7 w-auto" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                <svg class="h-10 w-auto" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
                     <path fill="#eda503" d="M38,44H26c-0.552,0-1-0.448-1-1V5c0-0.552,0.448-1,1-1h12c0.552,0,1,0.448,1,1v38C39,43.552,38.552,44,38,44z"></path>
                     <path fill="#ffca28" d="M30,44H18c-0.552,0-1-0.448-1-1V15c0-0.552,0.448-1,1-1h12c0.552,0,1,0.448,1,1v28C31,43.552,30.552,44,30,44z"></path>
                     <path fill="#ffe082" d="M22,44H10c-0.552,0-1-0.448-1-1V25c0-0.552,0.448-1,1-1h12c0.552,0,1,0.448,1,1v18C23,43.552,22.552,44,22,44z"></path>
@@ -285,7 +319,7 @@
             </div>
             <!-- Excel (Oficial) -->
             <div class="tech-stack-item">
-                <svg class="h-7 w-auto" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                <svg class="h-10 w-auto" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
                     <path fill="#1b5e20" d="M9,17.139c0-2.624,2.126-4.75,4.749-4.75H41v27.444C41,41.582,39.583,43,37.834,43H15.332	C11.835,43,9,40.164,9,36.667C9,36.667,9,17.139,9,17.139z"></path>
                     <path fill="#43a047" d="M9,22.75C9,20.126,11.126,18,13.749,18h14.418c-1.749,0-3.166,1.418-3.166,3.167v6	c0,1.749-1.417,3.167-3.166,3.167h-6.502c-3.497,0-6.332,2.836-6.332,6.333L9,22.75L9,22.75z"></path>
                     <path fill="#9ccc65" d="M9,11.333C9,7.836,11.835,5,15.332,5h12.941v13H15.332C11.835,18,9,20.836,9,24.333	C9,24.333,9,11.333,9,11.333z"></path>
@@ -297,7 +331,7 @@
             </div>
             <!-- PowerPoint (Oficial) -->
             <div class="tech-stack-item">
-                <svg class="h-7 w-auto" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                <svg class="h-10 w-auto" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
                     <path fill="#dc4c2c" d="M8,24c0,9.941,8.059,18,18,18s18-8.059,18-18H26H8z"></path>
                     <path fill="#f7a278" d="M26,6v18h18C44,14.059,35.941,6,26,6z"></path>
                     <path fill="#c06346" d="M26,6C16.059,6,8,14.059,8,24h18V6z"></path>
@@ -309,7 +343,7 @@
             <!-- KoboToolbox (Faithful SVG) -->
             <!-- KoboToolbox (Faithful SVG) -->
             <div class="tech-stack-item">
-                <svg class="h-7 w-auto" viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg">
+                <svg class="h-10 w-auto" viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg">
                     <path fill="#1e8fed" d="M 93.5,26.5 C 110.503,26.3334 127.503,26.5001 144.5,27 C 168.3,32.7344 180.633,47.9011 181.5,72.5 C 176.969,72.106 172.469,71.4394 168,70.5 C 164.189,71.3624 160.356,72.0291 156.5,72.5 C 156.993,61.8209 151.993,55.3209 141.5,53 C 127.167,52.3333 112.833,52.3333 98.5,53 C 91.1854,54.3162 86.3521,58.4829 84,65.5 C 83.3333,102.167 83.3333,138.833 84,175.5 C 86.4775,182.975 91.6442,187.142 99.5,188 C 113.5,188.667 127.5,188.667 141.5,188 C 148.37,186.803 153.203,182.97 156,176.5 C 156.333,168.5 156.667,160.5 157,152.5 C 164.606,142.942 172.439,133.608 180.5,124.5 C 193.779,195.721 164.779,224.888 93.5,212 C 74.5601,208.394 62.7268,197.227 58,178.5 C 57.3333,139.167 57.3333,99.8333 58,60.5 C 62.9033,41.7602 74.7366,30.4269 93.5,26.5 Z"/>
                     <path fill="#1e8fed" d="M 165.5,88.5 C 170.997,88.1237 175.997,89.457 180.5,92.5 C 181.946,95.8225 181.446,98.8225 179,101.5 C 165.167,117.333 151.333,133.167 137.5,149 C 130.795,153.658 124.128,153.658 117.5,149 C 112.867,144.375 109.034,139.209 106,133.5 C 103.475,125.768 104.975,118.934 110.5,113 C 112.899,112.289 115.232,112.456 117.5,113.5 C 120.833,117.5 124.167,121.5 127.5,125.5 C 137.323,114.841 146.99,104.008 156.5,93 C 159.324,90.9212 162.324,89.4212 165.5,88.5 Z"/>
                 </svg>
@@ -317,7 +351,7 @@
             </div>
             <!-- Google Sheets (Oficial) -->
             <div class="tech-stack-item">
-                <svg class="h-7 w-auto" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                <svg class="h-10 w-auto" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
                     <path fill="#43a047" d="M37,45H11c-1.657,0-3-1.343-3-3V6c0-1.657,1.343-3,3-3h19l10,10v29C40,43.657,38.657,45,37,45z"></path>
                     <path fill="#c8e6c9" d="M40 13L30 13 30 3z"></path>
                     <path fill="#2e7d32" d="M30 13L40 23 40 13z"></path>
@@ -327,7 +361,7 @@
             </div>
             <!-- Looker Studio (Official) -->
             <div class="tech-stack-item">
-                <svg class="h-7 w-auto" viewBox="-78.5 0 413 413" xmlns="http://www.w3.org/2000/svg">
+                <svg class="h-10 w-auto" viewBox="-78.5 0 413 413" xmlns="http://www.w3.org/2000/svg">
                     <path d="M127.128486,0 C113.797782,0.0058471726 101.556004,7.36006381 95.2905253,19.126605 C89.0250469,30.8931461 89.7564532,45.1553578 97.1927396,56.2192339 L112.606279,40.8274339 C112.096845,39.2920176 111.839876,37.6841242 111.845385,36.066411 C111.845385,27.6618072 118.658663,20.8485297 127.063267,20.8485297 C135.467871,20.8485297 142.281148,27.6618072 142.281148,36.066411 C142.281148,44.4710148 135.467871,51.2842924 127.063267,51.2842924 C125.452814,51.2878362 123.852389,51.0308872 122.323984,50.5233983 L106.932184,65.9151983 C119.749817,74.6084738 136.686605,74.1479499 149.012895,64.7709924 C161.339185,55.3940349 166.302744,39.1943452 161.345227,24.5216568 C156.387711,9.84896827 142.61604,-0.0205786569 127.128486,0 L127.128486,0 Z" fill="#34A853"/>
                     <path d="M112.780303,105.112113 C112.803794,92.9288201 108.858278,81.0693768 101.540706,71.3284161 L81.5400617,91.3073204 C87.7949796,102.747737 85.5440645,116.967804 76.0616244,125.917131 L86.9315396,152.483203 C103.037113,142.110661 112.772753,124.268811 112.780303,105.112113 Z" fill="#FBBC04"/>
                     <path d="M56.8870939,133.786949 L56.3653379,133.786949 C44.0975407,133.788013 33.1858466,125.990585 29.2128405,114.383946 C25.2398344,102.777307 29.0843199,89.9287712 38.7794013,82.4118404 C48.4744826,74.8949096 61.8756692,74.3722813 72.126715,81.1113398 L91.9317006,61.3063543 C72.6737207,45.6936654 45.4778243,44.4893124 24.9151409,58.3385684 C4.35245741,72.1878245 -4.75374244,97.8421492 2.47549859,121.556363 C9.70473962,145.270576 31.5737,161.482171 56.3653379,161.50524 C60.1906548,161.507115 64.0066702,161.128427 67.7570091,160.374762 L56.8870939,133.786949 Z" fill="#EA4335"/>
@@ -335,7 +369,7 @@
                 </svg>
                 <span class="tech-stack-name">Looker Studio</span>
             </div>
-        </div>
+            </div>
         </div>
     </header>
     
@@ -728,6 +762,31 @@
         });
 
         document.querySelectorAll('.pbi-container').forEach(el => pbiObserver.observe(el));
+    </script>
+    <script>
+        // Hero Spotlight Grid Tracking
+        const hero = document.querySelector('.hero-section');
+        const grid = document.getElementById('hero-grid');
+
+        if (hero && grid) {
+            hero.addEventListener('mousemove', (e) => {
+                const rect = hero.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                grid.style.setProperty('--mouse-x', `${x}px`);
+                grid.style.setProperty('--mouse-y', `${y}px`);
+                grid.style.opacity = '0.4';
+            });
+
+            hero.addEventListener('mouseleave', () => {
+                grid.style.opacity = '0.12';
+            });
+
+            hero.addEventListener('mouseenter', () => {
+                grid.style.opacity = '0.4';
+            });
+        }
     </script>
 </body>
 </html>
