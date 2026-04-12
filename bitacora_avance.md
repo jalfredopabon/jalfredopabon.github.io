@@ -69,7 +69,7 @@ Para elevar la UI/UX del Momento 1, nos inspiramos en:
 | 2026-04-12 | Narrativa Bio & Balance Visual | Momento 1 | Reducción de bio a versión directa/concisa, ampliación del bloque a 78ch para balance y eliminación de movimiento al hover en toolkit. |
 | 2026-04-12 | Seguridad de Datos (Vademecum) | Momento 1 | Ocultación del botón 'Ver proyecto' en Mundo Homeopático para proteger información sensible mientras se prepara la versión demo. |
 | 2026-04-12 | Estandarización de Badges | Momento 1 | Eliminación de hover y fondo (ahora transparente) en los badges de estado para máxima adaptabilidad visual en secciones de color. |
-| 2026-04-12 | Tipografía: Sentence Case | Momento 1 | Conversión de labels (Portfolio digital) y navegación (Social, Tendencias, etc.) a Sentence case para un acabado más editorial y humano. |
+| 2026-04-12 | Tipografía: Sentence Case | Momento 1 | Conversión de labels (Portfolio digital) y navegación (Social, Tendencias, etc.) a Sentence case y eliminación de negrilla inicial para un acabado más refinado. |
 
 ---
 
