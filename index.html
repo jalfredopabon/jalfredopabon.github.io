@@ -202,6 +202,15 @@
             transition: opacity 0.5s ease 0.25s;
         }
 
+        /* Utilidad para ocultar scrollbar */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
         /* Tech Stack Section (Impeccable) */
         .tech-stack-item {
             display: flex;
@@ -227,6 +236,7 @@
             padding: 0 0.2rem;
             letter-spacing: -0.01em;
             transition: color 0.3s ease;
+            white-space: nowrap;
         }
 
         .tech-stack-item:hover .tech-stack-name {
@@ -298,7 +308,7 @@
         <div class="flex flex-col items-start space-y-4">
             <!-- Etiqueta superior opcional -->
             <div class="bg-brand-offwhite px-0 py-0 inline-block mb-2">
-                <span class="text-[10px] tracking-widest text-brand-navy/60 font-bold uppercase">Portfolio digital</span>
+                <span class="text-[10px] tracking-widest text-brand-navy/60 font-bold">Portfolio digital</span>
             </div>
             
             <!-- Nombre en Serif (V2) -->
@@ -322,17 +332,17 @@
 
             <!-- Índice de Navegación -->
             <div class="pt-4 flex flex-wrap justify-start gap-3">
-                <a href="#brecha-digital" class="px-4 py-2 bg-brand-offwhite text-[10px] font-bold uppercase tracking-widest text-brand-navy/60 hover:text-brand-accent transition-all duration-300">Social</a>
-                <a href="#redes-sociales" class="px-4 py-2 bg-brand-offwhite text-[10px] font-bold uppercase tracking-widest text-brand-navy/60 hover:text-brand-accent transition-all duration-300">Tendencias</a>
-                <a href="#tallest-buildings" class="px-4 py-2 bg-brand-offwhite text-[10px] font-bold uppercase tracking-widest text-brand-navy/60 hover:text-brand-accent transition-all duration-300">Global</a>
-                <a href="#presentacion" class="px-4 py-2 bg-brand-offwhite text-[10px] font-bold uppercase tracking-widest text-brand-navy/60 hover:text-brand-accent transition-all duration-300">Impacto</a>
-                <a href="#territorial" class="px-4 py-2 bg-brand-offwhite text-[10px] font-bold uppercase tracking-widest text-brand-navy/60 hover:text-brand-accent transition-all duration-300">Territorial</a>
-                <a href="#diseno-web" class="px-4 py-2 bg-brand-offwhite text-[10px] font-bold uppercase tracking-widest text-brand-navy/60 hover:text-brand-accent transition-all duration-300">Diseño web</a>
+                <a href="#brecha-digital" class="px-4 py-2 bg-brand-offwhite text-[10px] font-bold tracking-widest text-brand-navy/60 hover:text-brand-accent transition-all duration-300">Social</a>
+                <a href="#redes-sociales" class="px-4 py-2 bg-brand-offwhite text-[10px] font-bold tracking-widest text-brand-navy/60 hover:text-brand-accent transition-all duration-300">Tendencias</a>
+                <a href="#tallest-buildings" class="px-4 py-2 bg-brand-offwhite text-[10px] font-bold tracking-widest text-brand-navy/60 hover:text-brand-accent transition-all duration-300">Global</a>
+                <a href="#presentacion" class="px-4 py-2 bg-brand-offwhite text-[10px] font-bold tracking-widest text-brand-navy/60 hover:text-brand-accent transition-all duration-300">Impacto</a>
+                <a href="#territorial" class="px-4 py-2 bg-brand-offwhite text-[10px] font-bold tracking-widest text-brand-navy/60 hover:text-brand-accent transition-all duration-300">Territorial</a>
+                <a href="#diseno-web" class="px-4 py-2 bg-brand-offwhite text-[10px] font-bold tracking-widest text-brand-navy/60 hover:text-brand-accent transition-all duration-300">Diseño web</a>
             </div>
         </div>
 
         <!-- Toolkit (Centered Tech Dock) -->
-        <div class="flex flex-wrap justify-center items-center gap-x-12 gap-y-8 w-full opacity-80 pt-5 relative z-10">
+        <div class="flex flex-nowrap justify-center items-center gap-x-6 md:gap-x-12 w-full opacity-80 pt-5 relative z-10 overflow-x-auto no-scrollbar">
             <!-- Power BI (Oficial) -->
             <div class="tech-stack-item">
                 <svg class="h-8 w-auto" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
