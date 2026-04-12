@@ -65,3 +65,4 @@ Para elevar la UI/UX del Momento 1, nos inspiramos en:
 | :--- | :--- | :--- | :--- |
 | 2026-04-10 | Auditoría Inicial e Inicio de Bitácora | Momento 1 | Se define la hoja de ruta y filosofía del proyecto. |
 | 2026-04-10 | Optimización de Performance y Refinamiento UI | Momento 1 | Implementación de Lazy Load, feedback de carga, corrección de carrusel y sincronización de badges estratégicos. |
+| 2026-04-12 | Refinamiento Hero & Toolkit | Momento 1 | Limpieza editorial (eliminación de fondos), tabs con línea animada y liberación del Toolkit del contenedor 'max-w-6xl' para visibilidad total en móviles. |
