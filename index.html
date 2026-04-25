@@ -201,6 +201,58 @@
             transition: opacity 0.5s ease 0.25s;
         }
 
+        /* Estilos Sistema Híbrido PBI */
+        .pbi-preview {
+            z-index: 10;
+            transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .pbi-overlay {
+            z-index: 15;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            background: rgba(255, 255, 255, 0.65);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            opacity: 1; /* Visible en móvil por defecto */
+        }
+
+        @media (min-width: 768px) {
+            .pbi-overlay {
+                background: rgba(255, 255, 255, 0.15);
+                backdrop-filter: blur(0px);
+                -webkit-backdrop-filter: blur(0px);
+                opacity: 0;
+            }
+            .pbi-container:hover .pbi-overlay {
+                background: rgba(255, 255, 255, 0.65);
+                backdrop-filter: blur(8px);
+                -webkit-backdrop-filter: blur(8px);
+                opacity: 1;
+            }
+        }
+
+        .pbi-preview.hidden, .pbi-overlay.hidden {
+            opacity: 0 !important;
+            pointer-events: none !important;
+        }
+
+        .pbi-overlay .play-icon {
+            transform: scale(1);
+            opacity: 1;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        @media (min-width: 768px) {
+            .pbi-overlay .play-icon {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            .pbi-container:hover .play-icon {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
         /* Utilidad para ocultar scrollbar */
         .no-scrollbar::-webkit-scrollbar {
             display: none;
@@ -515,13 +567,26 @@
                         </p>
                     </div>
                     <!-- iFrame Power BI #1 -->
-                    <div class="pbi-container relative aspect-[600/373.5] w-full overflow-hidden rounded-premium shadow-sm hover:shadow-md transition-shadow duration-500">
+                    <div class="pbi-container relative aspect-[600/373.5] w-full overflow-hidden rounded-premium shadow-sm hover:shadow-md transition-shadow duration-500 bg-slate-50">
+                        <!-- Preview Estática -->
+                        <img src="imagenes/preview/pbi-brecha-digital.webp" alt="Preview Brecha Digital" class="pbi-preview absolute inset-0 w-full h-full object-cover">
+                        
+                        <!-- Overlay Interactivo -->
+                        <div class="pbi-overlay absolute inset-0 flex flex-col items-center justify-center gap-4 cursor-pointer" onclick="activarDashboard(this)">
+                            <div class="play-icon w-16 h-16 bg-white/90 rounded-full flex items-center justify-center shadow-lg text-brand-accent">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122" />
+                                </svg>
+                            </div>
+                            <span class="text-sm font-bold text-brand-navy tracking-tight opacity-0 group-hover:opacity-100 transition-opacity">Explorar dashboard</span>
+                        </div>
+
                         <div class="iframe-progress"></div>
                         <div class="iframe-loader">
                             <div class="pulse-dot"></div>
                             <span class="text-[10px] tracking-widest text-brand-navy">Estableciendo conexión...</span>
                         </div>
-                        <iframe title="Nacer en el campo  Nacer desconectado" class="w-full h-full" data-src="https://app.powerbi.com/view?r=eyJrIjoiMGU5NTViMDgtMzAwNS00NzA4LThlMTQtOGVjNDZjYTQzY2ZhIiwidCI6IjM0MzAzNTQxLTc0ZWMtNGQ0YS04YzVhLTgwNDlkMmZkNmNlNiIsImMiOjR9" frameborder="0" allowFullScreen="true"></iframe>
+                        <iframe title="Nacer en el campo  Nacer desconectado" class="w-full h-full opacity-0 transition-opacity duration-700" data-src="https://app.powerbi.com/view?r=eyJrIjoiMGU5NTViMDgtMzAwNS00NzA4LThlMTQtOGVjNDZjYTQzY2ZhIiwidCI6IjM0MzAzNTQxLTc0ZWMtNGQ0YS04YzVhLTgwNDlkMmZkNmNlNiIsImMiOjR9" frameborder="0" allowFullScreen="true"></iframe>
                     </div>
                     <!-- CTA -->
                     <div class="flex justify-end pt-4">
@@ -552,13 +617,26 @@
                         </p>
                     </div>
                     <!-- iFrame Power BI #2 -->
-                    <div class="pbi-container relative aspect-[600/373.5] w-full overflow-hidden">
+                    <div class="pbi-container relative aspect-[600/373.5] w-full overflow-hidden rounded-premium shadow-sm hover:shadow-md transition-shadow duration-500 bg-slate-50">
+                        <!-- Preview Estática -->
+                        <img src="imagenes/preview/pbi-redes-sociales.webp" alt="Preview Redes Sociales" class="pbi-preview absolute inset-0 w-full h-full object-cover">
+                        
+                        <!-- Overlay Interactivo -->
+                        <div class="pbi-overlay absolute inset-0 flex flex-col items-center justify-center gap-4 cursor-pointer" onclick="activarDashboard(this)">
+                            <div class="play-icon w-16 h-16 bg-white/90 rounded-full flex items-center justify-center shadow-lg text-brand-accent">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122" />
+                                </svg>
+                            </div>
+                            <span class="text-sm font-bold text-brand-navy tracking-tight">Explorar dashboard</span>
+                        </div>
+
                         <div class="iframe-progress"></div>
                         <div class="iframe-loader">
                             <div class="pulse-dot"></div>
                             <span class="text-[10px] tracking-widest text-brand-navy">Estableciendo conexión...</span>
                         </div>
-                        <iframe title="UsuariosRedesSocialesQuickViz" class="w-full h-full" data-src="https://app.powerbi.com/view?r=eyJrIjoiMDY0YTY4NjUtNzE2Zi00NjEzLWE5NDUtMWFiNTA2MjBjYTRiIiwidCI6IjM0MzAzNTQxLTc0ZWMtNGQ0YS04YzVhLTgwNDlkMmZkNmNlNiIsImMiOjR9" frameborder="0" allowFullScreen="true"></iframe>
+                        <iframe title="UsuariosRedesSocialesQuickViz" class="w-full h-full opacity-0 transition-opacity duration-700" data-src="https://app.powerbi.com/view?r=eyJrIjoiMDY0YTY4NjUtNzE2Zi00NjEzLWE5NDUtMWFiNTA2MjBjYTRiIiwidCI6IjM0MzAzNTQxLTc0ZWMtNGQ0YS04YzVhLTgwNDlkMmZkNmNlNiIsImMiOjR9" frameborder="0" allowFullScreen="true"></iframe>
                     </div>
                     <!-- CTA -->
                     <div class="flex justify-end pt-4">
@@ -587,13 +665,26 @@
                         </p>
                     </div>
                     <!-- iFrame Power BI #3 -->
-                    <div class="pbi-container relative aspect-[600/373.5] w-full overflow-hidden">
+                    <div class="pbi-container relative aspect-[600/373.5] w-full overflow-hidden rounded-premium shadow-sm hover:shadow-md transition-shadow duration-500 bg-slate-50">
+                        <!-- Preview Estática -->
+                        <img src="imagenes/preview/pbi-edificios.webp" alt="Preview Edificios" class="pbi-preview absolute inset-0 w-full h-full object-cover">
+                        
+                        <!-- Overlay Interactivo -->
+                        <div class="pbi-overlay absolute inset-0 flex flex-col items-center justify-center gap-4 cursor-pointer" onclick="activarDashboard(this)">
+                            <div class="play-icon w-16 h-16 bg-white/90 rounded-full flex items-center justify-center shadow-lg text-brand-accent">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122" />
+                                </svg>
+                            </div>
+                            <span class="text-sm font-bold text-brand-navy tracking-tight">Explorar dashboard</span>
+                        </div>
+
                         <div class="iframe-progress"></div>
                         <div class="iframe-loader">
                             <div class="pulse-dot"></div>
                             <span class="text-[10px] tracking-widest text-brand-navy">Estableciendo conexión...</span>
                         </div>
-                        <iframe title="Edificios mas altos del mundo" class="w-full h-full" data-src="https://app.powerbi.com/view?r=eyJrIjoiZGRiY2IwNjUtNmYyMS00NjYwLWJkYzgtNGZhZTNiNTk5MmE5IiwidCI6IjM0MzAzNTQxLTc0ZWMtNGQ0YS04YzVhLTgwNDlkMmZkNmNlNiIsImMiOjR9" frameborder="0" allowFullScreen="true"></iframe>
+                        <iframe title="Edificios mas altos del mundo" class="w-full h-full opacity-0 transition-opacity duration-700" data-src="https://app.powerbi.com/view?r=eyJrIjoiZGRiY2IwNjUtNmYyMS00NjYwLWJkYzgtNGZhZTNiNTk5MmE5IiwidCI6IjM0MzAzNTQxLTc0ZWMtNGQ0YS04YzVhLTgwNDlkMmZkNmNlNiIsImMiOjR9" frameborder="0" allowFullScreen="true"></iframe>
                     </div>
                     <!-- CTA -->
                     <div class="flex justify-end pt-4">
@@ -626,7 +717,8 @@
                         <!-- Contenedor con overflow para las diapositivas -->
                         <div class="carousel-container relative aspect-video overflow-hidden rounded-lg">
                             <div class="carousel-slides-wrapper h-full">
-                                <img src="imagenes/diapositivas/Diapositiva1.webp" class="carousel-slide active w-full h-full object-contain" alt="Diapositiva 1" loading="lazy">
+                                <img src="imagenes/preview/5. power_point.webp" class="carousel-slide active w-full h-full object-contain" alt="Portada de presentación" loading="lazy">
+                                <img src="imagenes/diapositivas/Diapositiva1.webp" class="carousel-slide w-full h-full object-contain" alt="Diapositiva 1" loading="lazy">
                                 <img src="imagenes/diapositivas/Diapositiva2.webp" class="carousel-slide w-full h-full object-contain" alt="Diapositiva 2" loading="lazy">
                                 <img src="imagenes/diapositivas/Diapositiva3.webp" class="carousel-slide w-full h-full object-contain" alt="Diapositiva 3" loading="lazy">
                                 <img src="imagenes/diapositivas/Diapositiva4.webp" class="carousel-slide w-full h-full object-contain" alt="Diapositiva 4" loading="lazy">
@@ -645,7 +737,7 @@
 
                             <!-- Indicador de Páginas -->
                             <div class="absolute bottom-4 right-4 bg-brand-navy/80 text-white px-3 py-1 rounded-full text-xs font-mono z-10">
-                                <span class="current-slide">1</span> / 15
+                                <span class="current-slide">1</span> / 16
                             </div>
                         </div>
 
@@ -684,13 +776,26 @@
                         </p>
                     </div>
                     <!-- iFrame Power BI #4 -->
-                    <div class="pbi-container relative aspect-[600/373.5] w-full overflow-hidden">
+                    <div class="pbi-container relative aspect-[600/373.5] w-full overflow-hidden rounded-premium shadow-sm hover:shadow-md transition-shadow duration-500 bg-slate-50">
+                        <!-- Preview Estática -->
+                        <img src="imagenes/preview/pbi-territorial.webp" alt="Preview Territorial" class="pbi-preview absolute inset-0 w-full h-full object-cover">
+                        
+                        <!-- Overlay Interactivo -->
+                        <div class="pbi-overlay absolute inset-0 flex flex-col items-center justify-center gap-4 cursor-pointer" onclick="activarDashboard(this)">
+                            <div class="play-icon w-16 h-16 bg-white/90 rounded-full flex items-center justify-center shadow-lg text-brand-accent">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122" />
+                                </svg>
+                            </div>
+                            <span class="text-sm font-bold text-brand-navy tracking-tight">Explorar dashboard</span>
+                        </div>
+
                         <div class="iframe-progress"></div>
                         <div class="iframe-loader">
                             <div class="pulse-dot"></div>
                             <span class="text-[10px] tracking-widest text-brand-navy">Estableciendo conexión...</span>
                         </div>
-                        <iframe title="Reporte de seguimiento estrategias del cuidado" class="w-full h-full" data-src="https://app.powerbi.com/view?r=eyJrIjoiOTIwN2MxMTQtYjNjMy00MGU1LTk5OWYtYTY4MzQ2MmE1ZGMzIiwidCI6IjM0MzAzNTQxLTc0ZWMtNGQ0YS04YzVhLTgwNDlkMmZkNmNlNiIsImMiOjR9" frameborder="0" allowFullScreen="true"></iframe>
+                        <iframe title="Reporte de seguimiento estrategias del cuidado" class="w-full h-full opacity-0 transition-opacity duration-700" data-src="https://app.powerbi.com/view?r=eyJrIjoiOTIwN2MxMTQtYjNjMy00MGU1LTk5OWYtYTY4MzQ2MmE1ZGMzIiwidCI6IjM0MzAzNTQxLTc0ZWMtNGQ0YS04YzVhLTgwNDlkMmZkNmNlNiIsImMiOjR9" frameborder="0" allowFullScreen="true"></iframe>
                     </div>
                     <!-- CTA -->
                     <div class="flex justify-end pt-4">
@@ -723,7 +828,8 @@
                         <!-- Contenedor con overflow para las diapositivas -->
                         <div class="carousel-container relative aspect-video overflow-hidden rounded-lg bg-slate-100">
                             <div class="carousel-slides-wrapper h-full">
-                                <img src="imagenes/vademecum/1. lista_precios.webp" class="carousel-slide active w-full h-full object-contain" alt="Lista de precios" loading="lazy">
+                                <img src="imagenes/preview/6. web.webp" class="carousel-slide active w-full h-full object-contain" alt="Portada de plataforma web" loading="lazy">
+                                <img src="imagenes/vademecum/1. lista_precios.webp" class="carousel-slide w-full h-full object-contain" alt="Lista de precios" loading="lazy">
                                 <img src="imagenes/vademecum/2. sedes_contacto.webp" class="carousel-slide w-full h-full object-contain" alt="Sedes y contacto" loading="lazy">
                                 <img src="imagenes/vademecum/3. vademecum.webp" class="carousel-slide w-full h-full object-contain" alt="Vademecum Home" loading="lazy">
                                 <img src="imagenes/vademecum/4. carrito.webp" class="carousel-slide w-full h-full object-contain" alt="Carrito de compras" loading="lazy">
@@ -732,7 +838,7 @@
 
                             <!-- Indicador de Páginas (dentro de la caja) -->
                             <div class="absolute bottom-4 right-4 bg-brand-navy/80 text-white px-3 py-1 rounded-full text-xs font-mono z-10">
-                                <span class="current-slide">1</span> / 5
+                                <span class="current-slide">1</span> / 6
                             </div>
                         </div>
 
@@ -845,50 +951,49 @@
         });
     </script>
 
-    <!-- IntersectionObserver: Carga Power BI por tablero al hacer scroll -->
+    <!-- Lógica de Activación Híbrida Power BI -->
     <script>
-        const pbiObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (!entry.isIntersecting) return;
+        /**
+         * activarDashboard: Gestiona la transición de Preview -> Loader -> Iframe
+         */
+        function activarDashboard(overlayEl) {
+            const container = overlayEl.closest('.pbi-container');
+            const preview = container.querySelector('.pbi-preview');
+            const iframe = container.querySelector('iframe[data-src]');
+            const badge = container.querySelector('.iframe-loader');
+            const bar = container.querySelector('.iframe-progress');
 
-                const container = entry.target;
-                const iframe = container.querySelector('iframe[data-src]');
-                const badge = container.querySelector('.iframe-loader');
-                const bar = container.querySelector('.iframe-progress');
+            if (!iframe) return; 
 
-                if (!iframe) return; // Ya fue procesado
+            // Detectar si es móvil (menos de 768px)
+            if (window.innerWidth < 768) {
+                // En móvil, abrir el enlace directo para mejor UX
+                const directUrl = iframe.dataset.src;
+                window.open(directUrl, '_blank');
+                return;
+            }
 
-                // 1. Mostrar badge y arrancar la barra de progreso
-                badge.classList.add('loader-visible');
-                // Forzar reflow para que la transición CSS se anime desde 0
-                bar.getBoundingClientRect();
-                bar.classList.add('progress-running');
+            // Lógica Desktop: Carga interactiva en la página
+            overlayEl.classList.add('hidden');
+            if (preview) preview.classList.add('hidden');
 
-                // 2. Inyectar el src real para iniciar la conexión
-                iframe.src = iframe.dataset.src;
-                iframe.removeAttribute('data-src');
+            badge.classList.add('loader-visible');
+            bar.getBoundingClientRect(); 
+            bar.classList.add('progress-running');
 
-                // 3. Al terminar de cargar: completar barra → fade badge
-                iframe.addEventListener('load', () => {
-                    // Completar la barra al 100%
-                    bar.classList.remove('progress-running');
-                    bar.classList.add('progress-complete');
+            iframe.src = iframe.dataset.src;
+            iframe.removeAttribute('data-src');
 
-                    // Desvanecer badge
-                    badge.classList.remove('loader-visible');
-                    badge.classList.add('loader-hidden');
-
-                    // Desvanecer barra tras completar
-                    setTimeout(() => bar.classList.add('progress-fade'), 50);
-                }, { once: true });
-
-                pbiObserver.unobserve(container);
-            });
-        }, {
-            threshold: 0.2
-        });
-
-        document.querySelectorAll('.pbi-container').forEach(el => pbiObserver.observe(el));
+            iframe.addEventListener('load', () => {
+                bar.classList.remove('progress-running');
+                bar.classList.add('progress-complete');
+                iframe.classList.remove('opacity-0');
+                iframe.classList.add('opacity-100');
+                badge.classList.remove('loader-visible');
+                badge.classList.add('loader-hidden');
+                setTimeout(() => bar.classList.add('progress-fade'), 50);
+            }, { once: true });
+        }
     </script>
     <script>
         // Hero Spotlight Grid Tracking
