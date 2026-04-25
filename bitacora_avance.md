@@ -70,6 +70,9 @@ Para elevar la UI/UX del Momento 1, nos inspiramos en:
 | 2026-04-12 | Seguridad de Datos (Vademecum) | Momento 1 | Ocultación del botón 'Ver proyecto' en Mundo Homeopático para proteger información sensible mientras se prepara la versión demo. |
 | 2026-04-12 | Estandarización de Badges | Momento 1 | Eliminación de hover y fondo (ahora transparente) en los badges de estado para máxima adaptabilidad visual en secciones de color. |
 | 2026-04-12 | Tipografía: Sentence Case | Momento 1 | Conversión de labels (Portfolio digital) y navegación (Social, Tendencias, etc.) a Sentence case y eliminación de negrilla inicial para un acabado más refinado. |
+| 2026-04-24 | Metáfora de Datos Interactiva | Momento 1 | Implementación de 16 cubos con animación "Caos a Orden", compresión física y zona de hover de ancho total (w-full) para máxima intuitividad. |
+| 2026-04-24 | Escala Cromática y Legibilidad | Momento 1 | Inversión de opacidades (claro a sólido) para reforzar metáfora de consolidación y ajuste de coordenadas para evitar superposición con el texto. |
+| 2026-04-25 | Hero Responsivo e Inteligente | Momento 1 | Migración a unidades vw/vh, escalas adaptables y lógica "Smart Mobile" (chip estático por defecto en móviles) para una experiencia premium en todo dispositivo. |
 
 ---
 
