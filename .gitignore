@@ -1,6 +1,21 @@
-scratch/
+# Herramientas y Agentes
 .agents/
-*.log
-.DS_Store
-node_modules/
+.claude/
 .gemini/
+3_SKILLS_STICH/
+5_impeccable/
+app_interactiva/
+bocetos/
+skills-lock.json
+
+# Imágenes de trabajo (No necesarias para la web)
+imagenes/diapositivas/
+
+# Archivos de sistema y logs
+.DS_Store
+Thumbs.db
+*.log
+
+# Dependencias (si existieran)
+node_modules/
+package-lock.json
