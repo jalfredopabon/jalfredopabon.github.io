@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alfredo Pabón | Análisis de Datos e Impacto Social</title>
+    <!-- Cache Purge Version: 1.0.1 (Build: 20260425_1842) -->
+    <meta name="version" content="1.0.1">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Playfair Display (Serif) & Inter (Sans) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-navy': '#0A192F',
+                        'brand-offwhite': '#F8FAFC',
+                        'brand-slate': '#475569',
+                        'brand-accent': '#2563EB', // Azul Cobalto para vivos
+                    },
+                    fontFamily: {
+                        'serif': ['"Playfair Display"', 'serif'],
+                        'sans': ['"Inter"', 'sans-serif'],
+                    },
+                    borderRadius: {
+                        'premium': '8px',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style type="text/css">        /* Suavizado y Legibilidad Premium (Optimizado para Inter) */
+        * {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+            font-optical-sizing: auto;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        body {
+            font-feature-settings: "cv02", "cv05", "cv08", "cv11", "ss01";
+            background-color: #F8FAFC;
+            color: #0A192F;
+            font-family: 'Inter', sans-serif;
+                        scroll-behavior: smooth;
+        }
+
+        .title-serif {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Tarjetas de datos planas (Estilo M&E Institucional) */
+        .glass-card {
+            background: #FFFFFF;
+            border: 2px solid transparent; /* Transparente por defecto pero manteniendo la caja estructural */
+            transition: border-color 0.2s ease-in-out;
+        }
+
+        .status-badge {
+            background-color: transparent !important;
+            border: 1px solid #0a66c2 !important;
+            color: #0a66c2 !important;
+            font-size: 11px !important;
+            font-weight: 500 !important;
+            border-radius: 6px !important;
+            padding: 2px 10px !important;
+            display: inline-block !important;
+        }
+
+        /* Estilos Carrusel */
+        .carousel-container {
+            position: relative;
+            overflow: hidden;
+        }
+        .carousel-slide {
+            display: none;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        .carousel-slide.active {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.98); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        
+        .glass-card:hover, .glass-card:focus-within {
+            border-color: #0A192F; /* Azul oscuro del footer */
+        }
+
+        /* Efecto de línea animada para el índice */
+        .nav-link {
+            position: relative;
+            padding-bottom: 2px;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #2563EB; /* brand-accent */
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Badge de Carga en Vivo (Glassmorphism) */
+        .iframe-loader {
+            position: absolute;
+            top: 1.25rem;
+            left: 1.25rem;
+            z-index: 20;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            padding: 0.5rem 0.8rem;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: 6px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            /* Arranca invisible; JS lo activa al entrar en viewport */
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.4s;
+            pointer-events: none;
+        }
+
+        .iframe-loader.loader-visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .iframe-loader.loader-hidden {
+            opacity: 0 !important;
+            visibility: hidden !important;
+            transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.8s;
+        }
+
+        .iframe-loader .pulse-dot {
+            width: 7px;
+            height: 7px;
+            background-color: #10B981;
+            border-radius: 50%;
+            position: relative;
+        }
+
+        .iframe-loader .pulse-dot::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            border-radius: 50%;
+            background-color: #10B981;
+            animation: badge-pulse 1.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+        }
+
+        @keyframes badge-pulse {
+            0% { transform: scale(1); opacity: 0.8; }
+            100% { transform: scale(3.5); opacity: 0; }
+        }
+
+        /* Barra de progreso superior del iframe */
+        .iframe-progress {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 2px;
+            width: 0%;
+            z-index: 30;
+            background: linear-gradient(90deg, #2563EB, #10B981);
+            opacity: 0;
+            /* Estado inicial sin transición para que el reset sea instantáneo */
+            transition: none;
+        }
+
+        .iframe-progress.progress-running {
+            opacity: 1;
+            width: 85%;
+            /* Curva ease-out: arranca rápido, se frena hacia el final (simula carga real) */
+            transition: opacity 0.3s ease, width 14s cubic-bezier(0.05, 0.5, 0.1, 1);
+        }
+
+        .iframe-progress.progress-complete {
+            width: 100%;
+            transition: width 0.25s ease-in;
+        }
+
+        .iframe-progress.progress-fade {
+            opacity: 0;
+            transition: opacity 0.5s ease 0.25s;
+        }
+
+        /* Estilos Sistema Híbrido PBI */
+        .pbi-preview {
+            z-index: 10;
+            transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .pbi-overlay {
+            z-index: 15;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            background: rgba(255, 255, 255, 0.65);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            opacity: 1; /* Visible en móvil por defecto */
+        }
+
+        @media (min-width: 768px) {
+            .pbi-overlay {
+                background: rgba(255, 255, 255, 0.15);
+                backdrop-filter: blur(0px);
+                -webkit-backdrop-filter: blur(0px);
+                opacity: 0;
+            }
+            .pbi-container:hover .pbi-overlay {
+                background: rgba(255, 255, 255, 0.65);
+                backdrop-filter: blur(8px);
+                -webkit-backdrop-filter: blur(8px);
+                opacity: 1;
+            }
+        }
+
+        .pbi-preview.hidden, .pbi-overlay.hidden {
+            opacity: 0 !important;
+            pointer-events: none !important;
+        }
+
+        .pbi-overlay .play-icon {
+            transform: scale(1);
+            opacity: 1;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        @media (min-width: 768px) {
+            .pbi-overlay .play-icon {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            .pbi-container:hover .play-icon {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        /* Utilidad para ocultar scrollbar */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* Tech Stack Section (Impeccable) */
+        .tech-stack-item {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 0.6rem;
+            flex-shrink: 0; /* Previene que los iconos se compriman en móviles */
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            filter: grayscale(1) opacity(0.7);
+            cursor: default;
+        }
+
+        .tech-stack-item:hover {
+            filter: grayscale(0) contrast(1);
+            opacity: 1;
+        }
+
+        .tech-stack-name {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: #475569; /* brand-slate */
+            background-color: #F8FAFC;
+            padding: 0 0.2rem;
+            letter-spacing: -0.01em;
+            transition: color 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .tech-stack-item:hover .tech-stack-name {
+            color: #0A192F; /* brand-navy */
+        }
+
+        /* High-Contrast Blocking (Editorial Plates) */
+        .editorial-plate {
+            background-color: #F8FAFC;
+            padding: 0.15em 0.4em;
+            box-decoration-break: clone;
+            -webkit-box-decoration-break: clone;
+            display: inline;
+            line-height: 1.6;
+        }
+
+        .editorial-plate-block {
+            background-color: #F8FAFC;
+            padding: 1.5rem 2rem;
+            display: block;
+            width: fit-content;
+            max-width: 100%;
+        }
+
+        /* Cursor Spotlight Grid Effect */
+        .hero-section {
+            position: relative;
+            overflow: visible;
+        }
+
+        .dot-grid {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            z-index: -1;
+            background-image: radial-gradient(circle, #BAE6FD 2.5px, transparent 2.5px);
+            background-size: 32px 32px;
+            opacity: 0.9;
+            mask-image: radial-gradient(circle 200px at var(--mouse-x, 50%) var(--mouse-y, 50%), black 50%, transparent 100%);
+            -webkit-mask-image: radial-gradient(circle 200px at var(--mouse-x, 50%) var(--mouse-y, 50%), black 50%, transparent 100%);
+            transition: opacity 0.5s ease;
+        }
+
+        /* Subtle base grid always visible */
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: radial-gradient(circle, #BAE6FD 1.2px, transparent 1.2px);
+            background-size: 32px 32px;
+            opacity: 0.2;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        /* Lógica Metáfora: Caos -> Orden */
+        .chaos-grid .cube {
+            transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: transform, opacity;
+            opacity: 0.15; /* Caos: cuadros casi invisibles, tenues */
+        }
+
+        /* Estado Ordenado: Hover amplio en desktop (zona .group) + Scroll en móvil (.in-view) */
+        .group:hover .chaos-grid .cube,
+        .chaos-grid.in-view .cube {
+            transform: translate(0, 0) rotate(0) scale(1) !important;
+            opacity: var(--target-opacity) !important;
+        }
+
+        /* Variaciones de dispersión móvil (Seguro para pantallas pequeñas) */
+        @media (max-width: 767px) {
+            .cube-c1 { transform: translate(-10vw, -15vh) rotate(15deg) scale(1.5); }
+            .cube-c2 { transform: translate(12vw, -10vh) rotate(-20deg) scale(1.2); }
+            .cube-c3 { transform: translate(-18vw, 12vh) rotate(45deg) scale(1.8); }
+            .cube-c4 { transform: translate(14vw, 18vh) rotate(-10deg) scale(1.3); }
+            .cube-c5 { transform: translate(-12vw, -8vh) rotate(-30deg) scale(1.4); }
+            .cube-c6 { transform: translate(16vw, 15vh) rotate(60deg) scale(1.6); }
+            .cube-c7 { transform: translate(-15vw, 20vh) rotate(-15deg) scale(1.2); }
+            .cube-c8 { transform: translate(10vw, -18vh) rotate(25deg) scale(1.5); }
+            .cube-c9 { transform: translate(-8vw, 22vh) rotate(90deg) scale(1.3); }
+            .cube-c10 { transform: translate(18vw, -12vh) rotate(-40deg) scale(1.7); }
+            .cube-c11 { transform: translate(-20vw, -15vh) rotate(15deg) scale(1.1); }
+            .cube-c12 { transform: translate(12vw, 10vh) rotate(110deg) scale(1.4); }
+            .cube-c13 { transform: translate(-14vw, -20vh) rotate(-70deg) scale(1.6); }
+            .cube-c14 { transform: translate(15vw, 5vh) rotate(35deg) scale(1.2); }
+            .cube-c15 { transform: translate(-10vw, 15vh) rotate(-25deg) scale(1.5); }
+            .cube-c16 { transform: translate(20vw, 20vh) rotate(15deg) scale(1.3); }
+        }
+
+        /* Variaciones Desktop (Más agresivas) */
+        @media (min-width: 768px) {
+            .cube-c1 { transform: translate(-32vw, -30vh) rotate(105deg) scale(2.1); }
+            .cube-c2 { transform: translate(28vw, -25vh) rotate(-45deg) scale(1.8); }
+            .cube-c3 { transform: translate(-35vw, 20vh) rotate(75deg) scale(2.4); }
+            .cube-c4 { transform: translate(30vw, 35vh) rotate(-30deg) scale(1.9); }
+            .cube-c5 { transform: translate(-25vw, -35vh) rotate(-120deg) scale(2.2); }
+            .cube-c6 { transform: translate(35vw, -20vh) rotate(60deg) scale(1.7); }
+            .cube-c7 { transform: translate(-28vw, 32vh) rotate(-15deg) scale(2.0); }
+            .cube-c8 { transform: translate(25vw, -38vh) rotate(150deg) scale(2.3); }
+            .cube-c9 { transform: translate(-20vw, 40vh) rotate(90deg) scale(1.6); }
+            .cube-c10 { transform: translate(40vw, -15vh) rotate(-70deg) scale(2.5); }
+            .cube-c11 { transform: translate(-42vw, -25vh) rotate(205deg) scale(1.8); }
+            .cube-c12 { transform: translate(32vw, 25vh) rotate(110deg) scale(2.1); }
+            .cube-c13 { transform: translate(-30vw, -45vh) rotate(-150deg) scale(1.9); }
+            .cube-c14 { transform: translate(38vw, 15vh) rotate(85deg) scale(2.4); }
+            .cube-c15 { transform: translate(-22vw, 35vh) rotate(-35deg) scale(1.7); }
+            .cube-c16 { transform: translate(45vw, 40vh) rotate(125deg) scale(2.2); }
+        }
+    </style>
+</head>
+<body class="bg-brand-offwhite text-brand-navy min-h-screen">
+
+    <!-- Header / Hero Section (Full Width Background) -->
+    <header class="hero-section min-h-svh flex flex-col justify-center w-full pt-10 pb-20 relative overflow-hidden">
+        
+        <!-- Navegación Superior -->
+        <nav class="absolute top-0 left-0 w-full px-8 md:px-24 py-3 md:py-4 flex items-center justify-between z-30">
+            <!-- Logo con Siglas -->
+            <div class="flex items-center gap-4">
+                <div class="w-10 h-10 bg-brand-navy text-white flex items-center justify-center rounded-xl font-bold tracking-tighter text-lg shadow-lg">
+                    AP
+                </div>
+                <span class="hidden md:inline-block text-base md:text-lg font-bold tracking-tight text-brand-navy">
+                    Alfredo Pabón
+                </span>
+            </div>
+            
+            <!-- Botón CTA LinkedIn -->
+            <a href="https://www.linkedin.com/in/jalfredopabon" target="_blank" 
+               class="flex items-center gap-2 bg-[#0a66c2] hover:bg-white text-white hover:text-[#0a66c2] border border-transparent hover:border-[#0a66c2] px-5 py-2 rounded-md transition-all duration-300 text-[10px] md:text-xs font-semibold shadow-sm hover:shadow-md">
+                <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24">
+                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                </svg>
+                LinkedIn
+            </a>
+        </nav>
+
+        <!-- Interactive Spotlight Grid -->
+        <div class="dot-grid" id="hero-grid"></div>
+        <div class="max-w-6xl mx-auto px-8 md:px-24 w-full relative z-10">
+            <!-- Contenedor Único Centrado (Restaurado) -->
+            <div class="flex flex-col items-center justify-center w-full max-w-5xl mx-auto text-center mt-4 md:mt-8">
+                
+                <!-- Fase 2: Título Principal Gigante -->
+                <h1 class="title-serif text-4xl md:text-6xl lg:text-7xl font-medium tracking-tight text-brand-navy leading-[1.1] mb-6">
+                    Transformo datos en <br />
+                    <span class="text-brand-accent">decisiones estratégicas.</span>
+                </h1>
+                
+                <!-- Fase 3: Bio Acortada y Limpia -->
+                <p class="text-brand-slate text-base md:text-xl font-light leading-relaxed max-w-3xl mx-auto mb-8">
+                    Psicólogo y analista especializado en el sector social y humanitario. Diseño ecosistemas de información: desde la recolección en terreno hasta visualizaciones interactivas de alto impacto.
+                </p>
+
+                <!-- Botón LinkedIn Centrado -->
+                <div class="mb-6">
+                    <a href="https://www.linkedin.com/in/jalfredopabon" target="_blank"
+                       class="inline-flex items-center gap-3 bg-[#0a66c2] hover:bg-white text-white hover:text-[#0a66c2] border border-transparent hover:border-[#0a66c2] font-semibold px-6 py-3 md:px-8 md:py-4 rounded-md transition-all duration-300">
+                        <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                        Ver perfil en LinkedIn
+                    </a>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- 5. Metáfora Interactiva: Del Caos al Orden (Compresión Física) -->
+        <div class="w-full relative group py-4 cursor-crosshair">
+            <div class="w-full flex items-center justify-center">
+                <!-- El Contenedor de la Cuadrícula (Caos -> Orden) -->
+                <div class="chaos-grid grid grid-cols-4 gap-1 md:gap-2 rounded-xl transition-all duration-1000 relative z-20">
+                    <!-- Fila 1 -->
+                    <div class="cube cube-c1 w-3 h-3 md:w-6 md:h-6 bg-brand-navy rounded-sm" style="--target-opacity: 0.4;"></div>
+                    <div class="cube cube-c2 w-3 h-3 md:w-6 md:h-6 bg-[#4285F4] rounded-sm" style="--target-opacity: 0.3;"></div>
+                    <div class="cube cube-c3 w-3 h-3 md:w-6 md:h-6 bg-brand-navy rounded-sm" style="--target-opacity: 0.6;"></div>
+                    <div class="cube cube-c4 w-3 h-3 md:w-6 md:h-6 bg-[#217346] rounded-sm" style="--target-opacity: 0.5;"></div>
+                    <!-- Fila 2 -->
+                    <div class="cube cube-c5 w-3 h-3 md:w-6 md:h-6 bg-[#4285F4] rounded-sm" style="--target-opacity: 0.2;"></div>
+                    <div class="cube cube-c6 w-3 h-3 md:w-6 md:h-6 bg-brand-navy rounded-sm" style="--target-opacity: 0.8;"></div>
+                    <div class="cube cube-c7 w-3 h-3 md:w-6 md:h-6 bg-[#eda503] rounded-sm" style="--target-opacity: 0.4;"></div>
+                    <div class="cube cube-c8 w-3 h-3 md:w-6 md:h-6 bg-[#4285F4] rounded-sm" style="--target-opacity: 0.6;"></div>
+                    <!-- Fila 3 -->
+                    <div class="cube cube-c9 w-3 h-3 md:w-6 md:h-6 bg-[#217346] rounded-sm" style="--target-opacity: 0.5;"></div>
+                    <div class="cube cube-c10 w-3 h-3 md:w-6 md:h-6 bg-[#eda503] rounded-sm" style="--target-opacity: 0.3;"></div>
+                    <div class="cube cube-c11 w-3 h-3 md:w-6 md:h-6 bg-[#4285F4] rounded-sm" style="--target-opacity: 0.7;"></div>
+                    <div class="cube cube-c12 w-3 h-3 md:w-6 md:h-6 bg-brand-navy rounded-sm" style="--target-opacity: 0.4;"></div>
+                    <!-- Fila 4 -->
+                    <div class="cube cube-c13 w-3 h-3 md:w-6 md:h-6 bg-[#eda503] rounded-sm" style="--target-opacity: 0.6;"></div>
+                    <div class="cube cube-c14 w-3 h-3 md:w-6 md:h-6 bg-[#217346] rounded-sm" style="--target-opacity: 0.2;"></div>
+                    <div class="cube cube-c15 w-3 h-3 md:w-6 md:h-6 bg-brand-navy rounded-sm" style="--target-opacity: 0.5;"></div>
+                    <div class="cube cube-c16 w-3 h-3 md:w-6 md:h-6 bg-[#4285F4] rounded-sm" style="--target-opacity: 0.4;"></div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Sección 2: Stack de Herramientas (Credibilidad Técnica) -->
+    <section id="stack" class="py-12 md:py-16 bg-slate-50 border-y border-slate-100 relative z-10">
+        <div class="max-w-6xl mx-auto px-8 md:px-24">
+            <div class="flex flex-wrap justify-center items-center gap-x-12 gap-y-8 opacity-60 hover:opacity-100 transition-opacity duration-500">
+                <div class="tech-stack-item">
+                    <svg class="h-6 w-auto" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path fill="#eda503" d="M38,44H26c-0.552,0-1-0.448-1-1V5c0-0.552,0.448-1,1-1h12c0.552,0,1,0.448,1,1v38C39,43.552,38.552,44,38,44z"/><path fill="#ffca28" d="M30,44H18c-0.552,0-1-0.448-1-1V15c0-0.552,0.448-1,1-1h12c0.552,0,1,0.448,1,1v28C31,43.552,30.552,44,30,44z"/><path fill="#ffe082" d="M22,44H10c-0.552,0-1-0.448-1-1V25c0-0.552,0.448-1,1-1h12c0.552,0,1,0.448,1,1v18C23,43.552,22.552,44,22,44z"/></svg>
+                    <span class="tech-stack-name">Power BI</span>
+                </div>
+                <div class="tech-stack-item">
+                    <svg class="h-6 w-auto" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg"><path fill="#1b5e20" d="M9,17.139c0-2.624,2.126-4.75,4.749-4.75H41v27.444C41,41.582,39.583,43,37.834,43H15.332 C11.835,43,9,40.164,9,36.667C9,36.667,9,17.139,9,17.139z"/><path fill="#43a047" d="M9,22.75C9,20.126,11.126,18,13.749,18h14.418c-1.749,0-3.166,1.418-3.166,3.167v6 c0,1.749-1.417,3.167-3.166,3.167h-6.502c-3.497,0-6.332,2.836-6.332,6.333L9,22.75L9,22.75z"/><path fill="#9ccc65" d="M9,11.333C9,7.836,11.835,5,15.332,5h12.941v13H15.332C11.835,18,9,20.836,9,24.333 C9,24.333,9,11.333,9,11.333z"/><path fill="#ccff90" d="M28.166,5h9.668C39.582,5,41,6.418,41,8.166v6.668C41,16.582,39.582,18,37.834,18h-9.668 C26.417,18,25,16.582,25,14.834V8.166C25,6.418,26.417,5,28.166,5z"/><path fill="#2e7d32" d="M7.5,23h10c1.933,0,3.5,1.567,3.5,3.5v10c0,1.933-1.567,3.5-3.5,3.5h-10C5.567,40,4,38.433,4,36.5 v-10C4,24.567,5.567,23,7.5,23z"/><path fill="#fff" d="M16.965,36.357h-2.62L12.7,33.261c-0.059-0.109-0.104-0.194-0.135-0.258 c-0.027-0.067-0.057-0.145-0.088-0.23H12.45c-0.041,0.109-0.079,0.197-0.115,0.264c-0.036,0.068-0.079,0.151-0.129,0.251 l-1.706,3.068H8.03l2.965-4.864l-2.762-4.85h2.586l1.462,2.764c0.059,0.113,0.109,0.213,0.149,0.298 c0.045,0.081,0.09,0.178,0.135,0.291h0.027c0.063-0.131,0.112-0.235,0.149-0.311c0.041-0.076,0.095-0.178,0.162-0.304l1.516-2.736 h2.464l-2.802,4.776L16.965,36.357L16.965,36.357z"/></svg>
+                    <span class="tech-stack-name">Excel</span>
+                </div>
+                <div class="tech-stack-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" class="h-6 w-auto">
+                        <path fill="#1E8FED" fill-rule="evenodd" d="M93.5,26.5 C110.5,26.3 127.5,26.5 144.5,27 C168.3,32.7 180.6,47.9 181.5,72.5 C177,72.1 172.5,71.4 168,70.5 C164.2,71.4 160.4,72.1 156.5,72.5 C157,61.8 152,55.3 141.5,53 C127.2,52.3 112.8,52.3 98.5,53 C91.2,54.3 86.4,58.5 84,65.5 C83.3,102.2 83.3,138.8 84,175.5 C86.5,183 91.6,187.1 99.5,188 C113.5,188.7 127.5,188.7 141.5,188 C148.4,186.8 153.2,183 156,176.5 C156.3,168.5 156.7,160.5 157,152.5 C164.6,143 172.4,133.6 180.5,124.5 C193.8,195.7 164.8,224.9 93.5,212 C74.6,208.4 62.7,197.2 58,178.5 C57.3,139.2 57.3,139.2 58,60.5 C62.9,41.8 74.7,30.4 93.5,26.5 Z M165.5,88.5 C171,88.1 176,89.5 180.5,92.5 C181.9,95.8 181.4,98.8 179,101.5 C165.2,117.3 151.3,133.2 137.5,149 C130.8,153.7 124.1,153.7 117.5,149 C112.9,144.4 109,139.2 106,133.5 C103.5,125.8 105,118.9 110.5,113 C112.9,112.3 115.2,112.5 117.5,113.5 C120.8,117.5 124.1,121.5 127.5,125.5 C137.3,114.8 147,104 156.5,93 C159.3,90.9 162.3,89.4 165.5,88.5 Z" />
+                    </svg>
+                    <span class="tech-stack-name">KoboToolbox</span>
+                </div>
+                <div class="tech-stack-item">
+                    <svg class="h-6 w-auto" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                        <path fill="#43a047" d="M37,45H11c-1.657,0-3-1.343-3-3V6c0-1.657,1.343-3,3-3h19l10,10v29C40,43.657,38.657,45,37,45z"></path>
+                        <path fill="#c8e6c9" d="M40 13L30 13 30 3z"></path>
+                        <path fill="#2e7d32" d="M30 13L40 23 40 13z"></path>
+                        <path fill="#e8f5e9" d="M31,23H17h-2v2v2v2v2v2v2v2h18v-2v-2v-2v-2v-2v-2v-2H31z M17,25h4v2h-4V25z M17,29h4v2h-4V29z M17,33h4v2h-4V33z M31,35h-8v-2h8V35z M31,31h-8v-2h8V31z M31,27h-8v-2h8V27z"></path>
+                    </svg>
+                    <span class="tech-stack-name">Google Sheets</span>
+                </div>
+                <div class="tech-stack-item">
+                    <svg class="h-6 w-auto" viewBox="-78.5 0 413 413" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M127.128486,0 C113.797782,0.0058471726 101.556004,7.36006381 95.2905253,19.126605 C89.0250469,30.8931461 89.7564532,45.1553578 97.1927396,56.2192339 L112.606279,40.8274339 C112.096845,39.2920176 111.839876,37.6841242 111.845385,36.066411 C111.845385,27.6618072 118.658663,20.8485297 127.063267,20.8485297 C135.467871,20.8485297 142.281148,27.6618072 142.281148,36.066411 C142.281148,44.4710148 135.467871,51.2842924 127.063267,51.2842924 C125.452814,51.2878362 123.852389,51.0308872 122.323984,50.5233983 L106.932184,65.9151983 C119.749817,74.6084738 136.686605,74.1479499 149.012895,64.7709924 C161.339185,55.3940349 166.302744,39.1943452 161.345227,24.5216568 C156.387711,9.84896827 142.61604,-0.0205786569 127.128486,0 L127.128486,0 Z" fill="#34A853"></path>
+                        <path d="M112.780303,105.112113 C112.803794,92.9288201 108.858278,81.0693768 101.540706,71.3284161 L81.5400617,91.3073204 C87.7949796,102.747737 85.5440645,116.967804 76.0616244,125.917131 L86.9315396,152.483203 C103.037113,142.110661 112.772753,124.268811 112.780303,105.112113 Z" fill="#FBBC04"></path>
+                        <path d="M56.8870939,133.786949 L56.3653379,133.786949 C44.0975407,133.788013 33.1858466,125.990585 29.2128405,114.383946 C25.2398344,102.777307 29.0843199,89.9287712 38.7794013,82.4118404 C48.4744826,74.8949096 61.8756692,74.3722813 72.126715,81.1113398 L91.9317006,61.3063543 C72.6737207,45.6936654 45.4778243,44.4893124 24.9151409,58.3385684 C4.35245741,72.1878245 -4.75374244,97.8421492 2.47549859,121.556363 C9.70473962,145.270576 31.5737,161.482171 56.3653379,161.50524 C60.1906548,161.507115 64.0066702,161.128427 67.7570091,160.374762 L56.8870939,133.786949 Z" fill="#EA4335"></path>
+                        <path d="M127.88938,156.76595 C115.371706,156.753269 102.919887,158.577095 90.9316684,162.179168 L106.780005,200.897806 C113.678715,199.188192 120.760254,198.326726 127.86764,198.332506 C169.050784,198.344513 204.491034,227.444917 212.516351,267.838552 C220.541668,308.232187 198.917134,348.670095 160.866351,364.424121 C122.815568,380.178148 78.9350487,366.861058 56.0581359,332.616375 C33.1812232,298.371692 37.6787581,252.735993 66.8004566,223.615929 C72.8771111,217.558264 79.8143655,212.430409 87.3880761,208.398047 L71.7136583,169.788108 C13.2865745,198.402523 -14.3767247,266.297107 7.41546106,327.59645 C29.2076468,388.895793 93.5203541,424.092503 156.898395,409.404661 C220.276436,394.716818 262.550912,334.818559 255.157557,270.182291 C247.764201,205.546024 193.055814,156.741054 127.998079,156.74421 L127.88938,156.76595 Z" fill="#4285F4"></path>
+                    </svg>
+                    <span class="tech-stack-name">Looker Studio</span>
+                </div>
+                <div class="tech-stack-item">
+                    <svg class="h-6 w-auto" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                        <path fill="#dc4c2c" d="M8,24c0,9.941,8.059,18,18,18s18-8.059,18-18H26H8z"></path>
+                        <path fill="#f7a278" d="M26,6v18h18C44,14.059,35.941,6,26,6z"></path>
+                        <path fill="#c06346" d="M26,6C16.059,6,8,14.059,8,24h18V6z"></path>
+                        <path fill="#9b341f" d="M22.319,34H5.681C4.753,34,4,33.247,4,32.319V15.681C4,14.753,4.753,14,5.681,14h16.638 C23.247,14,24,14.753,24,15.681v16.638C24,33.247,23.247,34,22.319,34z"></path>
+                        <path fill="#fff" d="M14.673,19.012H10v10h2.024v-3.521H14.3c1.876,0,3.397-1.521,3.397-3.397v-0.058 C17.697,20.366,16.343,19.012,14.673,19.012z M15.57,22.358c0,0.859-0.697,1.556-1.556,1.556h-1.99v-3.325h1.99 c0.859,0,1.556,0.697,1.556,1.556V22.358z"></path>
+                    </svg>
+                    <span class="tech-stack-name">PowerPoint</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección 3: Índice de Navegación (Tabs) -->
+    <section class="py-8 md:py-12 bg-white border-b border-slate-100 relative z-10">
+        <div class="max-w-6xl mx-auto px-8 md:px-24">
+            <!-- Tags de Navegación -->
+            <div class="flex flex-wrap justify-start gap-x-8 gap-y-4">
+                <a href="#brecha-digital" class="nav-link text-xs font-bold tracking-widest text-brand-navy/60 hover:text-brand-accent">Social</a>
+                <a href="#redes-sociales" class="nav-link text-xs font-bold tracking-widest text-brand-navy/60 hover:text-brand-accent">Tendencias</a>
+                <a href="#tallest-buildings" class="nav-link text-xs font-bold tracking-widest text-brand-navy/60 hover:text-brand-accent">Global</a>
+                <a href="#presentacion" class="nav-link text-xs font-bold tracking-widest text-brand-navy/60 hover:text-brand-accent">Impacto</a>
+                <a href="#territorial" class="nav-link text-xs font-bold tracking-widest text-brand-navy/60 hover:text-brand-accent">Territorial</a>
+                <a href="#diseno-web" class="nav-link text-xs font-bold tracking-widest text-brand-navy/60 hover:text-brand-accent">Diseño web</a>
+            </div>
+        </div>
+    </section>
+
+    
+    <!-- Main Content: Analítica -->
+    <main>
+        <div id="analitica-grid">
+            
+            <!-- Tarjeta Power BI 1 -->
+            <section id="brecha-digital" class="bg-white py-16 md:py-32 scroll-mt-12">
+                <div class="max-w-6xl mx-auto px-8 md:px-24 flex flex-col space-y-12 md:space-y-16">
+                    <div class="max-w-3xl">
+                        <div class="flex items-center mb-4">
+                            <span class="status-badge inline-block px-3 py-1 rounded-premium text-xs tracking-wider cursor-default">Análisis social</span>
+                            <span class="text-[11px] text-brand-slate/60 border-l border-slate-300 ml-3 pl-3">Excel + Power BI</span>
+                        </div>
+                        <h3 class="text-3xl md:text-4xl font-semibold text-brand-navy mb-6">Brecha digital: desafío urbano vs rural</h3>
+                        <p class="text-brand-slate text-base md:text-lg leading-relaxed">
+                            Visualización de datos sobre el acceso a internet en hogares móviles y fijos en América Latina. El análisis destaca la disparidad crítica entre zonas urbanas y rurales (2022), revelando cómo la conectividad sigue siendo un privilegio geográfico.
+                        </p>
+                    </div>
+                    <!-- iFrame Power BI #1 -->
+                    <div class="pbi-container group relative aspect-[600/373.5] w-full overflow-hidden rounded-premium shadow-sm hover:shadow-md transition-shadow duration-500 bg-slate-50">
+                        <!-- Preview Estática -->
+                        <img src="imagenes/preview/pbi-brecha-digital.webp" alt="Preview Brecha Digital" class="pbi-preview absolute inset-0 w-full h-full object-cover">
+                        
+                        <!-- Overlay Interactivo -->
+                        <div class="pbi-overlay absolute inset-0 flex flex-col items-center justify-center gap-4 cursor-pointer" onclick="activarDashboard(this)">
+                            <div class="play-icon w-16 h-16 bg-white/90 rounded-full flex items-center justify-center shadow-lg text-brand-accent">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122" />
+                                </svg>
+                            </div>
+                            <span class="text-sm font-bold text-brand-navy tracking-tight opacity-0 group-hover:opacity-100 transition-opacity">Explorar dashboard</span>
+                        </div>
+
+                        <div class="iframe-progress"></div>
+                        <div class="iframe-loader">
+                            <div class="pulse-dot"></div>
+                            <span class="text-[10px] tracking-widest text-brand-navy">Estableciendo conexión...</span>
+                        </div>
+                        <iframe title="Nacer en el campo  Nacer desconectado" class="w-full h-full opacity-0 transition-opacity duration-700" data-src="https://app.powerbi.com/view?r=eyJrIjoiMGU5NTViMDgtMzAwNS00NzA4LThlMTQtOGVjNDZjYTQzY2ZhIiwidCI6IjM0MzAzNTQxLTc0ZWMtNGQ0YS04YzVhLTgwNDlkMmZkNmNlNiIsImMiOjR9" frameborder="0" allowFullScreen="true"></iframe>
+                    </div>
+                    <!-- CTA -->
+                    <div class="flex justify-end pt-8">
+                        <a href="https://app.powerbi.com/view?r=eyJrIjoiMGU5NTViMDgtMzAwNS00NzA4LThlMTQtOGVjNDZjYTQzY2ZhIiwidCI6IjM0MzAzNTQxLTc0ZWMtNGQ0YS04YzVhLTgwNDlkMmZkNmNlNiIsImMiOjR9" target="_blank" rel="noopener noreferrer"
+                           class="inline-flex items-center gap-2 text-sm font-semibold text-brand-accent hover:bg-brand-accent hover:text-white border border-brand-accent px-5 py-2.5 rounded-md transition-all duration-300 group/btn">
+                            Ver en Power BI
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Tarjeta Power BI 2 -->
+            <section id="redes-sociales" class="bg-[#F1F5F9] py-16 md:py-32 scroll-mt-12">
+                <div class="max-w-6xl mx-auto px-8 md:px-24 flex flex-col space-y-12 md:space-y-16">
+                    <div class="max-w-3xl">
+                        <div class="flex items-center mb-4">
+                            <span class="status-badge inline-block px-3 py-1 rounded-premium text-xs tracking-wider cursor-default">Tendencias digitales</span>
+                            <span class="text-[11px] text-brand-slate/60 border-l border-slate-300 ml-3 pl-3">Excel + Power BI</span>
+                        </div>
+                        <h3 class="text-3xl md:text-4xl font-semibold text-brand-navy mb-6">Usuarios de redes sociales</h3>
+                        <p class="text-brand-slate text-base md:text-lg leading-relaxed">
+                            Gráfico de líneas que visualiza la evolución de usuarios de redes sociales a lo largo del tiempo (datos sintéticos basados en años de lanzamiento y tendencias de mercado). 
+                            <br><br>
+                            Incluye leyenda interactiva con switches que permiten activar/desactivar cada red social. Cuenta con un botón de cambio de idioma en la esquina superior derecha para alternar entre español e inglés. La interactividad se logra de forma nativa sin el uso de marcadores.
+                        </p>
+                    </div>
+                    <!-- iFrame Power BI #2 -->
+                    <div class="pbi-container group relative aspect-[600/373.5] w-full overflow-hidden rounded-premium shadow-sm hover:shadow-md transition-shadow duration-500 bg-slate-50">
+                        <!-- Preview Estática -->
+                        <img src="imagenes/preview/pbi-redes-sociales.webp" alt="Preview Redes Sociales" class="pbi-preview absolute inset-0 w-full h-full object-cover">
+                        
+                        <!-- Overlay Interactivo -->
+                        <div class="pbi-overlay absolute inset-0 flex flex-col items-center justify-center gap-4 cursor-pointer" onclick="activarDashboard(this)">
+                            <div class="play-icon w-16 h-16 bg-white/90 rounded-full flex items-center justify-center shadow-lg text-brand-accent">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122" />
+                                </svg>
+                            </div>
+                            <span class="text-sm font-bold text-brand-navy tracking-tight opacity-0 group-hover:opacity-100 transition-opacity">Explorar dashboard</span>
+                        </div>
+
+                        <div class="iframe-progress"></div>
+                        <div class="iframe-loader">
+                            <div class="pulse-dot"></div>
+                            <span class="text-[10px] tracking-widest text-brand-navy">Estableciendo conexión...</span>
+                        </div>
+                        <iframe title="UsuariosRedesSocialesQuickViz" class="w-full h-full opacity-0 transition-opacity duration-700" data-src="https://app.powerbi.com/view?r=eyJrIjoiMDY0YTY4NjUtNzE2Zi00NjEzLWE5NDUtMWFiNTA2MjBjYTRiIiwidCI6IjM0MzAzNTQxLTc0ZWMtNGQ0YS04YzVhLTgwNDlkMmZkNmNlNiIsImMiOjR9" frameborder="0" allowFullScreen="true"></iframe>
+                    </div>
+                    <!-- CTA -->
+                    <div class="flex justify-end pt-8">
+                        <a href="https://app.powerbi.com/view?r=eyJrIjoiMDY0YTY4NjUtNzE2Zi00NjEzLWE5NDUtMWFiNTA2MjBjYTRiIiwidCI6IjM0MzAzNTQxLTc0ZWMtNGQ0YS04YzVhLTgwNDlkMmZkNmNlNiIsImMiOjR9" target="_blank" rel="noopener noreferrer"
+                           class="inline-flex items-center gap-2 text-sm font-semibold text-brand-accent hover:bg-brand-accent hover:text-white border border-brand-accent px-5 py-2.5 rounded-md transition-all duration-300 group/btn">
+                            Ver en Power BI
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Tarjeta Power BI 3 -->
+            <section id="tallest-buildings" class="bg-white py-16 md:py-32 scroll-mt-12">
+                <div class="max-w-6xl mx-auto px-8 md:px-24 flex flex-col space-y-12 md:space-y-16">
+                    <div class="max-w-3xl">
+                        <div class="flex items-center mb-4">
+                            <span class="status-badge inline-block px-3 py-1 rounded-premium text-xs tracking-wider cursor-default">Análisis comparativo</span>
+                            <span class="text-[11px] text-brand-slate/60 border-l border-slate-300 ml-3 pl-3">Excel + Power BI</span>
+                        </div>
+                        <h3 class="text-3xl md:text-4xl font-semibold text-brand-navy mb-6">Carrera hacia el cielo: los edificios más altos del mundo</h3>
+                        <p class="text-brand-slate text-base md:text-lg leading-relaxed">
+                            Análisis comparativo de los 300 edificios más altos del mundo (completados, en construcción y propuestos). Incluye sistema de altura dinámica (m/ft) y filtros multidimensionales para entender las tendencias de verticalidad urbana global.
+                        </p>
+                    </div>
+                    <!-- iFrame Power BI #3 -->
+                    <div class="pbi-container group relative aspect-[600/373.5] w-full overflow-hidden rounded-premium shadow-sm hover:shadow-md transition-shadow duration-500 bg-slate-50">
+                        <!-- Preview Estática -->
+                        <img src="imagenes/preview/pbi-edificios.webp" alt="Preview Edificios" class="pbi-preview absolute inset-0 w-full h-full object-cover">
+                        
+                        <!-- Overlay Interactivo -->
+                        <div class="pbi-overlay absolute inset-0 flex flex-col items-center justify-center gap-4 cursor-pointer" onclick="activarDashboard(this)">
+                            <div class="play-icon w-16 h-16 bg-white/90 rounded-full flex items-center justify-center shadow-lg text-brand-accent">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122" />
+                                </svg>
+                            </div>
+                            <span class="text-sm font-bold text-brand-navy tracking-tight opacity-0 group-hover:opacity-100 transition-opacity">Explorar dashboard</span>
+                        </div>
+
+                        <div class="iframe-progress"></div>
+                        <div class="iframe-loader">
+                            <div class="pulse-dot"></div>
+                            <span class="text-[10px] tracking-widest text-brand-navy">Estableciendo conexión...</span>
+                        </div>
+                        <iframe title="Edificios mas altos del mundo" class="w-full h-full opacity-0 transition-opacity duration-700" data-src="https://app.powerbi.com/view?r=eyJrIjoiZGRiY2IwNjUtNmYyMS00NjYwLWJkYzgtNGZhZTNiNTk5MmE5IiwidCI6IjM0MzAzNTQxLTc0ZWMtNGQ0YS04YzVhLTgwNDlkMmZkNmNlNiIsImMiOjR9" frameborder="0" allowFullScreen="true"></iframe>
+                    </div>
+                    <!-- CTA -->
+                    <div class="flex justify-end pt-8">
+                        <a href="https://app.powerbi.com/view?r=eyJrIjoiZGRiY2IwNjUtNmYyMS00NjYwLWJkYzgtNGZhZTNiNTk5MmE5IiwidCI6IjM0MzAzNTQxLTc0ZWMtNGQ0YS04YzVhLTgwNDlkMmZkNmNlNiIsImMiOjR9" target="_blank" rel="noopener noreferrer"
+                           class="inline-flex items-center gap-2 text-sm font-semibold text-brand-accent hover:bg-brand-accent hover:text-white border border-brand-accent px-5 py-2.5 rounded-md transition-all duration-300 group/btn">
+                            Ver en Power BI
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Tarjeta PowerPoint (Ancho Completo) -->
+            <section id="presentacion" class="bg-[#F1F5F9] py-16 md:py-32 scroll-mt-12">
+                <div class="max-w-6xl mx-auto px-8 md:px-24 flex flex-col space-y-12 md:space-y-16">
+                    <div class="max-w-3xl">
+                        <div class="flex items-center mb-4">
+                            <span class="status-badge inline-block px-3 py-1 rounded-premium text-xs tracking-wider cursor-default">Impacto social</span>
+                            <span class="text-[11px] text-brand-slate/60 border-l border-slate-300 ml-3 pl-3">Excel + Power Point</span>
+                        </div>
+                        <h3 class="text-3xl md:text-4xl font-semibold text-brand-navy mb-6">Metodologías de Cambio Cultural</h3>
+                        <p class="text-brand-slate text-base md:text-lg leading-relaxed">
+                            Presentación interactiva sobre el impacto social de las estrategias implementadas en el Sistema Nacional de Cuidado. Detalla la transformación cultural y el fortalecimiento de las redes de cuidadores con claridad estratégica.
+                        </p>
+                    </div>
+                    <!-- Carrusel de Imágenes Elite -->
+                    <div class="relative group">
+                        <!-- Contenedor con overflow para las diapositivas -->
+                        <div class="carousel-container relative aspect-video overflow-hidden rounded-lg">
+                            <div class="carousel-slides-wrapper h-full">
+                                <img src="imagenes/preview/5. power_point.webp" class="carousel-slide active w-full h-full object-contain" alt="Portada de presentación" loading="lazy">
+                                <img src="imagenes/diapositivas/Diapositiva1.webp" class="carousel-slide w-full h-full object-contain" alt="Diapositiva 1" loading="lazy">
+                                <img src="imagenes/diapositivas/Diapositiva2.webp" class="carousel-slide w-full h-full object-contain" alt="Diapositiva 2" loading="lazy">
+                                <img src="imagenes/diapositivas/Diapositiva3.webp" class="carousel-slide w-full h-full object-contain" alt="Diapositiva 3" loading="lazy">
+                                <img src="imagenes/diapositivas/Diapositiva4.webp" class="carousel-slide w-full h-full object-contain" alt="Diapositiva 4" loading="lazy">
+                                <img src="imagenes/diapositivas/Diapositiva5.webp" class="carousel-slide w-full h-full object-contain" alt="Diapositiva 5" loading="lazy">
+                                <img src="imagenes/diapositivas/Diapositiva6.webp" class="carousel-slide w-full h-full object-contain" alt="Diapositiva 6" loading="lazy">
+                                <img src="imagenes/diapositivas/Diapositiva7.webp" class="carousel-slide w-full h-full object-contain" alt="Diapositiva 7" loading="lazy">
+                                <img src="imagenes/diapositivas/Diapositiva8.webp" class="carousel-slide w-full h-full object-contain" alt="Diapositiva 8" loading="lazy">
+                                <img src="imagenes/diapositivas/Diapositiva9.webp" class="carousel-slide w-full h-full object-contain" alt="Diapositiva 9" loading="lazy">
+                                <img src="imagenes/diapositivas/Diapositiva10.webp" class="carousel-slide w-full h-full object-contain" alt="Diapositiva 10" loading="lazy">
+                                <img src="imagenes/diapositivas/Diapositiva11.webp" class="carousel-slide w-full h-full object-contain" alt="Diapositiva 11" loading="lazy">
+                                <img src="imagenes/diapositivas/Diapositiva12.webp" class="carousel-slide w-full h-full object-contain" alt="Diapositiva 12" loading="lazy">
+                                <img src="imagenes/diapositivas/Diapositiva13.webp" class="carousel-slide w-full h-full object-contain" alt="Diapositiva 13" loading="lazy">
+                                <img src="imagenes/diapositivas/Diapositiva14.webp" class="carousel-slide w-full h-full object-contain" alt="Diapositiva 14" loading="lazy">
+                                <img src="imagenes/diapositivas/Diapositiva15.webp" class="carousel-slide w-full h-full object-contain" alt="Diapositiva 15" loading="lazy">
+                            </div>
+
+                            <!-- Indicador de Páginas -->
+                            <div class="absolute bottom-4 right-4 bg-brand-navy/80 text-white px-3 py-1 rounded-full text-xs font-mono z-10">
+                                <span class="current-slide">1</span> / 16
+                            </div>
+                        </div>
+
+                        <!-- Controles de Navegación (Semi-flotantes) -->
+                        <button onclick="handleCarousel(this, -1)" aria-label="Anterior" class="absolute -left-3 md:-left-6 top-1/2 -translate-y-1/2 bg-white border border-slate-100 text-brand-navy p-3 rounded-full shadow-xl transition-all opacity-60 hover:opacity-100 focus:opacity-100 focus-visible:ring-2 focus-visible:ring-brand-accent outline-none z-20 flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg>
+                        </button>
+                        <button onclick="handleCarousel(this, 1)" aria-label="Siguiente" class="absolute -right-3 md:-right-6 top-1/2 -translate-y-1/2 bg-white border border-slate-100 text-brand-navy p-3 rounded-full shadow-xl transition-all opacity-60 hover:opacity-100 focus:opacity-100 focus-visible:ring-2 focus-visible:ring-brand-accent outline-none z-20 flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+                        </button>
+                    </div>
+                    <!-- CTA -->
+                    <div class="flex justify-end pt-8">
+                        <a href="https://onedrive.live.com/personal/0ce6b5c393c0054c/_layouts/15/Doc.aspx?sourcedoc=%7B14d58818-a1db-46c2-808c-2772e014e325%7D&action=embedview&redeem=aHR0cHM6Ly8xZHJ2Lm1zL3AvYy8wY2U2YjVjMzkzYzAwNTRjL0lRQVlpTlVVMjZIQ1JvQ01KM0xnRk9NbEFVdXBSZmY1QVlzTWp4aWJ6MkcxLXRVP2U9czJlZlhCJmFjdGlvbj1lbWJlZHZpZXc&slrid=bd0a09a2-a0de-c000-71e6-58b6e2d5d5c4&originalPath=aHR0cHM6Ly9vbmVkcml2ZS5saXZlLmNvbS86cDovZy9wZXJzb25hbC8wY2U2YjVjMzkzYzAwNTRjL0lRQVlpTlVVMjZIQ1JvQ01KM0xnRk9NbEFVdXBSZmY1QVlzTWp4aWJ6MkcxLXRVP3J0aW1lPXNqaWtPUk9ZM2tnJnJlZGVlbT1hSFIwY0hNNkx5OHhaSEoyTG0xekwzQXZZeTh3WTJVMllqVmpNemt6WXpBd05UUmpMMGxSUVZscFRsVlZNalpJUTFKdlEwMUtNMHhuUms5TmJFRlZkWEJTWm1ZMVFWbHpUV3A0YVdKNk1rY3hMWFJWUDJVOWN6SmxabGhDSm1GamRHbHZiajFsYldKbFpIWnBaWGM&CID=d550ebba-cbc4-4175-9762-75acfe7bd4d1&_SRM=0%3AG%3A50&file=Avances.pptx" target="_blank" rel="noopener noreferrer"
+                           class="inline-flex items-center gap-2 text-sm font-semibold text-brand-accent hover:bg-brand-accent hover:text-white border border-brand-accent px-5 py-2.5 rounded-md transition-all duration-300 group/btn">
+                            Ver proyecto
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Tarjeta Power BI 4 -->
+            <section id="territorial" class="bg-white py-16 md:py-32 scroll-mt-12">
+                <div class="max-w-6xl mx-auto px-8 md:px-24 flex flex-col space-y-12 md:space-y-16">
+                    <div class="max-w-3xl">
+                        <div class="flex items-center mb-4">
+                            <span class="status-badge inline-block px-3 py-1 rounded-premium text-xs tracking-wider cursor-default">Monitoreo territorial</span>
+                            <span class="text-[11px] text-brand-slate/60 border-l border-slate-300 ml-3 pl-3">Excel + Kobo Toolbox + Power BI</span>
+                        </div>
+                        <h3 class="text-3xl md:text-4xl font-semibold text-brand-navy mb-6">Territorialización del sistema nacional de cuidado</h3>
+                        <p class="text-brand-slate text-base md:text-lg leading-relaxed">
+                            Informe sobre los avances de territorialización en el área metropolitana de Cúcuta. Prioriza una arquitectura de información limpia para facilitar la comprensión de indicadores territoriales críticos.
+                        </p>
+                    </div>
+                    <!-- iFrame Power BI #4 -->
+                    <div class="pbi-container group relative aspect-[600/373.5] w-full overflow-hidden rounded-premium shadow-sm hover:shadow-md transition-shadow duration-500 bg-slate-50">
+                        <!-- Preview Estática -->
+                        <img src="imagenes/preview/pbi-territorial.webp" alt="Preview Territorial" class="pbi-preview absolute inset-0 w-full h-full object-cover">
+                        
+                        <!-- Overlay Interactivo -->
+                        <div class="pbi-overlay absolute inset-0 flex flex-col items-center justify-center gap-4 cursor-pointer" onclick="activarDashboard(this)">
+                            <div class="play-icon w-16 h-16 bg-white/90 rounded-full flex items-center justify-center shadow-lg text-brand-accent">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122" />
+                                </svg>
+                            </div>
+                            <span class="text-sm font-bold text-brand-navy tracking-tight opacity-0 group-hover:opacity-100 transition-opacity">Explorar dashboard</span>
+                        </div>
+
+                        <div class="iframe-progress"></div>
+                        <div class="iframe-loader">
+                            <div class="pulse-dot"></div>
+                            <span class="text-[10px] tracking-widest text-brand-navy">Estableciendo conexión...</span>
+                        </div>
+                        <iframe title="Reporte de seguimiento estrategias del cuidado" class="w-full h-full opacity-0 transition-opacity duration-700" data-src="https://app.powerbi.com/view?r=eyJrIjoiOTIwN2MxMTQtYjNjMy00MGU1LTk5OWYtYTY4MzQ2MmE1ZGMzIiwidCI6IjM0MzAzNTQxLTc0ZWMtNGQ0YS04YzVhLTgwNDlkMmZkNmNlNiIsImMiOjR9" frameborder="0" allowFullScreen="true"></iframe>
+                    </div>
+                    <!-- CTA -->
+                    <div class="flex justify-end pt-8">
+                        <a href="https://app.powerbi.com/view?r=eyJrIjoiOTIwN2MxMTQtYjNjMy00MGU1LTk5OWYtYTY4MzQ2MmE1ZGMzIiwidCI6IjM0MzAzNTQxLTc0ZWMtNGQ0YS04YzVhLTgwNDlkMmZkNmNlNiIsImMiOjR9" target="_blank" rel="noopener noreferrer"
+                           class="inline-flex items-center gap-2 text-sm font-semibold text-brand-accent hover:bg-brand-accent hover:text-white border border-brand-accent px-5 py-2.5 rounded-md transition-all duration-300 group/btn">
+                            Ver en Power BI
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Tarjeta Diseño Web / UI·UX -->
+            <section id="diseno-web" class="bg-[#F1F5F9] py-16 md:py-32 scroll-mt-12">
+                <div class="max-w-6xl mx-auto px-8 md:px-24 flex flex-col space-y-12 md:space-y-16">
+                    <div class="max-w-3xl">
+                        <div class="flex items-center mb-4">
+                            <span class="status-badge inline-block px-3 py-1 rounded-premium text-xs tracking-wider cursor-default">Diseño UI/UX</span>
+                            <span class="text-[11px] text-brand-slate/60 border-l border-slate-300 ml-3 pl-3">Astro + UI/UX</span>
+                        </div>
+                        <h3 class="text-3xl md:text-4xl font-semibold text-brand-navy mb-6">Mundo Homeopático: UI/UX Re-design</h3>
+                        <p class="text-brand-slate text-base md:text-lg leading-relaxed">
+                            Transformación de un catálogo estático en una plataforma interactiva. Estructura de información densa resuelta mediante sistemas de filtrado inteligente y una jerarquía visual orientada a la legibilidad.
+                        </p>
+                    </div>
+                    <!-- Carrusel de Imágenes Elite: Mundo Homeopático -->
+                    <div class="relative group">
+                        <!-- Contenedor con overflow para las diapositivas -->
+                        <div class="carousel-container relative aspect-video overflow-hidden rounded-lg bg-slate-100">
+                            <div class="carousel-slides-wrapper h-full">
+                                <img src="imagenes/preview/6. web.webp" class="carousel-slide active w-full h-full object-contain" alt="Portada de plataforma web" loading="lazy">
+                                <img src="imagenes/vademecum/1. lista_precios.webp" class="carousel-slide w-full h-full object-contain" alt="Lista de precios" loading="lazy">
+                                <img src="imagenes/vademecum/2. sedes_contacto.webp" class="carousel-slide w-full h-full object-contain" alt="Sedes y contacto" loading="lazy">
+                                <img src="imagenes/vademecum/3. vademecum.webp" class="carousel-slide w-full h-full object-contain" alt="Vademecum Home" loading="lazy">
+                                <img src="imagenes/vademecum/4. carrito.webp" class="carousel-slide w-full h-full object-contain" alt="Carrito de compras" loading="lazy">
+                                <img src="imagenes/vademecum/5. modulo.webp" class="carousel-slide w-full h-full object-contain" alt="Módulos de consulta" loading="lazy">
+                            </div>
+
+                            <!-- Indicador de Páginas (dentro de la caja) -->
+                            <div class="absolute bottom-4 right-4 bg-brand-navy/80 text-white px-3 py-1 rounded-full text-xs font-mono z-10">
+                                <span class="current-slide">1</span> / 6
+                            </div>
+                        </div>
+
+                        <!-- Controles de Navegación (Semi-flotantes) -->
+                        <button onclick="handleCarousel(this, -1)" aria-label="Anterior" class="absolute -left-3 md:-left-6 top-1/2 -translate-y-1/2 bg-white border border-slate-100 text-brand-navy p-3 rounded-full shadow-xl transition-all opacity-60 hover:opacity-100 focus:opacity-100 focus-visible:ring-2 focus-visible:ring-brand-accent outline-none z-20 flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M15 19l-7-7 7-7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </button>
+                        <button onclick="handleCarousel(this, 1)" aria-label="Siguiente" class="absolute -right-3 md:-right-6 top-1/2 -translate-y-1/2 bg-white border border-slate-100 text-brand-navy p-3 rounded-full shadow-xl transition-all opacity-60 hover:opacity-100 focus:opacity-100 focus-visible:ring-2 focus-visible:ring-brand-accent outline-none z-20 flex items-center justify-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path d="M9 5l7 7-7 7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </button>
+                    </div>
+                    <!-- CTA -->
+                    <!-- CTA Oculto temporalmente por seguridad de datos -->
+                    <!-- 
+                    <div class="flex justify-end pt-2">
+                        <a href="https://mundo-homeopatico-v2.pages.dev/" target="_blank" rel="noopener noreferrer"
+                           class="inline-flex items-center gap-2 text-sm font-semibold text-brand-accent hover:bg-brand-accent hover:text-white border border-brand-accent px-5 py-2.5 rounded-md transition-all duration-300 group/btn">
+                            Ver proyecto
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                            </svg>
+                        </a>
+                    </div>
+                    -->
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- CTA Banner -->
+    <section class="py-24 px-8 md:px-24 bg-brand-offwhite border-t border-slate-100">
+        <div class="max-w-2xl mx-auto text-center space-y-6">
+            <h2 class="title-serif text-4xl md:text-5xl text-brand-navy leading-snug">
+                ¿Necesita datos confiables para su proyecto?
+            </h2>
+            <p class="text-brand-slate text-lg leading-relaxed">
+                Le ayudo a estructurar el ciclo completo de los datos, desde el terreno hasta el tablero.
+            </p>
+            <div class="pt-2">
+                <a href="https://www.linkedin.com/in/jalfredopabon" target="_blank"
+                   class="inline-flex items-center gap-3 bg-[#0a66c2] hover:bg-white text-white hover:text-[#0a66c2] border border-transparent hover:border-[#0a66c2] font-semibold px-6 py-3 rounded-md transition-all duration-300">
+                    <svg class="w-5 h-5 fill-current flex-shrink-0" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                    Conectar en LinkedIn
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-brand-navy py-16 text-white">
+        <div class="max-w-6xl mx-auto px-8 md:px-24">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start text-left">
+                <!-- Columna 1: Identidad -->
+                <div class="space-y-3">
+                    <h3 class="title-serif text-3xl tracking-tight">Alfredo Pabón</h3>
+                    <p class="text-slate-400 text-sm leading-relaxed max-w-sm mx-0">
+                        Transformando datos en activos estratégicos para el sector social y proyectos de impacto territorial.
+                    </p>
+                </div>
+
+                <!-- Columna 2: Social y Crédito -->
+                <div class="flex flex-col md:flex-row items-start md:items-center md:justify-end gap-6">
+                    <!-- Crédito -->
+                    <a href="https://www.linkedin.com/in/jalfredopabon/" target="_blank" rel="noopener noreferrer" class="text-xs tracking-widest text-slate-500 hover:text-white transition-colors group">
+                        Creado por <span class="text-slate-300 group-hover:text-brand-accent transition-colors">Alfredo Pabón</span>
+                    </a>
+                    
+                    <!-- LinkedIn -->
+                    <a href="https://www.linkedin.com/in/jalfredopabon" target="_blank" class="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-slate-400 hover:bg-white/10 hover:text-white transition-all duration-300">
+                        <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Lógica del Carrusel -->
+    <script>
+        /**
+         * handleCarousel: Gestiona múltiples carruseles de forma independiente.
+         */
+        function handleCarousel(btn, direction) {
+            // Los botones viven fuera del .carousel-container (en el wrapper padre),
+            // por eso buscamos el contenedor como hermano dentro del mismo wrapper.
+            const wrapper = btn.closest('.relative');
+            const container = wrapper.querySelector('.carousel-container');
+            const slides = container.querySelectorAll('.carousel-slide');
+            const display = wrapper.querySelector('.current-slide');
+            
+            let current = Array.from(slides).findIndex(s => s.classList.contains('active'));
+            if (current === -1) current = 0;
+
+            slides[current].classList.remove('active');
+            current = (current + direction + slides.length) % slides.length;
+            slides[current].classList.add('active');
+            
+            if (display) display.textContent = current + 1;
+        }
+
+        // Navegación con teclado para el carrusel en vista
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') {
+                const targetCarousel = document.querySelector('.carousel-container:hover') || 
+                                     document.querySelector('.carousel-container');
+                if (targetCarousel) {
+                    handleCarousel(targetCarousel.querySelector('button'), e.key === 'ArrowLeft' ? -1 : 1);
+                }
+            }
+        });
+    </script>
+
+    <!-- Lógica de Activación Híbrida Power BI -->
+    <script>
+        /**
+         * activarDashboard: Gestiona la transición de Preview -> Loader -> Iframe
+         */
+        function activarDashboard(overlayEl) {
+            const container = overlayEl.closest('.pbi-container');
+            const preview = container.querySelector('.pbi-preview');
+            const iframe = container.querySelector('iframe[data-src]');
+            const badge = container.querySelector('.iframe-loader');
+            const bar = container.querySelector('.iframe-progress');
+
+            if (!iframe) return; 
+
+            // Detectar si es móvil (menos de 768px)
+            if (window.innerWidth < 768) {
+                // En móvil, abrir el enlace directo para mejor UX
+                const directUrl = iframe.dataset.src;
+                window.open(directUrl, '_blank');
+                return;
+            }
+
+            // Lógica Desktop: Carga interactiva en la página
+            overlayEl.classList.add('hidden');
+            if (preview) preview.classList.add('hidden');
+
+            badge.classList.add('loader-visible');
+            bar.getBoundingClientRect(); 
+            bar.classList.add('progress-running');
+
+            iframe.src = iframe.dataset.src;
+            iframe.removeAttribute('data-src');
+
+            iframe.addEventListener('load', () => {
+                bar.classList.remove('progress-running');
+                bar.classList.add('progress-complete');
+                iframe.classList.remove('opacity-0');
+                iframe.classList.add('opacity-100');
+                badge.classList.remove('loader-visible');
+                badge.classList.add('loader-hidden');
+                setTimeout(() => bar.classList.add('progress-fade'), 50);
+            }, { once: true });
+        }
+            // 6. Metáfora Caos -> Orden (Solo Scroll en móvil)
+        const chaosGrid = document.querySelector('.chaos-grid');
+        if (chaosGrid && window.innerWidth < 768) {
+            const scrollObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    // Opción A: Reversible — añade in-view al entrar, la quita al salir
+                    chaosGrid.classList.toggle('in-view', entry.isIntersecting);
+                });
+            }, { threshold: 0.6 });
+            scrollObserver.observe(chaosGrid);
+        }
+    </script>
+    <script>
+        // Hero Spotlight Grid Tracking
+        const hero = document.querySelector('.hero-section');
+        const grid = document.getElementById('hero-grid');
+
+        if (hero && grid) {
+            hero.addEventListener('mousemove', (e) => {
+                const rect = hero.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                grid.style.setProperty('--mouse-x', `${x}px`);
+                grid.style.setProperty('--mouse-y', `${y}px`);
+                grid.style.opacity = '0.9';
+            });
+
+            hero.addEventListener('mouseleave', () => {
+                grid.style.opacity = '0.2';
+            });
+
+            hero.addEventListener('mouseenter', () => {
+                grid.style.opacity = '0.9';
+            });
+        }
+    </script>
+    <!-- Build trigger: 2026-04-25 18:18 -->
+</body>
+</html>
