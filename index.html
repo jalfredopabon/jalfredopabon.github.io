@@ -343,12 +343,66 @@
             pointer-events: none;
             z-index: -1;
         }
+
+        /* Lógica Metáfora: Caos -> Orden */
+        .chaos-grid .cube {
+            transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+            will-change: transform, opacity;
+            opacity: 0.15; /* Caos: cuadros casi invisibles, tenues */
+        }
+
+        /* Estado Ordenado: Hover amplio en desktop (zona .group) + Scroll en móvil (.in-view) */
+        .group:hover .chaos-grid .cube,
+        .chaos-grid.in-view .cube {
+            transform: translate(0, 0) rotate(0) scale(1) !important;
+            opacity: var(--target-opacity) !important;
+        }
+
+        /* Variaciones de dispersión móvil (Seguro para pantallas pequeñas) */
+        @media (max-width: 767px) {
+            .cube-c1 { transform: translate(-10vw, -15vh) rotate(15deg) scale(1.5); }
+            .cube-c2 { transform: translate(12vw, -10vh) rotate(-20deg) scale(1.2); }
+            .cube-c3 { transform: translate(-18vw, 12vh) rotate(45deg) scale(1.8); }
+            .cube-c4 { transform: translate(14vw, 18vh) rotate(-10deg) scale(1.3); }
+            .cube-c5 { transform: translate(-12vw, -8vh) rotate(-30deg) scale(1.4); }
+            .cube-c6 { transform: translate(16vw, 15vh) rotate(60deg) scale(1.6); }
+            .cube-c7 { transform: translate(-15vw, 20vh) rotate(-15deg) scale(1.2); }
+            .cube-c8 { transform: translate(10vw, -18vh) rotate(25deg) scale(1.5); }
+            .cube-c9 { transform: translate(-8vw, 22vh) rotate(90deg) scale(1.3); }
+            .cube-c10 { transform: translate(18vw, -12vh) rotate(-40deg) scale(1.7); }
+            .cube-c11 { transform: translate(-20vw, -15vh) rotate(15deg) scale(1.1); }
+            .cube-c12 { transform: translate(12vw, 10vh) rotate(110deg) scale(1.4); }
+            .cube-c13 { transform: translate(-14vw, -20vh) rotate(-70deg) scale(1.6); }
+            .cube-c14 { transform: translate(15vw, 5vh) rotate(35deg) scale(1.2); }
+            .cube-c15 { transform: translate(-10vw, 15vh) rotate(-25deg) scale(1.5); }
+            .cube-c16 { transform: translate(20vw, 20vh) rotate(15deg) scale(1.3); }
+        }
+
+        /* Variaciones Desktop (Más agresivas) */
+        @media (min-width: 768px) {
+            .cube-c1 { transform: translate(-32vw, -30vh) rotate(105deg) scale(2.1); }
+            .cube-c2 { transform: translate(28vw, -25vh) rotate(-45deg) scale(1.8); }
+            .cube-c3 { transform: translate(-35vw, 20vh) rotate(75deg) scale(2.4); }
+            .cube-c4 { transform: translate(30vw, 35vh) rotate(-30deg) scale(1.9); }
+            .cube-c5 { transform: translate(-25vw, -35vh) rotate(-120deg) scale(2.2); }
+            .cube-c6 { transform: translate(35vw, -20vh) rotate(60deg) scale(1.7); }
+            .cube-c7 { transform: translate(-28vw, 32vh) rotate(-15deg) scale(2.0); }
+            .cube-c8 { transform: translate(25vw, -38vh) rotate(150deg) scale(2.3); }
+            .cube-c9 { transform: translate(-20vw, 40vh) rotate(90deg) scale(1.6); }
+            .cube-c10 { transform: translate(40vw, -15vh) rotate(-70deg) scale(2.5); }
+            .cube-c11 { transform: translate(-42vw, -25vh) rotate(205deg) scale(1.8); }
+            .cube-c12 { transform: translate(32vw, 25vh) rotate(110deg) scale(2.1); }
+            .cube-c13 { transform: translate(-30vw, -45vh) rotate(-150deg) scale(1.9); }
+            .cube-c14 { transform: translate(38vw, 15vh) rotate(85deg) scale(2.4); }
+            .cube-c15 { transform: translate(-22vw, 35vh) rotate(-35deg) scale(1.7); }
+            .cube-c16 { transform: translate(45vw, 40vh) rotate(125deg) scale(2.2); }
+        }
     </style>
 </head>
 <body class="bg-brand-offwhite text-brand-navy min-h-screen">
 
     <!-- Header / Hero Section (Full Width Background) -->
-    <header class="hero-section min-h-svh flex flex-col justify-center w-full pt-10 pb-4 relative overflow-hidden">
+    <header class="hero-section min-h-svh flex flex-col justify-center w-full pt-10 pb-20 relative overflow-hidden">
         
         <!-- Navegación Superior -->
         <nav class="absolute top-0 left-0 w-full px-8 md:px-24 py-3 md:py-4 flex items-center justify-between z-30">
@@ -404,87 +458,35 @@
         <!-- 5. Metáfora Interactiva: Del Caos al Orden (Compresión Física) -->
         <div class="w-full relative group py-4 cursor-crosshair">
             <div class="w-full flex items-center justify-center">
-                <!-- El Contenedor de la Cuadrícula (Colapso físico en hover) -->
-                <div class="grid grid-cols-4 gap-1 md:gap-2 group-hover:gap-1 p-2 md:p-6 group-hover:p-2 rounded-xl transition-all duration-1000 group-hover:bg-white group-hover:shadow-[0_20px_50px_rgba(0,0,0,0.1)] group-hover:border group-hover:border-slate-100 relative z-20">
-                    
-                    <!-- Grupo Navy: Grandes en caos, pequeños en orden -->
-                    <div class="w-3 h-3 md:w-6 md:h-6 group-hover:w-3 group-hover:h-3 bg-brand-navy rounded-sm transition-all duration-[1000ms] ease-out
-                                translate-x-0 translate-y-0 rotate-0 opacity-40 scale-100
-                                md:-translate-x-[32vw] md:-translate-y-[30vh] md:rotate-[105deg] md:opacity-40 md:scale-[2.1]
-                                group-hover:translate-x-0 group-hover:translate-y-0 group-hover:rotate-0 group-hover:opacity-40 group-hover:scale-100"></div>
-                    <div class="w-3 h-3 md:w-6 md:h-6 group-hover:w-3 group-hover:h-3 bg-brand-navy rounded-sm transition-all duration-[1200ms] ease-out
-                                translate-x-0 translate-y-0 rotate-0 opacity-60 scale-100
-                                md:-translate-x-[20vw] md:-translate-y-[18vh] md:-rotate-[35deg] md:opacity-30 md:scale-[1.7]
-                                group-hover:translate-x-0 group-hover:translate-y-0 group-hover:rotate-0 group-hover:opacity-60 group-hover:scale-100"></div>
-                    <div class="w-3 h-3 md:w-6 md:h-6 group-hover:w-3 group-hover:h-3 bg-brand-navy rounded-sm transition-all duration-[1100ms] ease-out
-                                translate-x-0 translate-y-0 rotate-0 opacity-80 scale-100
-                                md:-translate-x-[15vw] md:translate-y-[5vh] md:rotate-[15deg] md:opacity-50 md:scale-[2.2]
-                                group-hover:translate-x-0 group-hover:translate-y-0 group-hover:rotate-0 group-hover:opacity-80 group-hover:scale-100"></div>
-                    <div class="w-3 h-3 md:w-6 md:h-6 group-hover:w-3 group-hover:h-3 bg-brand-navy rounded-sm transition-all duration-[1300ms] ease-out
-                                translate-x-0 translate-y-0 rotate-0 opacity-100 scale-100
-                                md:-translate-x-[8vw] md:translate-y-[40vh] md:rotate-[110deg] md:opacity-20 md:scale-[1.5]
-                                group-hover:translate-x-0 group-hover:translate-y-0 group-hover:rotate-0 group-hover:opacity-100 group-hover:scale-100"></div>
-
-                    <!-- Grupo Blue -->
-                    <div class="w-3 h-3 md:w-6 md:h-6 group-hover:w-3 group-hover:h-3 bg-[#4285F4] rounded-sm transition-all duration-[1150ms] ease-out
-                                translate-x-0 translate-y-0 rotate-0 opacity-40 scale-100
-                                md:translate-x-[28vw] md:-translate-y-[28vh] md:-rotate-[65deg] md:opacity-40 md:scale-[1.9]
-                                group-hover:translate-x-0 group-hover:translate-y-0 group-hover:rotate-0 group-hover:opacity-40 group-hover:scale-100"></div>
-                    <div class="w-3 h-3 md:w-6 md:h-6 group-hover:w-3 group-hover:h-3 bg-[#4285F4] rounded-sm transition-all duration-[1050ms] ease-out
-                                translate-x-0 translate-y-0 rotate-0 opacity-60 scale-100
-                                md:translate-x-[22vw] md:-translate-y-[10vh] md:rotate-[45deg] md:opacity-50 md:scale-[1.8]
-                                group-hover:translate-x-0 group-hover:translate-y-0 group-hover:rotate-0 group-hover:opacity-60 group-hover:scale-100"></div>
-                    <div class="w-3 h-3 md:w-6 md:h-6 group-hover:w-3 group-hover:h-3 bg-[#4285F4] rounded-sm transition-all duration-[1250ms] ease-out
-                                translate-x-0 translate-y-0 rotate-0 opacity-80 scale-100
-                                md:translate-x-[15vw] md:translate-y-[12vh] md:rotate-[140deg] md:opacity-60 md:scale-[2.5]
-                                group-hover:translate-x-0 group-hover:translate-y-0 group-hover:rotate-0 group-hover:opacity-80 group-hover:scale-100"></div>
-                    <div class="w-3 h-3 md:w-6 md:h-6 group-hover:w-3 group-hover:h-3 bg-[#4285F4] rounded-sm transition-all duration-[1100ms] ease-out
-                                translate-x-0 translate-y-0 rotate-0 opacity-100 scale-100
-                                md:translate-x-[10vw] md:translate-y-[38vh] md:-rotate-[25deg] md:opacity-30 md:scale-[1.6]
-                                group-hover:translate-x-0 group-hover:translate-y-0 group-hover:rotate-0 group-hover:opacity-100 group-hover:scale-100"></div>
-
-                    <!-- Grupo Green -->
-                    <div class="w-3 h-3 md:w-6 md:h-6 group-hover:w-3 group-hover:h-3 bg-[#217346] rounded-sm transition-all duration-[1200ms] ease-out
-                                translate-x-0 translate-y-0 rotate-0 opacity-40 scale-100
-                                md:-translate-x-[25vw] md:translate-y-[35vh] md:rotate-[65deg] md:opacity-40 md:scale-[2]
-                                group-hover:translate-x-0 group-hover:translate-y-0 group-hover:rotate-0 group-hover:opacity-40 group-hover:scale-100"></div>
-                    <div class="w-3 h-3 md:w-6 md:h-6 group-hover:w-3 group-hover:h-3 bg-[#217346] rounded-sm transition-all duration-[1350ms] ease-out
-                                translate-x-0 translate-y-0 rotate-0 opacity-60 scale-100
-                                md:-translate-x-[30vw] md:translate-y-[8vh] md:-rotate-[110deg] md:opacity-30 md:scale-[1.8]
-                                group-hover:translate-x-0 group-hover:translate-y-0 group-hover:rotate-0 group-hover:opacity-60 group-hover:scale-100"></div>
-                    <div class="w-3 h-3 md:w-6 md:h-6 group-hover:w-3 group-hover:h-3 bg-[#217346] rounded-sm transition-all duration-[1050ms] ease-out
-                                translate-x-0 translate-y-0 rotate-0 opacity-80 scale-100
-                                md:translate-x-[3vw] md:translate-y-[42vh] md:rotate-[35deg] md:opacity-50 md:scale-[2.1]
-                                group-hover:translate-x-0 group-hover:translate-y-0 group-hover:rotate-0 group-hover:opacity-80 group-hover:scale-100"></div>
-                    <div class="w-3 h-3 md:w-6 md:h-6 group-hover:w-3 group-hover:h-3 bg-[#217346] rounded-sm transition-all duration-[1150ms] ease-out
-                                translate-x-0 translate-y-0 rotate-0 opacity-100 scale-100
-                                md:-translate-x-[26vw] md:-translate-y-[12vh] md:-rotate-[75deg] md:opacity-20 md:scale-[1.7]
-                                group-hover:translate-x-0 group-hover:translate-y-0 group-hover:rotate-0 group-hover:opacity-100 group-hover:scale-100"></div>
-
-                    <!-- Grupo Yellow -->
-                    <div class="w-3 h-3 md:w-6 md:h-6 group-hover:w-3 group-hover:h-3 bg-[#eda503] rounded-sm transition-all duration-[1300ms] ease-out
-                                translate-x-0 translate-y-0 rotate-0 opacity-40 scale-100
-                                md:translate-x-[28vw] md:translate-y-[36vh] md:rotate-[90deg] md:opacity-40 md:scale-[2.3]
-                                group-hover:translate-x-0 group-hover:translate-y-0 group-hover:rotate-0 group-hover:opacity-40 group-hover:scale-100"></div>
-                    <div class="w-3 h-3 md:w-6 md:h-6 group-hover:w-3 group-hover:h-3 bg-[#eda503] rounded-sm transition-all duration-[1100ms] ease-out
-                                translate-x-0 translate-y-0 rotate-0 opacity-60 scale-100
-                                md:translate-x-[30vw] md:translate-y-[2vh] md:-rotate-[50deg] md:opacity-30 md:scale-[1.9]
-                                group-hover:translate-x-0 group-hover:translate-y-0 group-hover:rotate-0 group-hover:opacity-60 group-hover:scale-100"></div>
-                    <div class="w-3 h-3 md:w-6 md:h-6 group-hover:w-3 group-hover:h-3 bg-[#eda503] rounded-sm transition-all duration-[1250ms] ease-out
-                                translate-x-0 translate-y-0 rotate-0 opacity-80 scale-100
-                                md:-translate-x-[3vw] md:translate-y-[45vh] md:rotate-[20deg] md:opacity-50 md:scale-[2]
-                                group-hover:translate-x-0 group-hover:translate-y-0 group-hover:rotate-0 group-hover:opacity-80 group-hover:scale-100"></div>
-                    <div class="w-3 h-3 md:w-6 md:h-6 group-hover:w-3 group-hover:h-3 bg-[#eda503] rounded-sm transition-all duration-[1000ms] ease-out
-                                translate-x-0 translate-y-0 rotate-0 opacity-100 scale-100
-                                md:translate-x-[25vw] md:-translate-y-[15vh] md:-rotate-[15deg] md:opacity-20 md:scale-[1.6]
-                                group-hover:translate-x-0 group-hover:translate-y-0 group-hover:rotate-0 group-hover:opacity-100 group-hover:scale-100"></div>
+                <!-- El Contenedor de la Cuadrícula (Caos -> Orden) -->
+                <div class="chaos-grid grid grid-cols-4 gap-1 md:gap-2 p-2 md:p-6 rounded-xl transition-all duration-1000 relative z-20">
+                    <!-- Fila 1 -->
+                    <div class="cube cube-c1 w-3 h-3 md:w-6 md:h-6 bg-brand-navy rounded-sm" style="--target-opacity: 0.4;"></div>
+                    <div class="cube cube-c2 w-3 h-3 md:w-6 md:h-6 bg-[#4285F4] rounded-sm" style="--target-opacity: 0.3;"></div>
+                    <div class="cube cube-c3 w-3 h-3 md:w-6 md:h-6 bg-brand-navy rounded-sm" style="--target-opacity: 0.6;"></div>
+                    <div class="cube cube-c4 w-3 h-3 md:w-6 md:h-6 bg-[#217346] rounded-sm" style="--target-opacity: 0.5;"></div>
+                    <!-- Fila 2 -->
+                    <div class="cube cube-c5 w-3 h-3 md:w-6 md:h-6 bg-[#4285F4] rounded-sm" style="--target-opacity: 0.2;"></div>
+                    <div class="cube cube-c6 w-3 h-3 md:w-6 md:h-6 bg-brand-navy rounded-sm" style="--target-opacity: 0.8;"></div>
+                    <div class="cube cube-c7 w-3 h-3 md:w-6 md:h-6 bg-[#eda503] rounded-sm" style="--target-opacity: 0.4;"></div>
+                    <div class="cube cube-c8 w-3 h-3 md:w-6 md:h-6 bg-[#4285F4] rounded-sm" style="--target-opacity: 0.6;"></div>
+                    <!-- Fila 3 -->
+                    <div class="cube cube-c9 w-3 h-3 md:w-6 md:h-6 bg-[#217346] rounded-sm" style="--target-opacity: 0.5;"></div>
+                    <div class="cube cube-c10 w-3 h-3 md:w-6 md:h-6 bg-[#eda503] rounded-sm" style="--target-opacity: 0.3;"></div>
+                    <div class="cube cube-c11 w-3 h-3 md:w-6 md:h-6 bg-[#4285F4] rounded-sm" style="--target-opacity: 0.7;"></div>
+                    <div class="cube cube-c12 w-3 h-3 md:w-6 md:h-6 bg-brand-navy rounded-sm" style="--target-opacity: 0.4;"></div>
+                    <!-- Fila 4 -->
+                    <div class="cube cube-c13 w-3 h-3 md:w-6 md:h-6 bg-[#eda503] rounded-sm" style="--target-opacity: 0.6;"></div>
+                    <div class="cube cube-c14 w-3 h-3 md:w-6 md:h-6 bg-[#217346] rounded-sm" style="--target-opacity: 0.2;"></div>
+                    <div class="cube cube-c15 w-3 h-3 md:w-6 md:h-6 bg-brand-navy rounded-sm" style="--target-opacity: 0.5;"></div>
+                    <div class="cube cube-c16 w-3 h-3 md:w-6 md:h-6 bg-[#4285F4] rounded-sm" style="--target-opacity: 0.4;"></div>
                 </div>
             </div>
         </div>
     </header>
 
     <!-- Sección 2: Stack de Herramientas (Credibilidad Técnica) -->
-    <section id="stack" class="py-10 bg-slate-50 border-y border-slate-100 relative z-10">
+    <section id="stack" class="py-12 md:py-16 bg-slate-50 border-y border-slate-100 relative z-10">
         <div class="max-w-6xl mx-auto px-8 md:px-24">
             <div class="flex flex-wrap justify-center items-center gap-x-12 gap-y-8 opacity-60 hover:opacity-100 transition-opacity duration-500">
                 <div class="tech-stack-item">
@@ -534,7 +536,7 @@
     </section>
 
     <!-- Sección 3: Índice de Navegación (Tabs) -->
-    <section class="py-12 md:py-16 bg-white border-b border-slate-100 relative z-10">
+    <section class="py-8 md:py-12 bg-white border-b border-slate-100 relative z-10">
         <div class="max-w-6xl mx-auto px-8 md:px-24">
             <!-- Tags de Navegación -->
             <div class="flex flex-wrap justify-start gap-x-8 gap-y-4">
@@ -555,7 +557,7 @@
             
             <!-- Tarjeta Power BI 1 -->
             <section id="brecha-digital" class="bg-white py-16 md:py-32 scroll-mt-12">
-                <div class="max-w-6xl mx-auto px-8 md:px-24 flex flex-col space-y-16 md:space-y-24">
+                <div class="max-w-6xl mx-auto px-8 md:px-24 flex flex-col space-y-12 md:space-y-16">
                     <div class="max-w-3xl">
                         <div class="flex items-center mb-4">
                             <span class="status-badge inline-block px-3 py-1 rounded-premium text-xs tracking-wider cursor-default">Análisis social</span>
@@ -567,7 +569,7 @@
                         </p>
                     </div>
                     <!-- iFrame Power BI #1 -->
-                    <div class="pbi-container relative aspect-[600/373.5] w-full overflow-hidden rounded-premium shadow-sm hover:shadow-md transition-shadow duration-500 bg-slate-50">
+                    <div class="pbi-container group relative aspect-[600/373.5] w-full overflow-hidden rounded-premium shadow-sm hover:shadow-md transition-shadow duration-500 bg-slate-50">
                         <!-- Preview Estática -->
                         <img src="imagenes/preview/pbi-brecha-digital.webp" alt="Preview Brecha Digital" class="pbi-preview absolute inset-0 w-full h-full object-cover">
                         
@@ -589,10 +591,10 @@
                         <iframe title="Nacer en el campo  Nacer desconectado" class="w-full h-full opacity-0 transition-opacity duration-700" data-src="https://app.powerbi.com/view?r=eyJrIjoiMGU5NTViMDgtMzAwNS00NzA4LThlMTQtOGVjNDZjYTQzY2ZhIiwidCI6IjM0MzAzNTQxLTc0ZWMtNGQ0YS04YzVhLTgwNDlkMmZkNmNlNiIsImMiOjR9" frameborder="0" allowFullScreen="true"></iframe>
                     </div>
                     <!-- CTA -->
-                    <div class="flex justify-end pt-4">
+                    <div class="flex justify-end pt-8">
                         <a href="https://app.powerbi.com/view?r=eyJrIjoiMGU5NTViMDgtMzAwNS00NzA4LThlMTQtOGVjNDZjYTQzY2ZhIiwidCI6IjM0MzAzNTQxLTc0ZWMtNGQ0YS04YzVhLTgwNDlkMmZkNmNlNiIsImMiOjR9" target="_blank" rel="noopener noreferrer"
                            class="inline-flex items-center gap-2 text-sm font-semibold text-brand-accent hover:bg-brand-accent hover:text-white border border-brand-accent px-5 py-2.5 rounded-md transition-all duration-300 group/btn">
-                            Ver proyecto
+                            Ver en Power BI
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                             </svg>
@@ -603,7 +605,7 @@
 
             <!-- Tarjeta Power BI 2 -->
             <section id="redes-sociales" class="bg-[#F1F5F9] py-16 md:py-32 scroll-mt-12">
-                <div class="max-w-6xl mx-auto px-8 md:px-24 flex flex-col space-y-16 md:space-y-24">
+                <div class="max-w-6xl mx-auto px-8 md:px-24 flex flex-col space-y-12 md:space-y-16">
                     <div class="max-w-3xl">
                         <div class="flex items-center mb-4">
                             <span class="status-badge inline-block px-3 py-1 rounded-premium text-xs tracking-wider cursor-default">Tendencias digitales</span>
@@ -617,7 +619,7 @@
                         </p>
                     </div>
                     <!-- iFrame Power BI #2 -->
-                    <div class="pbi-container relative aspect-[600/373.5] w-full overflow-hidden rounded-premium shadow-sm hover:shadow-md transition-shadow duration-500 bg-slate-50">
+                    <div class="pbi-container group relative aspect-[600/373.5] w-full overflow-hidden rounded-premium shadow-sm hover:shadow-md transition-shadow duration-500 bg-slate-50">
                         <!-- Preview Estática -->
                         <img src="imagenes/preview/pbi-redes-sociales.webp" alt="Preview Redes Sociales" class="pbi-preview absolute inset-0 w-full h-full object-cover">
                         
@@ -628,7 +630,7 @@
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122" />
                                 </svg>
                             </div>
-                            <span class="text-sm font-bold text-brand-navy tracking-tight">Explorar dashboard</span>
+                            <span class="text-sm font-bold text-brand-navy tracking-tight opacity-0 group-hover:opacity-100 transition-opacity">Explorar dashboard</span>
                         </div>
 
                         <div class="iframe-progress"></div>
@@ -639,10 +641,10 @@
                         <iframe title="UsuariosRedesSocialesQuickViz" class="w-full h-full opacity-0 transition-opacity duration-700" data-src="https://app.powerbi.com/view?r=eyJrIjoiMDY0YTY4NjUtNzE2Zi00NjEzLWE5NDUtMWFiNTA2MjBjYTRiIiwidCI6IjM0MzAzNTQxLTc0ZWMtNGQ0YS04YzVhLTgwNDlkMmZkNmNlNiIsImMiOjR9" frameborder="0" allowFullScreen="true"></iframe>
                     </div>
                     <!-- CTA -->
-                    <div class="flex justify-end pt-4">
+                    <div class="flex justify-end pt-8">
                         <a href="https://app.powerbi.com/view?r=eyJrIjoiMDY0YTY4NjUtNzE2Zi00NjEzLWE5NDUtMWFiNTA2MjBjYTRiIiwidCI6IjM0MzAzNTQxLTc0ZWMtNGQ0YS04YzVhLTgwNDlkMmZkNmNlNiIsImMiOjR9" target="_blank" rel="noopener noreferrer"
                            class="inline-flex items-center gap-2 text-sm font-semibold text-brand-accent hover:bg-brand-accent hover:text-white border border-brand-accent px-5 py-2.5 rounded-md transition-all duration-300 group/btn">
-                            Ver proyecto
+                            Ver en Power BI
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                             </svg>
@@ -653,7 +655,7 @@
 
             <!-- Tarjeta Power BI 3 -->
             <section id="tallest-buildings" class="bg-white py-16 md:py-32 scroll-mt-12">
-                <div class="max-w-6xl mx-auto px-8 md:px-24 flex flex-col space-y-16 md:space-y-24">
+                <div class="max-w-6xl mx-auto px-8 md:px-24 flex flex-col space-y-12 md:space-y-16">
                     <div class="max-w-3xl">
                         <div class="flex items-center mb-4">
                             <span class="status-badge inline-block px-3 py-1 rounded-premium text-xs tracking-wider cursor-default">Análisis comparativo</span>
@@ -665,7 +667,7 @@
                         </p>
                     </div>
                     <!-- iFrame Power BI #3 -->
-                    <div class="pbi-container relative aspect-[600/373.5] w-full overflow-hidden rounded-premium shadow-sm hover:shadow-md transition-shadow duration-500 bg-slate-50">
+                    <div class="pbi-container group relative aspect-[600/373.5] w-full overflow-hidden rounded-premium shadow-sm hover:shadow-md transition-shadow duration-500 bg-slate-50">
                         <!-- Preview Estática -->
                         <img src="imagenes/preview/pbi-edificios.webp" alt="Preview Edificios" class="pbi-preview absolute inset-0 w-full h-full object-cover">
                         
@@ -676,7 +678,7 @@
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122" />
                                 </svg>
                             </div>
-                            <span class="text-sm font-bold text-brand-navy tracking-tight">Explorar dashboard</span>
+                            <span class="text-sm font-bold text-brand-navy tracking-tight opacity-0 group-hover:opacity-100 transition-opacity">Explorar dashboard</span>
                         </div>
 
                         <div class="iframe-progress"></div>
@@ -687,10 +689,10 @@
                         <iframe title="Edificios mas altos del mundo" class="w-full h-full opacity-0 transition-opacity duration-700" data-src="https://app.powerbi.com/view?r=eyJrIjoiZGRiY2IwNjUtNmYyMS00NjYwLWJkYzgtNGZhZTNiNTk5MmE5IiwidCI6IjM0MzAzNTQxLTc0ZWMtNGQ0YS04YzVhLTgwNDlkMmZkNmNlNiIsImMiOjR9" frameborder="0" allowFullScreen="true"></iframe>
                     </div>
                     <!-- CTA -->
-                    <div class="flex justify-end pt-4">
+                    <div class="flex justify-end pt-8">
                         <a href="https://app.powerbi.com/view?r=eyJrIjoiZGRiY2IwNjUtNmYyMS00NjYwLWJkYzgtNGZhZTNiNTk5MmE5IiwidCI6IjM0MzAzNTQxLTc0ZWMtNGQ0YS04YzVhLTgwNDlkMmZkNmNlNiIsImMiOjR9" target="_blank" rel="noopener noreferrer"
                            class="inline-flex items-center gap-2 text-sm font-semibold text-brand-accent hover:bg-brand-accent hover:text-white border border-brand-accent px-5 py-2.5 rounded-md transition-all duration-300 group/btn">
-                            Ver proyecto
+                            Ver en Power BI
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                             </svg>
@@ -701,7 +703,7 @@
 
             <!-- Tarjeta PowerPoint (Ancho Completo) -->
             <section id="presentacion" class="bg-[#F1F5F9] py-16 md:py-32 scroll-mt-12">
-                <div class="max-w-6xl mx-auto px-8 md:px-24 flex flex-col space-y-16 md:space-y-24">
+                <div class="max-w-6xl mx-auto px-8 md:px-24 flex flex-col space-y-12 md:space-y-16">
                     <div class="max-w-3xl">
                         <div class="flex items-center mb-4">
                             <span class="status-badge inline-block px-3 py-1 rounded-premium text-xs tracking-wider cursor-default">Impacto social</span>
@@ -750,7 +752,7 @@
                         </button>
                     </div>
                     <!-- CTA -->
-                    <div class="flex justify-end pt-4">
+                    <div class="flex justify-end pt-8">
                         <a href="https://onedrive.live.com/personal/0ce6b5c393c0054c/_layouts/15/Doc.aspx?sourcedoc=%7B14d58818-a1db-46c2-808c-2772e014e325%7D&action=embedview&redeem=aHR0cHM6Ly8xZHJ2Lm1zL3AvYy8wY2U2YjVjMzkzYzAwNTRjL0lRQVlpTlVVMjZIQ1JvQ01KM0xnRk9NbEFVdXBSZmY1QVlzTWp4aWJ6MkcxLXRVP2U9czJlZlhCJmFjdGlvbj1lbWJlZHZpZXc&slrid=bd0a09a2-a0de-c000-71e6-58b6e2d5d5c4&originalPath=aHR0cHM6Ly9vbmVkcml2ZS5saXZlLmNvbS86cDovZy9wZXJzb25hbC8wY2U2YjVjMzkzYzAwNTRjL0lRQVlpTlVVMjZIQ1JvQ01KM0xnRk9NbEFVdXBSZmY1QVlzTWp4aWJ6MkcxLXRVP3J0aW1lPXNqaWtPUk9ZM2tnJnJlZGVlbT1hSFIwY0hNNkx5OHhaSEoyTG0xekwzQXZZeTh3WTJVMllqVmpNemt6WXpBd05UUmpMMGxSUVZscFRsVlZNalpJUTFKdlEwMUtNMHhuUms5TmJFRlZkWEJTWm1ZMVFWbHpUV3A0YVdKNk1rY3hMWFJWUDJVOWN6SmxabGhDSm1GamRHbHZiajFsYldKbFpIWnBaWGM&CID=d550ebba-cbc4-4175-9762-75acfe7bd4d1&_SRM=0%3AG%3A50&file=Avances.pptx" target="_blank" rel="noopener noreferrer"
                            class="inline-flex items-center gap-2 text-sm font-semibold text-brand-accent hover:bg-brand-accent hover:text-white border border-brand-accent px-5 py-2.5 rounded-md transition-all duration-300 group/btn">
                             Ver proyecto
@@ -764,7 +766,7 @@
 
             <!-- Tarjeta Power BI 4 -->
             <section id="territorial" class="bg-white py-16 md:py-32 scroll-mt-12">
-                <div class="max-w-6xl mx-auto px-8 md:px-24 flex flex-col space-y-16 md:space-y-24">
+                <div class="max-w-6xl mx-auto px-8 md:px-24 flex flex-col space-y-12 md:space-y-16">
                     <div class="max-w-3xl">
                         <div class="flex items-center mb-4">
                             <span class="status-badge inline-block px-3 py-1 rounded-premium text-xs tracking-wider cursor-default">Monitoreo territorial</span>
@@ -776,7 +778,7 @@
                         </p>
                     </div>
                     <!-- iFrame Power BI #4 -->
-                    <div class="pbi-container relative aspect-[600/373.5] w-full overflow-hidden rounded-premium shadow-sm hover:shadow-md transition-shadow duration-500 bg-slate-50">
+                    <div class="pbi-container group relative aspect-[600/373.5] w-full overflow-hidden rounded-premium shadow-sm hover:shadow-md transition-shadow duration-500 bg-slate-50">
                         <!-- Preview Estática -->
                         <img src="imagenes/preview/pbi-territorial.webp" alt="Preview Territorial" class="pbi-preview absolute inset-0 w-full h-full object-cover">
                         
@@ -787,7 +789,7 @@
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122" />
                                 </svg>
                             </div>
-                            <span class="text-sm font-bold text-brand-navy tracking-tight">Explorar dashboard</span>
+                            <span class="text-sm font-bold text-brand-navy tracking-tight opacity-0 group-hover:opacity-100 transition-opacity">Explorar dashboard</span>
                         </div>
 
                         <div class="iframe-progress"></div>
@@ -798,10 +800,10 @@
                         <iframe title="Reporte de seguimiento estrategias del cuidado" class="w-full h-full opacity-0 transition-opacity duration-700" data-src="https://app.powerbi.com/view?r=eyJrIjoiOTIwN2MxMTQtYjNjMy00MGU1LTk5OWYtYTY4MzQ2MmE1ZGMzIiwidCI6IjM0MzAzNTQxLTc0ZWMtNGQ0YS04YzVhLTgwNDlkMmZkNmNlNiIsImMiOjR9" frameborder="0" allowFullScreen="true"></iframe>
                     </div>
                     <!-- CTA -->
-                    <div class="flex justify-end pt-4">
+                    <div class="flex justify-end pt-8">
                         <a href="https://app.powerbi.com/view?r=eyJrIjoiOTIwN2MxMTQtYjNjMy00MGU1LTk5OWYtYTY4MzQ2MmE1ZGMzIiwidCI6IjM0MzAzNTQxLTc0ZWMtNGQ0YS04YzVhLTgwNDlkMmZkNmNlNiIsImMiOjR9" target="_blank" rel="noopener noreferrer"
                            class="inline-flex items-center gap-2 text-sm font-semibold text-brand-accent hover:bg-brand-accent hover:text-white border border-brand-accent px-5 py-2.5 rounded-md transition-all duration-300 group/btn">
-                            Ver proyecto
+                            Ver en Power BI
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                             </svg>
@@ -812,7 +814,7 @@
 
             <!-- Tarjeta Diseño Web / UI·UX -->
             <section id="diseno-web" class="bg-[#F1F5F9] py-16 md:py-32 scroll-mt-12">
-                <div class="max-w-6xl mx-auto px-8 md:px-24 flex flex-col space-y-16 md:space-y-24">
+                <div class="max-w-6xl mx-auto px-8 md:px-24 flex flex-col space-y-12 md:space-y-16">
                     <div class="max-w-3xl">
                         <div class="flex items-center mb-4">
                             <span class="status-badge inline-block px-3 py-1 rounded-premium text-xs tracking-wider cursor-default">Diseño UI/UX</span>
@@ -870,7 +872,7 @@
     </main>
 
     <!-- CTA Banner -->
-    <section class="py-20 px-8 md:px-24 bg-brand-offwhite border-t border-slate-100">
+    <section class="py-24 px-8 md:px-24 bg-brand-offwhite border-t border-slate-100">
         <div class="max-w-2xl mx-auto text-center space-y-6">
             <h2 class="title-serif text-4xl md:text-5xl text-brand-navy leading-snug">
                 ¿Necesita datos confiables para su proyecto?
@@ -889,7 +891,7 @@
     </section>
 
     <!-- Footer -->
-    <footer class="mt-8 bg-brand-navy py-20 text-white">
+    <footer class="bg-brand-navy py-16 text-white">
         <div class="max-w-6xl mx-auto px-8 md:px-24">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start text-left">
                 <!-- Columna 1: Identidad -->
@@ -993,6 +995,17 @@
                 badge.classList.add('loader-hidden');
                 setTimeout(() => bar.classList.add('progress-fade'), 50);
             }, { once: true });
+        }
+            // 6. Metáfora Caos -> Orden (Solo Scroll en móvil)
+        const chaosGrid = document.querySelector('.chaos-grid');
+        if (chaosGrid && window.innerWidth < 768) {
+            const scrollObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    // Opción A: Reversible — añade in-view al entrar, la quita al salir
+                    chaosGrid.classList.toggle('in-view', entry.isIntersecting);
+                });
+            }, { threshold: 0.6 });
+            scrollObserver.observe(chaosGrid);
         }
     </script>
     <script>
