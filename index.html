@@ -350,7 +350,7 @@
 
         /* Lógica Metáfora: Caos -> Orden */
         .chaos-grid .cube {
-            transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
             will-change: transform, opacity;
             opacity: 0.15; /* Caos: cuadros casi invisibles, tenues */
         }
@@ -1008,8 +1008,10 @@
                 entries.forEach(entry => {
                     // Opción A: Reversible — añade in-view al entrar, la quita al salir
                     chaosGrid.classList.toggle('in-view', entry.isIntersecting);
-                });
-            }, { threshold: thresholdValue });
+            }, { 
+                threshold: 0.1,
+                rootMargin: '-25% 0px 0px 0px'
+            });
             scrollObserver.observe(chaosGrid);
         }
     </script>
