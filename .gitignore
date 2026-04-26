@@ -9,7 +9,8 @@ bocetos/
 skills-lock.json
 
 # Imágenes de trabajo (No necesarias para la web)
-imagenes/diapositivas/
+# imagenes/diapositivas/ - Restaurado porque es necesario para el carrusel
+
 
 # Archivos de sistema y logs
 .DS_Store
