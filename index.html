@@ -1002,13 +1002,14 @@
         }
             // 6. Metáfora Caos -> Orden (Solo Scroll en móvil)
         const chaosGrid = document.querySelector('.chaos-grid');
-        if (chaosGrid && window.innerWidth < 768) {
+        if (chaosGrid) {
+            const thresholdValue = window.innerWidth < 768 ? 0.6 : 0.3;
             const scrollObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     // Opción A: Reversible — añade in-view al entrar, la quita al salir
                     chaosGrid.classList.toggle('in-view', entry.isIntersecting);
                 });
-            }, { threshold: 0.6 });
+            }, { threshold: thresholdValue });
             scrollObserver.observe(chaosGrid);
         }
     </script>
