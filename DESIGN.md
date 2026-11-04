@@ -27,8 +27,8 @@ rounded:
   card: 16px (rounded-2xl)
   media: 10px (concéntrico: 16px de tarjeta - 6px de marco)
   card-frame: 6px de padding entre la imagen y el borde de la tarjeta; el texto conserva 16/20px al borde (.card-body)
-  card-button: 12px (rounded-xl)
-  pill: 9999px (botones del hero, etiquetas)
+  button: 8px (rounded-lg) en TODOS los botones y en el hover de los enlaces de texto; mismo radio que el logo AP
+  pill: 9999px solo en etiquetas (no son botones: la forma distingue lo que se puede hacer clic)
 layout:
   header: max-w-5xl
   main: max-w-4xl
