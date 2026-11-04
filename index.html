@@ -201,7 +201,8 @@
   </footer>
 
   <!-- ===================== MODAL TABLERO EN VIVO ===================== -->
-  <dialog id="dashboard-modal" class="dashboard-modal" aria-labelledby="dashboard-modal-title">
+  <!-- autofocus: al abrir, el foco va a la ventana y no al primer enlace -->
+  <dialog id="dashboard-modal" class="dashboard-modal" aria-labelledby="dashboard-modal-title" autofocus>
     <div class="dashboard-modal-bar">
       <h2 id="dashboard-modal-title" class="truncate text-sm font-semibold tracking-tight" data-modal-title></h2>
       <div class="flex shrink-0 items-center gap-2">
@@ -209,7 +210,14 @@
         <button type="button" class="btn-light !px-4 !py-1.5" data-modal-close>Cerrar</button>
       </div>
     </div>
-    <iframe title="Tablero interactivo" src="about:blank" allowfullscreen></iframe>
+    <div class="dashboard-modal-body">
+      <iframe title="Tablero interactivo" src="about:blank" allowfullscreen></iframe>
+      <!-- Indicador de carga: se oculta 1,5 s después de que el iframe avisa que cargó -->
+      <div class="dashboard-loader" role="status" aria-live="polite">
+        <div class="loader-track"><div class="loader-bar"></div></div>
+        <span class="text-xs font-medium text-ink-subtle">Cargando tablero…</span>
+      </div>
+    </div>
   </dialog>
 
 </body>
