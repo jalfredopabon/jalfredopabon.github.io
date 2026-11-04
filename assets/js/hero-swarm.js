@@ -786,19 +786,25 @@ void main() {
   };
 
   const onPointerMove = event => {
+    if (event.pointerType === 'touch') return; // el táctil se maneja con los eventos touch
     const point = locate(event);
     pointer.x = point.x;
     pointer.y = point.y;
     pointer.inside = point.inside;
   };
 
+  // Escritorio: el clic del mouse explota en el punto del clic (comportamiento original).
+  // Táctil: se ignora aquí; la explosión la decide onTouchEnd (solo con un toque corto y quieto).
   const onPointerDown = event => {
-    // Cambio propio: la explosión es solo para el clic del mouse.
-    // En pantallas táctiles el enjambre se posa bajo el dedo (ver onTouch).
     if (event.pointerType === 'touch') return;
-    const s = settings;
     const { x, y, inside } = locate(event);
-    if (!inside || !s.enabled || reduce || s.clickEffect === 'none') return;
+    if (inside) burstAt(x, y);
+  };
+
+  // Explosión centrada en (x, y). Lógica original del clic de SwarmCursor.
+  const burstAt = (x, y) => {
+    const s = settings;
+    if (!s.enabled || reduce || s.clickEffect === 'none') return;
     const reachOut = s.spread * 2.2;
     if (s.clickEffect === 'pulse') {
       ping.x = x;
@@ -843,22 +849,64 @@ void main() {
     pointer.inside = false;
   };
 
-  // Cambio propio: seguimiento del dedo en pantallas táctiles.
-  // Los eventos de puntero se cancelan cuando el navegador empieza a desplazar la página,
-  // pero touchstart/touchmove siguen informando la posición; así el enjambre sigue al dedo
-  // incluso mientras se baja por la página. Son pasivos: no bloquean el desplazamiento.
-  const onTouch = event => {
+  // ---------- Cambio propio: pantallas táctiles (solo móvil) ----------
+  //  - Toque corto y quieto (tap): el enjambre explota donde esté en ese momento.
+  //  - Deslizar: el enjambre sigue al dedo, sin explotar (también mientras se baja la página).
+  //  - Al levantar el dedo: vuelve a deambular de inmediato.
+  // Se usan touchstart/touchmove porque los eventos de puntero se cancelan cuando el
+  // navegador empieza a desplazar la página. Todos son pasivos: no bloquean el desplazamiento.
+  const TAP_MAX_MS = 300;    // duración máxima de un tap
+  const TAP_MAX_MOVE = 10;   // movimiento máximo (px) para que siga contando como tap
+  const touchState = { startX: 0, startY: 0, startTime: 0, moved: false, inHero: false };
+
+  // Centro actual del enjambre: promedio de la posición de las partículas
+  const swarmCenter = () => {
+    const n = settings.count;
+    let sx = 0;
+    let sy = 0;
+    for (let i = 0; i < n; i++) {
+      sx += px[i];
+      sy += py[i];
+    }
+    return { x: sx / n, y: sy / n };
+  };
+
+  const onTouchStart = event => {
+    const touch = event.touches[0];
+    if (!touch || event.touches.length > 1) return;
+    const point = locate(touch);
+    touchState.startX = touch.clientX;
+    touchState.startY = touch.clientY;
+    touchState.startTime = performance.now();
+    touchState.moved = false;
+    touchState.inHero = point.inside;
+  };
+
+  const onTouchMove = event => {
     const touch = event.touches[0];
     if (!touch) return;
+    if (!touchState.moved) {
+      const dist = Math.hypot(touch.clientX - touchState.startX, touch.clientY - touchState.startY);
+      if (dist <= TAP_MAX_MOVE) return; // todavía puede ser un tap
+      touchState.moved = true;
+    }
     const point = locate(touch);
     pointer.x = point.x;
     pointer.y = point.y;
     pointer.inside = point.inside;
   };
 
-  // Al levantar el dedo vuelve a deambular de inmediato
   const onTouchEnd = event => {
-    if (event.touches.length === 0) pointer.inside = false;
+    if (event.touches.length > 0) return;
+    const isTap =
+      !touchState.moved &&
+      touchState.inHero &&
+      performance.now() - touchState.startTime <= TAP_MAX_MS;
+    pointer.inside = false; // vuelve a deambular de inmediato
+    if (isTap) {
+      const c = swarmCenter();
+      burstAt(c.x, c.y);
+    }
   };
 
   const onVisibility = () => {
@@ -878,8 +926,8 @@ void main() {
   window.addEventListener('pointerdown', onPointerDown, { passive: true });
   window.addEventListener('pointerup', onPointerUp, { passive: true });
   window.addEventListener('pointercancel', onPointerUp, { passive: true });
-  window.addEventListener('touchstart', onTouch, { passive: true });
-  window.addEventListener('touchmove', onTouch, { passive: true });
+  window.addEventListener('touchstart', onTouchStart, { passive: true });
+  window.addEventListener('touchmove', onTouchMove, { passive: true });
   window.addEventListener('touchend', onTouchEnd, { passive: true });
   window.addEventListener('touchcancel', onTouchEnd, { passive: true });
   document.documentElement.addEventListener('pointerleave', onPointerLeave);

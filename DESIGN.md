@@ -68,7 +68,9 @@ motion:
    **Enjambre de partículas (`assets/js/hero-swarm.js`)**
    - Adaptación sin React del componente SwarmCursor de React Bits (WebGL2). Ajustes en el objeto `settings` al inicio del archivo.
    - 800 partículas en escritorio, 400 en móvil; gris `#94A3B8`, se vuelven carbón `#0F172A` al acelerar o al hacer clic.
-   - Sigue al cursor; sin cursor (móvil o mouse fuera) deambula solo; rodea el botón al pasar el mouse; clic = explosión.
+   - Escritorio: sigue al cursor; rodea el botón al pasar el mouse; clic = explosión en el punto del clic.
+   - Táctil: toque corto y quieto (≤300 ms, ≤10 px) = explosión donde esté el enjambre; deslizar = sigue al dedo sin explotar; al levantar el dedo vuelve a deambular de inmediato.
+   - Sin cursor ni dedo: deambula solo.
    - Se pausa fuera de pantalla o con la pestaña oculta; con `prefers-reduced-motion` queda fijo.
    - Sin WebGL2 el hero se ve sin fondo, sin errores.
 3. Tableros de impacto (Power BI, tarjetas a 2 columnas; abren en vivo en un modal)
