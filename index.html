@@ -186,17 +186,18 @@
   </main>
 
   <!-- ===================== FOOTER ===================== -->
+  <!-- Mismo ancho que el header (container-header) para que el nombre quede alineado arriba y abajo -->
   <footer class="mt-16 w-full border-t border-line bg-canvas pb-12 pt-8 sm:mt-24">
-    <div class="flex w-full flex-col items-center justify-between gap-4 px-6 text-xs text-ink-subtle sm:flex-row sm:px-12 md:px-16">
-      <div class="flex items-center gap-2 text-center sm:text-left">
-        <span class="font-semibold text-ink">Alfredo Pabón</span>
-        <span class="text-line-strong" aria-hidden="true">•</span>
-        <span>Datos e impacto social © 2026</span>
+    <div class="container-header flex flex-col items-center justify-between gap-4 text-xs text-ink-subtle sm:flex-row sm:items-end">
+      <div class="space-y-1 text-center sm:text-left">
+        <p>
+          <span class="font-semibold text-ink">Alfredo Pabón</span>
+          <span class="mx-1 text-line-strong" aria-hidden="true">·</span>
+          <span>Datos e impacto social</span>
+        </p>
+        <p class="text-ink-faint">© 2026 Alfredo Pabón</p>
       </div>
-      <div class="flex items-center gap-6 font-medium">
-        <a class="transition-colors hover:text-ink" href="https://www.linkedin.com/in/jalfredopabon" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-        <a class="transition-colors hover:text-ink" href="https://github.com/jalfredopabon" target="_blank" rel="noopener noreferrer">GitHub</a>
-      </div>
+      <a class="header-link font-medium" href="https://www.linkedin.com/in/jalfredopabon" target="_blank" rel="noopener noreferrer">LinkedIn</a>
     </div>
   </footer>
 

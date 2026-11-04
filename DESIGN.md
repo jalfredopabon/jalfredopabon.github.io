@@ -32,7 +32,7 @@ rounded:
 layout:
   header: max-w-5xl
   main: max-w-4xl
-  footer: ancho completo
+  footer: max-w-5xl (mismo ancho que el header; el nombre queda alineado arriba y abajo)
   grid: 1 columna en móvil, 2 desde md
 motion:
   ease: cubic-bezier(0.16, 1, 0.3, 1)
