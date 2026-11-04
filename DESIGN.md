@@ -25,7 +25,8 @@ typography:
   section-label: 0.75rem, bold, uppercase, tracking-wider
 rounded:
   card: 16px (rounded-2xl)
-  media: 12px (rounded-xl)
+  media: 10px (concéntrico: 16px de tarjeta - 6px de marco)
+  card-frame: 6px de padding entre la imagen y el borde de la tarjeta; el texto conserva 16/20px al borde (.card-body)
   card-button: 12px (rounded-xl)
   pill: 9999px (botones del hero, etiquetas)
 layout:

@@ -118,13 +118,19 @@
   }
 
   /* ---------- Tarjeta bento ---------- */
-  /* Tarjeta estática: sin hover. Solo los elementos que llevan a algún lado (botones) reaccionan */
+  /* Tarjeta estática: sin hover. Solo los elementos que llevan a algún lado (botones) reaccionan.
+     Marco fino de 6px alrededor de la imagen; radios concéntricos: 16px (tarjeta) - 6px = 10px (imagen) */
   .bento-card {
-    @apply overflow-hidden rounded-2xl border border-line bg-surface p-4 shadow-sm sm:p-5;
+    @apply overflow-hidden rounded-2xl border border-line bg-surface p-1.5 shadow-sm;
   }
 
   .card-media {
-    @apply relative aspect-video w-full overflow-hidden rounded-xl border border-line/70 bg-subtle;
+    @apply relative aspect-video w-full overflow-hidden rounded-[10px] bg-subtle;
+  }
+
+  /* Texto bajo la imagen: 6px de la tarjeta + 10/14px propios = 16/20px al borde (como antes) */
+  .card-body {
+    @apply flex flex-1 flex-col gap-2 px-2.5 pb-2.5 pt-3.5 sm:px-3.5 sm:pb-3.5;
   }
 
   .card-media > img {
@@ -141,7 +147,7 @@
 
   /* Pie de tarjeta de la galería UI: título + etiqueta */
   .card-caption {
-    @apply mt-3.5 flex items-center justify-between gap-3 border-t border-subtle pt-3;
+    @apply flex items-center justify-between gap-3 px-2.5 pb-2.5 pt-3.5 sm:px-3.5 sm:pb-3.5;
   }
 
   .card-caption > span:first-child {
