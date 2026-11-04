@@ -112,15 +112,9 @@
   }
 
   /* ---------- Tarjeta bento ---------- */
+  /* Tarjeta estática: sin hover. Solo los elementos que llevan a algún lado (botones) reaccionan */
   .bento-card {
     @apply overflow-hidden rounded-2xl border border-line bg-surface p-4 shadow-sm sm:p-5;
-    transition: transform 0.25s var(--ease-out), box-shadow 0.25s ease, border-color 0.2s ease;
-  }
-
-  .bento-card:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-lift);
-    border-color: rgb(var(--color-line-strong));
   }
 
   .card-media {

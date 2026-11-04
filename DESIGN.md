@@ -35,7 +35,7 @@ layout:
   grid: 1 columna en móvil, 2 desde md
 motion:
   ease: cubic-bezier(0.16, 1, 0.3, 1)
-  card-hover: translateY(-2px) + sombra difusa + borde line-strong
+  card-hover: ninguno (las tarjetas no son enlaces; solo los botones reaccionan)
 ---
 
 ## Principio
