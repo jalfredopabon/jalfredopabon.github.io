@@ -793,6 +793,9 @@ void main() {
   };
 
   const onPointerDown = event => {
+    // Cambio propio: la explosión es solo para el clic del mouse.
+    // En pantallas táctiles el enjambre se posa bajo el dedo (ver onTouch).
+    if (event.pointerType === 'touch') return;
     const s = settings;
     const { x, y, inside } = locate(event);
     if (!inside || !s.enabled || reduce || s.clickEffect === 'none') return;
@@ -840,6 +843,24 @@ void main() {
     pointer.inside = false;
   };
 
+  // Cambio propio: seguimiento del dedo en pantallas táctiles.
+  // Los eventos de puntero se cancelan cuando el navegador empieza a desplazar la página,
+  // pero touchstart/touchmove siguen informando la posición; así el enjambre sigue al dedo
+  // incluso mientras se baja por la página. Son pasivos: no bloquean el desplazamiento.
+  const onTouch = event => {
+    const touch = event.touches[0];
+    if (!touch) return;
+    const point = locate(touch);
+    pointer.x = point.x;
+    pointer.y = point.y;
+    pointer.inside = point.inside;
+  };
+
+  // Al levantar el dedo vuelve a deambular de inmediato
+  const onTouchEnd = event => {
+    if (event.touches.length === 0) pointer.inside = false;
+  };
+
   const onVisibility = () => {
     last = 0;
     wake();
@@ -857,6 +878,10 @@ void main() {
   window.addEventListener('pointerdown', onPointerDown, { passive: true });
   window.addEventListener('pointerup', onPointerUp, { passive: true });
   window.addEventListener('pointercancel', onPointerUp, { passive: true });
+  window.addEventListener('touchstart', onTouch, { passive: true });
+  window.addEventListener('touchmove', onTouch, { passive: true });
+  window.addEventListener('touchend', onTouchEnd, { passive: true });
+  window.addEventListener('touchcancel', onTouchEnd, { passive: true });
   document.documentElement.addEventListener('pointerleave', onPointerLeave);
   document.addEventListener('visibilitychange', onVisibility);
   resize();
