@@ -97,6 +97,7 @@ Convenciones:
 ## Componentes
 
 - **Tablero (`.bento-card` + `.btn-card[data-dashboard]`)**: vista previa 16:9, título, descripción y botón. En escritorio abre un `<dialog>` con el iframe; en móvil (<768px) abre una pestaña nueva.
+- **Modal de tablero (`.dashboard-modal`)**: barra de carga `.dashboard-loader` encima del iframe; se oculta 1,5 s después del evento `load` (`RENDER_MARGIN_MS` en `dashboards.js`). El foco inicial va a la ventana (`autofocus` en el `<dialog>`).
 - **Pieza UI (`figure.bento-card` + `.card-caption`)**: imagen 16:9 alineada arriba, nombre y etiqueta de proyecto. No enlaza.
 
 ## Agregar contenido
