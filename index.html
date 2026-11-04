@@ -15,6 +15,7 @@
   <link rel="stylesheet" href="assets/style.css">
   <script src="assets/js/dashboards.js" defer></script>
   <script src="assets/js/hero-swarm.js" defer></script>
+  <script src="assets/js/footer-scene.js" defer></script>
 </head>
 <body>
 
@@ -186,18 +187,67 @@
   </main>
 
   <!-- ===================== FOOTER ===================== -->
-  <!-- Mismo ancho que el header (container-header) para que el nombre quede alineado arriba y abajo -->
-  <footer class="mt-16 w-full border-t border-line bg-canvas pb-12 pt-8 sm:mt-24">
-    <div class="container-header flex flex-col items-center justify-between gap-4 text-xs text-ink-subtle sm:flex-row sm:items-end">
-      <div class="space-y-1 text-center sm:text-left">
-        <p>
-          <span class="font-semibold text-ink">Alfredo Pabón</span>
-          <span class="mx-1 text-line-strong" aria-hidden="true">·</span>
-          <span>Datos e impacto social</span>
-        </p>
-        <p class="text-ink-faint">© 2026 Alfredo Pabón</p>
+  <!-- Footer ilustrado: paisaje andino con una persona analizando datos en el territorio.
+       Al llegar, se enciende la pantalla del portátil y luego, una a una, las luces de los pueblos.
+       Control: assets/js/footer-scene.js -->
+  <footer class="site-footer">
+    <!-- Texto: sobre el fondo en móvil; sobre el cielo de la imagen desde md. Mismo ancho que el header -->
+    <div class="footer-text">
+      <div class="container-header flex flex-col items-center justify-between gap-4 text-xs text-ink-subtle sm:flex-row sm:items-end">
+        <div class="space-y-1 text-center sm:text-left">
+          <p>
+            <span class="font-semibold text-ink">Alfredo Pabón</span>
+            <span class="mx-1 text-line-strong" aria-hidden="true">·</span>
+            <span>Datos e impacto social</span>
+          </p>
+          <p class="text-ink-faint">© 2026 Alfredo Pabón</p>
+        </div>
+        <a class="header-link font-medium" href="https://www.linkedin.com/in/jalfredopabon" target="_blank" rel="noopener noreferrer">LinkedIn</a>
       </div>
-      <a class="header-link font-medium" href="https://www.linkedin.com/in/jalfredopabon" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+    </div>
+
+    <div class="footer-scene" data-scene>
+      <img class="footer-scene-img"
+           src="imagenes/footer/paisaje-2400.jpg"
+           srcset="imagenes/footer/paisaje-1200.jpg 1200w, imagenes/footer/paisaje-2400.jpg 2400w, imagenes/footer/paisaje-3584.jpg 3584w"
+           sizes="100vw" width="3584" height="1156" loading="lazy" decoding="async"
+           alt="Grabado de un paisaje andino: una persona trabaja en un portátil entre cultivos, con pueblos y montañas detrás">
+
+      <!-- Luces: coordenadas en píxeles de la imagen original (3584 x 1156) -->
+      <svg class="footer-scene-lights" viewBox="0 0 3584 1156" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <defs>
+          <radialGradient id="light-glow">
+            <stop offset="0" stop-color="#F4B544" stop-opacity="0.55"/>
+            <stop offset="1" stop-color="#F4B544" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+
+        <!-- 1. Pantalla del portátil (se enciende primero) -->
+        <g class="scene-light" style="--d:0s">
+          <circle cx="1840" cy="913" r="95" fill="url(#light-glow)"/>
+          <polygon class="scene-screen" points="1817,893 1865,895 1863,933 1816,930"/>
+        </g>
+
+        <!-- 2. Ventanas de los pueblos (se encienden después, en orden irregular) -->
+        <g class="scene-light" style="--d:0.9s"><circle cx="1145" cy="672" r="26" fill="url(#light-glow)"/><rect class="scene-window" x="1140" y="667" width="10" height="10"/></g>
+        <g class="scene-light" style="--d:1.2s"><circle cx="2952" cy="767" r="26" fill="url(#light-glow)"/><rect class="scene-window" x="2947" y="762" width="10" height="10"/></g>
+        <g class="scene-light" style="--d:1.45s"><circle cx="1630" cy="745" r="26" fill="url(#light-glow)"/><rect class="scene-window" x="1625" y="740" width="10" height="10"/></g>
+        <g class="scene-light" style="--d:1.6s"><circle cx="932" cy="692" r="26" fill="url(#light-glow)"/><rect class="scene-window" x="927" y="687" width="10" height="10"/></g>
+        <g class="scene-light" style="--d:1.9s"><circle cx="3327" cy="792" r="26" fill="url(#light-glow)"/><rect class="scene-window" x="3322" y="787" width="10" height="10"/></g>
+        <g class="scene-light" style="--d:2.05s"><circle cx="1250" cy="700" r="26" fill="url(#light-glow)"/><rect class="scene-window" x="1245" y="695" width="10" height="10"/></g>
+        <g class="scene-light" style="--d:2.3s"><circle cx="3058" cy="777" r="26" fill="url(#light-glow)"/><rect class="scene-window" x="3053" y="772" width="10" height="10"/></g>
+        <g class="scene-light" style="--d:2.5s"><circle cx="1543" cy="680" r="26" fill="url(#light-glow)"/><rect class="scene-window" x="1538" y="675" width="10" height="10"/></g>
+        <g class="scene-light" style="--d:2.7s"><circle cx="813" cy="672" r="26" fill="url(#light-glow)"/><rect class="scene-window" x="808" y="667" width="10" height="10"/></g>
+        <g class="scene-light" style="--d:2.85s"><circle cx="3188" cy="762" r="26" fill="url(#light-glow)"/><rect class="scene-window" x="3183" y="757" width="10" height="10"/></g>
+        <g class="scene-light" style="--d:3.1s"><circle cx="1030" cy="705" r="26" fill="url(#light-glow)"/><rect class="scene-window" x="1025" y="700" width="10" height="10"/></g>
+        <g class="scene-light" style="--d:3.3s"><circle cx="1730" cy="745" r="26" fill="url(#light-glow)"/><rect class="scene-window" x="1725" y="740" width="10" height="10"/></g>
+        <g class="scene-light" style="--d:3.5s"><circle cx="2887" cy="778" r="26" fill="url(#light-glow)"/><rect class="scene-window" x="2882" y="773" width="10" height="10"/></g>
+        <g class="scene-light" style="--d:3.7s"><circle cx="1020" cy="660" r="26" fill="url(#light-glow)"/><rect class="scene-window" x="1015" y="655" width="10" height="10"/></g>
+        <g class="scene-light" style="--d:3.9s"><circle cx="3348" cy="718" r="26" fill="url(#light-glow)"/><rect class="scene-window" x="3343" y="713" width="10" height="10"/></g>
+        <g class="scene-light" style="--d:4.1s"><circle cx="1275" cy="700" r="26" fill="url(#light-glow)"/><rect class="scene-window" x="1270" y="695" width="10" height="10"/></g>
+        <g class="scene-light" style="--d:4.35s"><circle cx="1795" cy="753" r="26" fill="url(#light-glow)"/><rect class="scene-window" x="1790" y="748" width="10" height="10"/></g>
+        <g class="scene-light" style="--d:4.6s"><circle cx="1460" cy="720" r="26" fill="url(#light-glow)"/><rect class="scene-window" x="1455" y="715" width="10" height="10"/></g>
+      </svg>
     </div>
   </footer>
 

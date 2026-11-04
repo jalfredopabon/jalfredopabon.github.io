@@ -159,6 +159,52 @@
     @apply shrink-0 rounded-full bg-subtle px-2 py-0.5 font-mono text-[10px] text-ink-subtle;
   }
 
+  /* ---------- Footer ilustrado ---------- */
+  .site-footer {
+    @apply relative mt-16 w-full bg-canvas sm:mt-24;
+  }
+
+  /* Texto: arriba del paisaje en móvil; encima del cielo de la imagen desde md */
+  .footer-text {
+    @apply relative z-10 pb-4 pt-8 md:absolute md:inset-x-0 md:top-0 md:pt-10;
+  }
+
+  .footer-scene {
+    @apply relative h-[280px] w-full overflow-hidden sm:h-auto sm:aspect-[3584/1156];
+  }
+
+  /* multiply: el blanco del papel toma el color del fondo; la parte de arriba se desvanece */
+  .footer-scene-img {
+    @apply absolute inset-0 h-full w-full object-cover object-center;
+    mix-blend-mode: multiply;
+    -webkit-mask-image: linear-gradient(to bottom, transparent, #000 22%);
+    mask-image: linear-gradient(to bottom, transparent, #000 22%);
+  }
+
+  .footer-scene-lights {
+    @apply pointer-events-none absolute inset-0 h-full w-full;
+  }
+
+  .scene-screen,
+  .scene-window {
+    fill: #F4B544;
+  }
+
+  .scene-screen {
+    opacity: 0.9;
+  }
+
+  /* Las luces se encienden con retraso escalonado (--d) cuando el footer entra en pantalla.
+     Solo se ocultan si el JS "arma" la escena; sin JS se ven encendidas */
+  .scene-light {
+    transition: opacity 0.9s ease;
+    transition-delay: var(--d, 0s);
+  }
+
+  [data-scene].is-armed:not(.is-lit) .scene-light {
+    opacity: 0;
+  }
+
   /* ---------- Modal de tablero en vivo ---------- */
   .dashboard-modal {
     @apply m-auto h-[88vh] w-[min(1280px,94vw)] max-w-none rounded-2xl border border-line bg-surface p-0 text-ink shadow-sm;
