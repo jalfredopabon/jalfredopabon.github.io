@@ -1,11 +1,11 @@
-{
+﻿{
   "name": "1_proyecto_portafolio_personal",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "npx tailwindcss -i ./src/input.css -o ./assets/style.css --minify",
-    "watch": "npx tailwindcss -i ./src/input.css -o ./assets/style.css --watch"
+    "build": "npx tailwindcss -i ./src/css/input.css -o ./assets/style.css --minify",
+    "watch": "npx tailwindcss -i ./src/css/input.css -o ./assets/style.css --watch"
   },
   "repository": {
     "type": "git",

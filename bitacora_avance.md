@@ -73,6 +73,10 @@ Para elevar la UI/UX del Momento 1, nos inspiramos en:
 | 2026-04-24 | Metáfora de Datos Interactiva | Momento 1 | Implementación de 16 cubos con animación "Caos a Orden", compresión física y zona de hover de ancho total (w-full) para máxima intuitividad. |
 | 2026-04-24 | Escala Cromática y Legibilidad | Momento 1 | Inversión de opacidades (claro a sólido) para reforzar metáfora de consolidación y ajuste de coordenadas para evitar superposición con el texto. |
 | 2026-04-25 | Hero Responsivo e Inteligente | Momento 1 | Migración a unidades vw/vh, escalas adaptables y lógica "Smart Mobile" (chip estático por defecto en móviles) para una experiencia premium en todo dispositivo. |
+| 2026-11-03 | Rediseño v2: sistema de diseño y arquitectura | Momento 1 (v2) | Rama `rediseno`; versión anterior etiquetada `v1-portafolio-original`. Nuevo `DESIGN.md` (subordinado a `.impeccable.md`; toma estructura de Stitch y reglas de Mundo Homeopático). CSS por capas en `src/css/` (tokens, base, components), JS por comportamiento en `assets/js/`. Referencia de Mundo Homeopático movida a `nueva_version/referencias/`. |
+| 2026-11-03 | Rediseño v2: visual de Stitch | Momento 1 (v2) | Se descarta la primera versión (fuente serif, acento azul, tarjetas a ancho completo) por alejarse de la maqueta. Nuevo `index.html` fiel a Stitch con ajustes mínimos: header sólido sin vidrio, tarjetas `#FEFEFD` en vez de blanco puro, Sentence case en textos, títulos sin cortar. Estructura: header, hero, 4 tableros Power BI (modal en vivo en escritorio, pestaña nueva en móvil), galería UI/UX (imágenes provisionales de Mundo Homeopático) y footer. Se eliminan las secciones de perfil y contacto. |
+
+> **Nota v2:** el "Sistema de Diseño (Brand Identity)" de arriba describe la v1. La fuente de verdad desde la v2 es `DESIGN.md`.
 
 ---
 

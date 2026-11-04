@@ -1,21 +1,30 @@
 /** @type {import('tailwindcss').Config} */
+// Los colores leen las variables RGB de src/css/tokens.css (fuente de verdad: DESIGN.md)
+const token = (name) => `rgb(var(--color-${name}) / <alpha-value>)`;
+
 module.exports = {
-  content: ["./index.html"],
+  content: ["./index.html", "./assets/js/**/*.js"],
   theme: {
     extend: {
       colors: {
-        'brand-navy': '#0A192F',
-        'brand-offwhite': '#F8FAFC',
-        'brand-slate': '#475569',
-        'brand-accent': '#2563EB',
+        canvas: token('canvas'),
+        surface: token('surface'),
+        subtle: token('subtle'),
+        ink: {
+          DEFAULT: token('ink'),
+          strong: token('ink-strong'),
+          muted: token('ink-muted'),
+          subtle: token('ink-subtle'),
+          faint: token('ink-faint'),
+        },
+        line: {
+          DEFAULT: token('line'),
+          strong: token('line-strong'),
+        },
       },
       fontFamily: {
-        'serif': ['"Playfair Display"', 'serif'],
-        'sans': ['"Inter"', 'sans-serif'],
+        sans: ['Geist', 'system-ui', '-apple-system', 'sans-serif'],
       },
-      borderRadius: {
-        'premium': '8px',
-      }
     },
   },
   plugins: [],

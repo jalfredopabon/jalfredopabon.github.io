@@ -1,0 +1,7 @@
+/* Punto de entrada. Orden: tokens -> base -> componentes -> utilidades */
+@import "./tokens.css";
+@import "tailwindcss/base";
+@import "./base.css";
+@import "tailwindcss/components";
+@import "./components.css";
+@import "tailwindcss/utilities";

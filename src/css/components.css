@@ -1,0 +1,175 @@
+/*
+ * Componentes. Cada clase replica el estilo de la maqueta de Stitch
+ * (nueva_version/stitch_portafolio_digital/index.html) para no repetir utilidades en el HTML.
+ */
+@layer components {
+  /* ---------- Layout ---------- */
+  .container-header {
+    @apply mx-auto max-w-5xl px-4 sm:px-6;
+  }
+
+  .container-main {
+    @apply mx-auto w-full max-w-4xl px-4 sm:px-6;
+  }
+
+  /* ---------- Header (Stitch sin vidrio: color sólido) ---------- */
+  .site-header {
+    @apply sticky top-0 z-50 w-full border-b border-line/80 bg-canvas;
+  }
+
+  /* Logo AP: mismo diseño que el favicon */
+  .brand-mark {
+    @apply flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-ink text-[11px] font-bold tracking-tight text-canvas;
+  }
+
+  .header-link {
+    @apply flex items-center gap-1.5 rounded-md px-2 py-1 transition-colors hover:bg-subtle hover:text-ink;
+  }
+
+  /* ---------- Hero (pantalla completa menos el header de 52px + 1px de borde) ---------- */
+  .hero {
+    @apply relative isolate flex flex-col overflow-hidden;
+    min-height: calc(100vh - 53px);   /* respaldo para navegadores sin svh */
+    min-height: calc(100svh - 53px);  /* svh: en iOS no lo tapa la barra del navegador */
+  }
+
+  .hero-bg {
+    @apply pointer-events-none absolute inset-0 -z-10 block h-full w-full;
+  }
+
+  .hero-content {
+    @apply flex flex-1 flex-col items-center justify-center gap-8 py-10 text-center;
+  }
+
+  .hero-title {
+    @apply font-bold tracking-tight text-ink;
+    font-size: clamp(2.25rem, 6.5vw, 4.75rem);
+    line-height: 1.06;
+    text-wrap: balance;
+  }
+
+  .btn-hero {
+    @apply btn-dark sm:px-8 sm:py-3 sm:text-base;
+  }
+
+  .hero-tools {
+    @apply w-full pb-8 sm:pb-10;
+  }
+
+  .tools-list {
+    @apply flex flex-wrap items-center justify-center gap-x-8 gap-y-4;
+  }
+
+  .tool {
+    @apply flex items-center gap-2 text-xs font-medium text-ink-subtle sm:text-sm;
+  }
+
+  /* Logos en gris parejo: se quita el color y se compensa la luminosidad */
+  .tool-logo {
+    @apply h-5 w-5 shrink-0;
+    filter: grayscale(1) contrast(0.9);
+    opacity: 0.7;
+  }
+
+  /* Power BI es amarillo claro: en gris queda casi invisible, se oscurece */
+  .tool-logo--light {
+    filter: grayscale(1) brightness(0.62) contrast(1.1);
+  }
+
+  /* ---------- Etiqueta de sección ---------- */
+  .section-label {
+    @apply flex items-center gap-2;
+  }
+
+  .section-label::before {
+    content: "";
+    @apply h-1.5 w-1.5 rounded-full bg-ink;
+  }
+
+  .section-label > h2 {
+    @apply text-xs font-bold uppercase tracking-wider text-ink-subtle;
+  }
+
+  .section-lead {
+    @apply text-xs text-ink-muted sm:text-sm;
+  }
+
+  /* ---------- Botones píldora ---------- */
+  .btn-pill {
+    @apply inline-flex items-center justify-center rounded-full px-5 py-2 text-xs font-semibold tracking-tight shadow-sm transition-all active:scale-[0.98] sm:px-6 sm:text-sm;
+  }
+
+  .btn-dark {
+    @apply btn-pill bg-ink text-canvas hover:bg-ink-strong;
+  }
+
+  .btn-light {
+    @apply btn-pill border border-line-strong bg-surface text-ink hover:border-ink-faint hover:bg-subtle;
+  }
+
+  .btn-card {
+    @apply inline-flex w-full items-center justify-center gap-2 rounded-xl border border-line-strong bg-canvas px-4 py-2 text-xs font-semibold text-ink transition-all hover:border-ink hover:bg-ink hover:text-canvas active:scale-[0.99];
+  }
+
+  /* ---------- Tarjeta bento ---------- */
+  .bento-card {
+    @apply overflow-hidden rounded-2xl border border-line bg-surface p-4 shadow-sm sm:p-5;
+    transition: transform 0.25s var(--ease-out), box-shadow 0.25s ease, border-color 0.2s ease;
+  }
+
+  .bento-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lift);
+    border-color: rgb(var(--color-line-strong));
+  }
+
+  .card-media {
+    @apply relative aspect-video w-full overflow-hidden rounded-xl border border-line/70 bg-subtle;
+  }
+
+  .card-media > img {
+    @apply h-full w-full object-cover object-center;
+  }
+
+  .card-title {
+    @apply line-clamp-2 text-sm font-bold tracking-tight text-ink sm:text-base;
+  }
+
+  .card-text {
+    @apply line-clamp-3 text-xs leading-relaxed text-ink-muted;
+  }
+
+  /* Pie de tarjeta de la galería UI: título + etiqueta */
+  .card-caption {
+    @apply mt-3.5 flex items-center justify-between gap-3 border-t border-subtle pt-3;
+  }
+
+  .card-caption > span:first-child {
+    @apply text-xs font-semibold tracking-tight text-ink;
+  }
+
+  .card-tag {
+    @apply shrink-0 rounded-full bg-subtle px-2 py-0.5 font-mono text-[10px] text-ink-subtle;
+  }
+
+  /* ---------- Modal de tablero en vivo ---------- */
+  .dashboard-modal {
+    @apply m-auto h-[88vh] w-[min(1280px,94vw)] max-w-none rounded-2xl border border-line bg-surface p-0 text-ink shadow-sm;
+  }
+
+  .dashboard-modal::backdrop {
+    background: rgb(var(--color-ink) / 0.45);
+  }
+
+  .dashboard-modal[open] {
+    @apply flex flex-col;
+  }
+
+  .dashboard-modal-bar {
+    @apply flex items-center justify-between gap-4 border-b border-line px-4 py-3 sm:px-5;
+  }
+
+  .dashboard-modal iframe {
+    @apply w-full flex-1 border-0 bg-subtle;
+  }
+}

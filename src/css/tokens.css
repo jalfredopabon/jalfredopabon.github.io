@@ -1,0 +1,26 @@
+/*
+ * Tokens del sistema de diseño (valores visuales de Stitch, ajustados).
+ * Fuente de verdad: DESIGN.md
+ * Los colores van como canales RGB para que Tailwind admita opacidad (ej. border-line/80).
+ */
+:root {
+  /* Superficies */
+  --color-canvas: 248 249 250;         /* #F8F9FA fondo global (Stitch) */
+  --color-surface: 254 254 253;        /* #FEFEFD tarjetas: Stitch usaba #FFFFFF */
+  --color-subtle: 241 245 249;         /* #F1F5F9 fondos de media, hovers */
+
+  /* Tinta: Stitch ya usa carbón, no negro puro */
+  --color-ink: 15 23 42;               /* #0F172A */
+  --color-ink-strong: 30 41 59;        /* #1E293B hover de botón oscuro */
+  --color-ink-muted: 71 85 105;        /* #475569 */
+  --color-ink-subtle: 100 116 139;     /* #64748B */
+  --color-ink-faint: 148 163 184;      /* #94A3B8 */
+
+  /* Bordes */
+  --color-line: 226 232 240;           /* #E2E8F0 */
+  --color-line-strong: 203 213 225;    /* #CBD5E1 */
+
+  /* Movimiento y profundidad */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --shadow-lift: 0 12px 30px -10px rgb(15 23 42 / 0.08);
+}
