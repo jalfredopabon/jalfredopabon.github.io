@@ -10,7 +10,7 @@ Este portafolio no es solo una vitrina de proyectos; es una demostración de la 
 ### 🟢 Momento 1: Consolidación Monolítica (Fase Actual)
 *   **Objetivo:** Crear una experiencia de usuario impecable en una sola página.
 *   **Arquitectura:** Single Page Application (HTML, Vanilla CSS/Tailwind, JS).
-*   **Alcance:** Presentación de 6 activos clave (4 Power BI + 1 PPT + 1 Proyecto Astro).
+*   **Alcance:** v1: 6 activos (4 Power BI + 1 PPT + 1 Proyecto Astro). v2: 4 tableros Power BI + galería UI/UX.
 *   **Prioridad:** Refinamiento UI/UX, transiciones fluidas y micro-interacciones que den sensación de producto "cerrado" y profesional.
 
 ### ⚪ Momento 2: Escalabilidad con Astro
@@ -83,6 +83,7 @@ Para elevar la UI/UX del Momento 1, nos inspiramos en:
 | 2026-11-04 | Botones | Momento 1 (v2) | Todos rectangulares con esquinas de 8px (mismo radio del logo AP), una sola clase base `.btn`. Las etiquetas siguen en píldora porque no son botones. |
 | 2026-11-04 | Modal de tableros | Momento 1 (v2) | Barra de carga "Cargando tablero…" que se oculta 1,5 s después del `load` del iframe (Power BI dibuja después; no se puede leer su estado). El foco inicial va a la ventana. |
 | 2026-11-04 | Footer ilustrado | Momento 1 (v2) | Mismo ancho que el header. Grabado andino a dos tonos con una persona analizando datos en un portátil; al llegar se enciende en ámbar la pantalla y luego 18 ventanas de los pueblos (`assets/js/footer-scene.js`). Imagen en `imagenes/footer/` (1200/2400/3584 px). Pendiente decidir: cóndores planeando en el cielo. |
+| 2026-11-04 | Documentación única | Momento 1 (v2) | Se elimina `README_PORTAFOLIO.md` (desactualizado); URL, repositorio y flujo de publicación pasan a la sección "Proyecto" de `DESIGN.md`, que queda como única fuente de verdad. |
 
 > **Nota v2:** el "Sistema de Diseño (Brand Identity)" de arriba describe la v1. La fuente de verdad desde la v2 es `DESIGN.md`.
 

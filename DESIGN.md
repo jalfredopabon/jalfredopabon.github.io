@@ -39,6 +39,17 @@ motion:
   card-hover: ninguno (las tarjetas no son enlaces; solo los botones reaccionan)
 ---
 
+## Proyecto
+
+Documento único de referencia del portafolio. El historial de cambios está en `bitacora_avance.md`.
+
+- **Sitio público:** https://jalfredopabon.github.io/ (GitHub Pages)
+- **Repositorio:** `jalfredopabon/jalfredopabon.github.io`; `main` es lo publicado, `rediseno` es la rama de trabajo
+- **Ruta local:** `C:\Users\JosePabon\Music\proyecto_portafolio_digital`
+- **Contenido:** 4 tableros de Power BI y una galería UI/UX; contacto solo por LinkedIn
+- **Previsualizar:** abrir `index.html` en el navegador (funciona sin servidor). Tras cambiar CSS: `npm run build`
+- **Publicar:** fusionar en `main` y hacer push; GitHub Pages actualiza en segundos. **Solo cuando José lo pida**
+
 ## Principio
 
 **Lo visual es Stitch.** Solo se ajusta lo que rompe una regla del proyecto. Por debajo, el código se ordena en capas.
