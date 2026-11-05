@@ -95,6 +95,7 @@ Para elevar la UI/UX del Momento 1, nos inspiramos en:
 | 2026-11-04 | Compensación óptica en la galería | Momento 1 (v2) | El pie de las tarjetas UI/UX baja de 16/20 a 12/16px: el texto se veía más lejos del borde que el botón de los tableros por el aire invisible del interlineado. Tableros sin cambio. Regla en `DESIGN.md` › spacing. |
 | 2026-11-04 | Galería: primera pieza real | Momento 1 (v2) | Componente 1 = "Navegación lateral colapsable" (Power BI · Respuesta humanitaria), `imagenes/ui/Sidebar.png`. Descripción basada en lo visible, sin medidas inventadas. Pendiente: medidas reales y confirmar si "ConEsperanza" se puede mostrar. Componentes 2 a 4 siguen provisionales. |
 | 2026-11-04 | Galería: 2 piezas | Momento 1 (v2) | Se quitan los componentes 3 y 4 (provisionales). Quedan la navegación lateral (real) y el componente 2 (provisional). Las piezas se irán agregando a medida que existan. |
+| 2026-11-04 | Galería: portada de informe | Momento 1 (v2) | Componente 2 = "Portada de informe" (Power BI · Consorcio humanitario), `imagenes/ui/hero_section.png`. Corrección: `Sidebar.png` renombrado a `sidebar.png` en git (Windows no distingue mayúsculas; GitHub Pages sí). Pendiente: exportar la portada a ~1900px y confirmar permiso para mostrar logos de socios. |
 
 > **Nota v2:** el "Sistema de Diseño (Brand Identity)" de arriba describe la v1. La fuente de verdad desde la v2 es `DESIGN.md`.
 
