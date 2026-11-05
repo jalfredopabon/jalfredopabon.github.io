@@ -30,10 +30,15 @@ typography:
   micro: 12/16, mono (contador, marca de video)
 rounded:
   card: 16px (rounded-2xl)
-  media: 10px (concéntrico: 16px de tarjeta - 6px de marco)
-  card-frame: 6px de padding entre la imagen y el borde de la tarjeta; el texto conserva 16/20px al borde (.card-body)
+  media: 8px (concéntrico: 16px de tarjeta - 8px de marco; mismo radio que botones y logo AP)
+  card-frame: 8px de padding entre la imagen y el borde de la tarjeta; texto a 16/20px del borde; 12px entre imagen y texto (.card-body, .card-caption)
   button: 8px (rounded-lg) en TODOS los botones y en el hover de los enlaces de texto; mismo radio que el logo AP
   pill: 9999px solo en etiquetas (no son botones: la forma distingue lo que se puede hacer clic)
+spacing:
+  regla: cuadrícula de 4px en todo el proyecto. Paddings, márgenes, separaciones, radios y tamaños de íconos en múltiplos de 4 (preferir 8, 12, 16, 20, 24…). Sin medios pasos de Tailwind (0.5, 1.5, 2.5, 3.5)
+  excepciones: bordes y contornos de foco (1-2px); alto del header 52px + 1px de borde
+  iconos: 16px (h-4) en enlaces y botones; 20px en la franja de herramientas
+  galeria: aire de la captura en la miniatura 8/12px, para que quede alineada con el texto (8 de marco + 8/12 = 16/20)
 layout:
   header: max-w-5xl
   main: max-w-4xl
@@ -94,7 +99,7 @@ Documento único de referencia del portafolio. El historial de cambios está en 
 4. Diseño UI/UX: galería que se amplía en la misma página (`assets/js/gallery.js`)
    - Miniaturas en marco uniforme 16:9: la pieza se ve completa (`object-contain`), centrada sobre gris `line` (#E2E8F0, más oscuro que `subtle` para que las capturas claras se recorten), con aire. Sirve para piezas 16:9, 9:16 o cualquier proporción. Debajo: nombre y un subtítulo corto en gris (`.card-subtitle`, "Plataforma · Contexto", máx. ~6 palabras, p. ej. "Web · Catálogo de farmacia"). Sin etiqueta de proyecto (no aportaba). El subtítulo se usa en todas las piezas o en ninguna.
    - Toda la tarjeta es clicable: cursor de mano, hover sutil y foco visible en la tarjeta.
-   - Vista ampliada (`#gallery-modal`), con la estructura de la tarjeta de tablero: pieza sobre el mismo gris `line`, sin sombra ni borde (solo esquinas de 10px); panel con título, subtítulo y texto (con scroll), y "Cerrar" claro (`.btn-card`) a todo el ancho, fijo al pie. Escritorio = pieza a la izquierda, panel de 320px a la derecha. Móvil = pieza arriba, panel debajo (máx. 42% del alto).
+   - Vista ampliada (`#gallery-modal`), con la estructura de la tarjeta de tablero: pieza sobre el mismo gris `line`, sin sombra ni borde (solo esquinas de 8px); panel con título, subtítulo y texto (con scroll), y "Cerrar" claro (`.btn-card`) a todo el ancho, fijo al pie. Escritorio = pieza a la izquierda, panel de 320px a la derecha. Móvil = pieza arriba, panel debajo (máx. 42% del alto).
    - Navegación: flechas (a los lados en escritorio, abajo en móvil) y contador "2 / 4" centrado al pie de la pieza; ← → en teclado, deslizar en móvil; Esc o clic en el fondo también cierran. Al cerrar, el foco vuelve a la pieza.
    - Video: MP4/WebM corto (5 a 15 s), sin sonido, en bucle, ideal < 3 MB. Miniatura = imagen fija con marca "Video". Al abrir se reproduce solo, siempre con controles; con `prefers-reduced-motion` no arranca solo.
    - Sin JS, cada pieza es un enlace normal a su imagen o video.

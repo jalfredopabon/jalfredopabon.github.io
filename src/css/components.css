@@ -33,7 +33,7 @@
   }
 
   .header-link {
-    @apply flex items-center gap-1.5 rounded-lg px-2 py-1 transition-colors hover:bg-subtle hover:text-ink;
+    @apply flex items-center gap-2 rounded-lg px-2 py-1 transition-colors hover:bg-subtle hover:text-ink;
   }
 
   /* ---------- Hero (pantalla completa menos el header de 52px + 1px de borde) ---------- */
@@ -93,7 +93,7 @@
 
   .section-label::before {
     content: "";
-    @apply h-1.5 w-1.5 rounded-full bg-ink;
+    @apply h-2 w-2 rounded-full bg-ink;
   }
 
   .section-label > h2 {
@@ -124,18 +124,18 @@
 
   /* ---------- Tarjeta bento ---------- */
   /* Tarjeta estática: sin hover. Solo los elementos que llevan a algún lado (botones) reaccionan.
-     Marco fino de 6px alrededor de la imagen; radios concéntricos: 16px (tarjeta) - 6px = 10px (imagen) */
+     Marco de 8px alrededor de la imagen; radios concéntricos: 16px (tarjeta) - 8px = 8px (imagen, igual que botones y logo) */
   .bento-card {
-    @apply overflow-hidden rounded-2xl border border-line bg-surface p-1.5 shadow-sm;
+    @apply overflow-hidden rounded-2xl border border-line bg-surface p-2 shadow-sm;
   }
 
   .card-media {
-    @apply relative aspect-video w-full overflow-hidden rounded-[10px] bg-subtle;
+    @apply relative aspect-video w-full overflow-hidden rounded-lg bg-subtle;
   }
 
-  /* Texto bajo la imagen: 6px de la tarjeta + 10/14px propios = 16/20px al borde (como antes) */
+  /* Texto bajo la imagen: 8px de la tarjeta + 8/12px propios = 16/20px al borde; 12px entre imagen y texto */
   .card-body {
-    @apply flex flex-1 flex-col gap-2 px-2.5 pb-2.5 pt-3.5 sm:px-3.5 sm:pb-3.5;
+    @apply flex flex-1 flex-col gap-2 px-2 pb-2 pt-3 sm:px-3 sm:pb-3;
   }
 
   .card-media > img {
@@ -153,7 +153,7 @@
 
   /* Pie de tarjeta de la galería UI: nombre y, debajo, subtítulo corto en gris (plataforma · contexto) */
   .card-caption {
-    @apply flex flex-col gap-0.5 px-2.5 pb-2.5 pt-3.5 sm:px-3.5 sm:pb-3.5;
+    @apply flex flex-col gap-1 px-2 pb-2 pt-3 sm:px-3 sm:pb-3;
   }
 
   .card-caption > span:first-child {
@@ -165,7 +165,7 @@
   }
 
   .card-tag {
-    @apply shrink-0 rounded-full bg-subtle px-2 py-0.5 font-mono text-xs text-ink-subtle;
+    @apply shrink-0 rounded-full bg-subtle px-2 py-1 font-mono text-xs text-ink-subtle;
   }
 
   /* ---------- Galería UI/UX ---------- */
@@ -204,7 +204,7 @@
   }
 
   .gallery-media > img {
-    @apply object-contain p-4 sm:p-5;
+    @apply object-contain p-2 sm:p-3; /* 8 de marco + 8/12 = 16/20: alineada con el texto */
     transition: transform 0.5s var(--ease-out);
   }
 
@@ -214,11 +214,11 @@
 
   /* Marca de video en la miniatura */
   .gallery-badge {
-    @apply absolute bottom-2 right-2 flex items-center gap-1 rounded-full bg-ink/80 px-2 py-0.5 font-mono text-xs text-canvas;
+    @apply absolute bottom-2 right-2 flex items-center gap-1 rounded-full bg-ink/80 px-2 py-1 font-mono text-xs text-canvas;
   }
 
   .gallery-badge > svg {
-    @apply h-2.5 w-2.5;
+    @apply h-3 w-3;
   }
 
   /* Vista ampliada. Áreas: móvil = pieza / panel; escritorio = pieza | panel */
@@ -265,7 +265,7 @@
 
   .gallery-stage-media > img,
   .gallery-stage-media > video {
-    @apply max-h-full max-w-full rounded-[10px] object-contain;
+    @apply max-h-full max-w-full rounded-lg object-contain;
   }
 
   .gallery-counter {
@@ -291,7 +291,7 @@
   }
 
   .gallery-desc ul {
-    @apply list-disc space-y-1.5 pl-4;
+    @apply list-disc space-y-2 pl-4;
   }
 
   .gallery-desc strong {
