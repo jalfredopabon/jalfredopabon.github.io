@@ -87,7 +87,7 @@ Documento único de referencia del portafolio. El historial de cambios está en 
    - Sin WebGL2 el hero se ve sin fondo, sin errores.
 3. Tableros de impacto (Power BI, tarjetas a 2 columnas; abren en vivo en un modal)
 4. Diseño UI/UX (galería de imágenes, sin enlaces)
-5. Footer ilustrado: grabado andino a dos tonos con una persona analizando datos en un portátil, pueblos detrás. El texto (nombre, frase, © y LinkedIn) va sobre el cielo desde md y arriba del paisaje en móvil. La imagen usa `mix-blend-mode: multiply` (el blanco del papel toma el color del fondo) y se desvanece arriba con `mask-image`. Al llegar al footer se enciende en ámbar `#F4B544` la pantalla del portátil y luego, una a una, 18 ventanas (`assets/js/footer-scene.js`; coordenadas en píxeles de la imagen original 3584 × 1156). Una sola vez; con `prefers-reduced-motion` o sin JS, las luces se ven encendidas. Imágenes en `imagenes/footer/` a 1200, 2400 y 3584 px (`srcset`)
+5. Footer ilustrado: grabado andino a dos tonos con una persona analizando datos en un portátil, pueblos detrás. Sin texto: nombre, frase y LinkedIn ya están en el header sticky. La imagen usa `mix-blend-mode: multiply` (el blanco del papel toma el color del fondo) y se desvanece arriba con `mask-image`. Al llegar al footer se enciende en ámbar `#F4B544` la pantalla del portátil y luego, una a una, 18 ventanas (`assets/js/footer-scene.js`; coordenadas en píxeles de la imagen original 3584 × 1156). Una sola vez; con `prefers-reduced-motion` o sin JS, las luces se ven encendidas. Imágenes en `imagenes/footer/` a 1200, 2400 y 3584 px (`srcset`)
 
 ## Arquitectura de código
 

@@ -164,11 +164,6 @@
     @apply relative mt-16 w-full bg-canvas sm:mt-24;
   }
 
-  /* Texto: arriba del paisaje en móvil; encima del cielo de la imagen desde md */
-  .footer-text {
-    @apply relative z-10 pb-4 pt-8 md:absolute md:inset-x-0 md:top-0 md:pt-10;
-  }
-
   .footer-scene {
     @apply relative h-[280px] w-full overflow-hidden sm:h-auto sm:aspect-[3584/1156];
   }
