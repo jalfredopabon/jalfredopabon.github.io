@@ -36,7 +36,7 @@ layout:
   grid: 1 columna en móvil, 2 desde md
 motion:
   ease: cubic-bezier(0.16, 1, 0.3, 1)
-  card-hover: ninguno (las tarjetas no son enlaces; solo los botones reaccionan)
+  card-hover: ninguno en tableros (su botón indica la acción). Excepción: las piezas de la galería UI/UX sí reaccionan (borde, sombra, imagen al 102%) porque la imagen misma es la acción
 ---
 
 ## Proyecto
@@ -86,7 +86,13 @@ Documento único de referencia del portafolio. El historial de cambios está en 
    - Se pausa fuera de pantalla o con la pestaña oculta; con `prefers-reduced-motion` queda fijo.
    - Sin WebGL2 el hero se ve sin fondo, sin errores.
 3. Tableros de impacto (Power BI, tarjetas a 2 columnas; abren en vivo en un modal)
-4. Diseño UI/UX (galería de imágenes, sin enlaces)
+4. Diseño UI/UX: galería que se amplía en la misma página (`assets/js/gallery.js`)
+   - Miniaturas en marco uniforme 16:9: la pieza se ve completa (`object-contain`), centrada sobre `subtle`, con aire. Sirve para piezas 16:9, 9:16 o cualquier proporción. Nombre y etiqueta visibles debajo.
+   - Toda la tarjeta es clicable: cursor de mano, hover sutil y foco visible en la tarjeta.
+   - Vista ampliada (`#gallery-modal`): escritorio = pieza a la izquierda, contador + Cerrar y texto en un panel de 320px a la derecha; móvil = barra arriba, pieza, texto debajo (máx. 38% del alto, con scroll).
+   - Navegación: flechas (a los lados en escritorio, abajo en móvil), ← → en teclado, deslizar en móvil, contador "2 / 4", Esc o clic en el fondo para cerrar. Al cerrar, el foco vuelve a la pieza.
+   - Video: MP4/WebM corto (5 a 15 s), sin sonido, en bucle, ideal < 3 MB. Miniatura = imagen fija con marca "Video". Al abrir se reproduce solo, siempre con controles; con `prefers-reduced-motion` no arranca solo.
+   - Sin JS, cada pieza es un enlace normal a su imagen o video.
 5. Footer ilustrado: grabado andino a dos tonos con una persona analizando datos en un portátil, pueblos detrás. Sin texto: nombre, frase y LinkedIn ya están en el header sticky. La imagen usa `mix-blend-mode: multiply` (el blanco del papel toma el color del fondo) y se desvanece arriba con `mask-image`. Al llegar al footer se enciende en ámbar `#F4B544` la pantalla del portátil y luego, una a una, 18 ventanas (`assets/js/footer-scene.js`; coordenadas en píxeles de la imagen original 3584 × 1156). Una sola vez; con `prefers-reduced-motion` o sin JS, las luces se ven encendidas. Imágenes en `imagenes/footer/` a 1200, 2400 y 3584 px (`srcset`)
 
 ## Arquitectura de código
@@ -95,9 +101,9 @@ Documento único de referencia del portafolio. El historial de cambios está en 
 | :--- | :--- | :--- |
 | Tokens | `src/css/tokens.css` | Colores como canales RGB (permiten opacidad: `border-line/80`), curva, sombra |
 | Base | `src/css/base.css` | `body`, selección, foco, movimiento reducido |
-| Componentes | `src/css/components.css` | `.site-header`, `.brand-mark` (logo AP), `.hero`, `.hero-bg`, `.hero-title`, `.btn-hero`, `.tools-list`, `.tool`, `.tool-logo`, `.section-label`, `.btn-dark`, `.btn-light`, `.btn-card`, `.bento-card`, `.card-media`, `.card-title`, `.card-text`, `.card-caption`, `.card-tag`, `.dashboard-modal` |
+| Componentes | `src/css/components.css` | `.site-header`, `.brand-mark` (logo AP), `.hero`, `.hero-bg`, `.hero-title`, `.btn-hero`, `.tools-list`, `.tool`, `.tool-logo`, `.section-label`, `.btn-dark`, `.btn-light`, `.btn-card`, `.bento-card`, `.card-media`, `.card-title`, `.card-text`, `.card-caption`, `.card-tag`, `.dashboard-modal`, `.gallery-item`, `.gallery-link`, `.gallery-media`, `.gallery-badge`, `.gallery-modal`, `.gallery-stage`, `.gallery-info`, `.gallery-desc`, `.gallery-nav` |
 | Entrada | `src/css/input.css` | Importa en orden; compila a `assets/style.css` con `npm run build` |
-| Comportamiento | `assets/js/dashboards.js`, `assets/js/hero-swarm.js`, `assets/js/footer-scene.js` | Modal del tablero en vivo; enjambre de partículas del hero; luces del footer |
+| Comportamiento | `assets/js/dashboards.js`, `assets/js/gallery.js`, `assets/js/hero-swarm.js`, `assets/js/footer-scene.js` | Modal del tablero en vivo; vista ampliada de la galería; enjambre de partículas del hero; luces del footer |
 | Marcado | `index.html` | Una `<section>` por bloque; utilidades de Tailwind solo para layout |
 
 Convenciones:
@@ -109,9 +115,11 @@ Convenciones:
 
 - **Tablero (`.bento-card` + `.btn-card[data-dashboard]`)**: vista previa 16:9, título, descripción y botón. En escritorio abre un `<dialog>` con el iframe; en móvil (<768px) abre una pestaña nueva.
 - **Modal de tablero (`.dashboard-modal`)**: barra de carga `.dashboard-loader` encima del iframe; se oculta 1,5 s después del evento `load` (`RENDER_MARGIN_MS` en `dashboards.js`). El foco inicial va a la ventana (`autofocus` en el `<dialog>`).
-- **Pieza UI (`figure.bento-card` + `.card-caption`)**: imagen 16:9 alineada arriba, nombre y etiqueta de proyecto. No enlaza.
+- **Pieza UI (`figure.bento-card.gallery-item`)**: enlace `[data-gallery-item]` con la miniatura, `.card-caption` (nombre + etiqueta) y `<template data-gallery-desc>` con el texto ampliado. Se abre en `#gallery-modal`.
 
 ## Agregar contenido
 
 - **Tablero nuevo:** copiar un `<article class="bento-card">` de `#tableros`, cambiar imagen (`imagenes/preview/`), título, texto, `href` y `data-dashboard-title`.
-- **Pieza UI nueva:** copiar un `<figure class="bento-card">` de `#diseno`, cambiar imagen, nombre y etiqueta.
+- **Pieza UI nueva (imagen):** copiar un `<figure class="bento-card gallery-item">` de `#diseno` y cambiar: `href` (imagen grande), `src` y `alt` de la miniatura, `aria-label` ("Ampliar: Nombre"), nombre, etiqueta y el contenido del `<template>`.
+- **Pieza UI nueva (video):** usar el ejemplo comentado al final de `#diseno`: `href` al video, `data-type="video"`, la miniatura es el poster y lleva `.gallery-badge`.
+- **Texto ampliado:** una línea de propósito y de 2 a 4 decisiones con números (`<ul><li>`). Mostrar la decisión y su porqué, no solo la medida. Ejemplo: "Padding 12/16 px sobre cuadrícula de 4 px".

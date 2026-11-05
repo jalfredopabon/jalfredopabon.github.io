@@ -159,6 +159,145 @@
     @apply shrink-0 rounded-full bg-subtle px-2 py-0.5 font-mono text-[10px] text-ink-subtle;
   }
 
+  /* ---------- Galería UI/UX ---------- */
+  /* Excepción a la tarjeta estática: aquí la imagen ES la acción (no hay botón),
+     así que la pieza reacciona: cursor de mano, borde y sombra sutiles, foco visible. */
+  .gallery-item {
+    @apply relative flex flex-col transition-[border-color,box-shadow] duration-300;
+    transition-timing-function: var(--ease-out);
+  }
+
+  .gallery-item:hover {
+    @apply border-line-strong;
+    box-shadow: var(--shadow-lift);
+  }
+
+  /* El enlace cubre toda la tarjeta (imagen + nombre) */
+  .gallery-link::after {
+    content: "";
+    @apply absolute inset-0 z-10 rounded-2xl;
+  }
+
+  /* Foco en la tarjeta entera (en el enlace lo cortaría el overflow de la tarjeta) */
+  .gallery-link:focus-visible {
+    outline: none;
+  }
+
+  .gallery-item:has(.gallery-link:focus-visible) {
+    outline: 2px solid rgb(var(--color-ink));
+    outline-offset: 2px;
+  }
+
+  /* Marco uniforme 16:9: la pieza se ve completa (contain), centrada sobre el gris, con aire */
+  .gallery-media > img {
+    @apply object-contain p-4 sm:p-5;
+    transition: transform 0.5s var(--ease-out);
+  }
+
+  .gallery-item:hover .gallery-media > img {
+    transform: scale(1.02);
+  }
+
+  /* Marca de video en la miniatura */
+  .gallery-badge {
+    @apply absolute bottom-2 right-2 flex items-center gap-1 rounded-full bg-ink/80 px-2 py-0.5 font-mono text-[10px] text-canvas;
+  }
+
+  .gallery-badge > svg {
+    @apply h-2.5 w-2.5;
+  }
+
+  /* Vista ampliada. Áreas: móvil = barra / pieza / texto; escritorio = pieza | barra + texto */
+  .gallery-modal {
+    @apply m-auto h-[92svh] w-[94vw] max-w-none overflow-hidden rounded-2xl border border-line bg-surface p-0 text-ink shadow-sm;
+    @apply md:h-[88vh] md:w-[min(1280px,94vw)];
+  }
+
+  .gallery-modal:focus,
+  .gallery-modal:focus-visible {
+    outline: none;
+  }
+
+  .gallery-modal::backdrop {
+    background: rgb(var(--color-ink) / 0.45);
+  }
+
+  .gallery-modal[open] {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto minmax(0, 1fr) auto;
+    grid-template-areas: "bar" "stage" "info";
+  }
+
+  @media (min-width: 768px) {
+    .gallery-modal[open] {
+      grid-template-columns: minmax(0, 1fr) 320px;
+      grid-template-rows: auto minmax(0, 1fr);
+      grid-template-areas: "stage bar" "stage info";
+    }
+  }
+
+  .gallery-modal-bar {
+    grid-area: bar;
+    @apply flex items-center justify-between gap-4 border-b border-line px-4 py-3 sm:px-5 md:border-l;
+  }
+
+  .gallery-stage {
+    grid-area: stage;
+    @apply relative flex min-h-0 items-center justify-center bg-subtle;
+    touch-action: pan-y; /* el deslizamiento horizontal lo maneja gallery.js */
+  }
+
+  /* Aire para que las flechas no tapen la pieza: abajo en móvil, a los lados en escritorio */
+  .gallery-stage-media {
+    @apply flex h-full w-full items-center justify-center px-4 pb-16 pt-4 md:px-16 md:py-8;
+  }
+
+  .gallery-stage-media > img,
+  .gallery-stage-media > video {
+    @apply max-h-full max-w-full rounded-[10px] object-contain shadow-sm;
+  }
+
+  .gallery-info {
+    grid-area: info;
+    @apply flex max-h-[38svh] flex-col gap-2 overflow-y-auto border-t border-line px-4 py-4 sm:px-5 md:max-h-none md:border-l md:border-t-0 md:py-5;
+  }
+
+  .gallery-desc {
+    @apply space-y-3 text-xs leading-relaxed text-ink-muted sm:text-sm;
+  }
+
+  .gallery-desc ul {
+    @apply list-disc space-y-1.5 pl-4;
+  }
+
+  .gallery-desc strong {
+    @apply font-semibold text-ink;
+  }
+
+  /* Flechas: botones rectangulares de 8px, como todos los botones.
+     Móvil: abajo en las esquinas. Escritorio: centradas a los lados */
+  .gallery-nav {
+    @apply absolute bottom-3 z-10 flex h-9 w-9 items-center md:bottom-auto md:top-1/2 md:-translate-y-1/2 justify-center rounded-lg border border-line-strong bg-surface text-ink shadow-sm transition-colors hover:border-ink-faint hover:bg-subtle;
+  }
+
+  .gallery-nav > svg {
+    @apply h-4 w-4;
+  }
+
+  .gallery-nav--prev {
+    @apply left-3;
+  }
+
+  .gallery-nav--next {
+    @apply right-3;
+  }
+
+  /* Con una sola pieza no hay a dónde navegar */
+  .gallery-modal[data-single] .gallery-nav {
+    display: none;
+  }
+
   /* ---------- Footer ilustrado ---------- */
   .site-footer {
     @apply relative mt-16 w-full bg-canvas sm:mt-24;
