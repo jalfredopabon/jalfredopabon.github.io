@@ -90,6 +90,7 @@ Para elevar la UI/UX del Momento 1, nos inspiramos en:
 | 2026-11-04 | Galería sin etiqueta | Momento 1 (v2) | Se quita la etiqueta "Proyecto" de las miniaturas y de la vista ampliada: no aportaba información. Queda solo el nombre. |
 | 2026-11-04 | Galería de una sola capa (descartada) | Momento 1 (v2) | Se probó la tarjeta entera en gris `line`, sin borde ni caja interna (referencia Godly). Se descarta: se vuelve a la tarjeta blanca con la pieza sobre caja gris. |
 | 2026-11-04 | Galería: subtítulo | Momento 1 (v2) | Línea corta en gris bajo el nombre, en la tarjeta y en la vista ampliada: "Plataforma · Contexto" (p. ej. "Web · Catálogo de farmacia"). Texto de plantilla por ahora. |
+| 2026-11-04 | Escala tipográfica | Momento 1 (v2) | Escala definida en `DESIGN.md` (Display, H2, H3, cuerpo, pequeño, botones, micro). Interlineados en múltiplos de 4 (se elimina `leading-relaxed`: 19,5 y 22,75 px). Sin tamaños de 10 y 11 px (mínimo 12; excepción logo AP). Botón de tarjeta a 14px en escritorio. Descripción de tarjeta fija en 12/20: a 14px se cortaba. H1 a line-height 1.05. Siguiente paso: espacios en múltiplos de 4. |
 
 > **Nota v2:** el "Sistema de Diseño (Brand Identity)" de arriba describe la v1. La fuente de verdad desde la v2 es `DESIGN.md`.
 

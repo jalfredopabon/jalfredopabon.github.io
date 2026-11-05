@@ -19,10 +19,15 @@ colors:
   line-strong: "#CBD5E1"
 typography:
   family: Geist (única)
-  h1: 1.875rem / 42px desde sm, bold, tracking-tight, line-height 1.18
-  card-title: 0.875rem / 1rem desde sm, bold, tracking-tight
-  body: 0.75rem / 0.875rem desde sm, line-height relaxed
-  section-label: 0.75rem, bold, uppercase, tracking-wider
+  regla: tamaños de la escala de Tailwind; interlineados en múltiplos de 4 (tamaño / interlineado en px). Mínimo 12px (excepción: logo AP, 11px)
+  display-h1: hero, clamp(2.25rem, 6.5vw, 4.75rem) = 36 a 76px, line-height 1.05, bold (fuera de la cuadrícula a propósito)
+  h2-seccion: 12/16, bold, mayúsculas, tracking-wider (etiqueta de sección)
+  h3-tarjeta: 14/20 → 16/24 desde sm, bold (título de ventana ampliada: 16/24 → 18/28)
+  cuerpo: 12/20 → 14/20 desde sm (bajada de sección, descripción ampliada)
+  cuerpo-tarjeta: 12/20 fijo (a 14px las descripciones largas se cortan con line-clamp-3)
+  pequeno: 12/16 (nombre y subtítulo de galería)
+  botones: 12/16 → 14/20 desde sm, semibold
+  micro: 12/16, mono (contador, marca de video)
 rounded:
   card: 16px (rounded-2xl)
   media: 10px (concéntrico: 16px de tarjeta - 6px de marco)
