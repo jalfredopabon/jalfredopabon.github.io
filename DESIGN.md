@@ -60,6 +60,7 @@ Documento único de referencia del portafolio. El historial de cambios está en 
 - **Contenido:** 4 tableros de Power BI y una galería UI/UX; contacto solo por LinkedIn
 - **Previsualizar:** abrir `index.html` en el navegador (funciona sin servidor). Tras cambiar CSS: `npm run build`
 - **Publicar:** **solo cuando José lo pida.** GitHub Pages publica desde `main` del remoto `origin` (https://github.com/jalfredopabon/jalfredopabon.github.io.git); subir solo `rediseno` no cambia el sitio. Procedimiento usado el 2026-11-04 (sin cambiar de rama):
+  0. Si cambió CSS o JS: actualizar la versión en `index.html` (`assets/style.css?v=AAAA-MM-DDx` y los `assets/js/*.js?v=…`, todos con el mismo valor). GitHub Pages deja el CSS en caché 10 min (`max-age=600`); sin este paso, quien ya visitó el sitio ve el HTML nuevo con el CSS viejo (íconos gigantes, imágenes recortadas)
   1. `git fetch origin`
   2. Verificar que la fusión es directa (fast-forward): `git merge-base --is-ancestor origin/main rediseno`. Si falla, `main` tiene commits que `rediseno` no tiene: **detenerse y consultar a José**, no forzar.
   3. Subir la rama y adelantar `main` en un solo paso: `git push origin rediseno rediseno:main`

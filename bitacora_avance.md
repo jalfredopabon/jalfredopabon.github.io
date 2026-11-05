@@ -97,6 +97,7 @@ Para elevar la UI/UX del Momento 1, nos inspiramos en:
 | 2026-11-04 | Galería: 2 piezas | Momento 1 (v2) | Se quitan los componentes 3 y 4 (provisionales). Quedan la navegación lateral (real) y el componente 2 (provisional). Las piezas se irán agregando a medida que existan. |
 | 2026-11-04 | Galería: portada de informe | Momento 1 (v2) | Componente 2 = "Portada de informe" (Power BI · Consorcio humanitario), `imagenes/ui/hero_section.png`. Corrección: `Sidebar.png` renombrado a `sidebar.png` en git (Windows no distingue mayúsculas; GitHub Pages sí). Pendiente: exportar la portada a ~1900px y confirmar permiso para mostrar logos de socios. |
 | 2026-11-04 | Publicación en línea (2) | Momento 1 (v2) | `rediseno` subida y `main` adelantada a `fd21d49` (fusión directa, sin conflictos); GitHub Pages publica footer sin texto, galería ampliable con 2 piezas reales, escala tipográfica y cuadrícula de 4px. Publicado a pedido de José, con los pendientes de permiso de logos y resolución de la portada aún abiertos. |
+| 2026-11-04 | Caché del CSS | Momento 1 (v2) | En línea se veía el HTML nuevo con el CSS viejo (íconos gigantes, pie de tarjeta en fila, imagen recortada). El servidor tenía los archivos correctos (verificado con navegador limpio): era la caché del navegador (`max-age=600`). Solución: versión en los enlaces (`style.css?v=2026-11-04b`, igual en los JS). Paso agregado al procedimiento de publicación en `DESIGN.md`. |
 
 > **Nota v2:** el "Sistema de Diseño (Brand Identity)" de arriba describe la v1. La fuente de verdad desde la v2 es `DESIGN.md`.
 
