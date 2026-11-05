@@ -152,8 +152,10 @@
   }
 
   /* Pie de tarjeta de la galería UI: nombre y, debajo, subtítulo corto en gris (plataforma · contexto) */
+  /* Abajo 4px menos que a los lados (8 + 4/8 = 12/16): el renglón deja ~4px de aire invisible bajo la letra,
+     así el texto queda ópticamente a 16/20px, igual que el botón de las tarjetas de tablero */
   .card-caption {
-    @apply flex flex-col gap-1 px-2 pb-2 pt-3 sm:px-3 sm:pb-3;
+    @apply flex flex-col gap-1 px-2 pb-1 pt-3 sm:px-3 sm:pb-2;
   }
 
   .card-caption > span:first-child {

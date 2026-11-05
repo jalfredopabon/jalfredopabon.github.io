@@ -38,6 +38,7 @@ spacing:
   regla: cuadrícula de 4px en todo el proyecto. Paddings, márgenes, separaciones, radios y tamaños de íconos en múltiplos de 4 (preferir 8, 12, 16, 20, 24…). Sin medios pasos de Tailwind (0.5, 1.5, 2.5, 3.5)
   excepciones: bordes y contornos de foco (1-2px); alto del header 52px + 1px de borde
   iconos: 16px (h-4) en enlaces y botones; 20px en la franja de herramientas
+  compensacion-optica: un bloque que termina en texto lleva 4px menos abajo que a los lados (el interlineado deja ~4px invisibles bajo la letra). Ej.: pie de la galería 12/16px abajo vs 16/20px a los lados. Un bloque que termina en un elemento con borde (botón) no se compensa
   galeria: aire de la captura en la miniatura 8/12px, para que quede alineada con el texto (8 de marco + 8/12 = 16/20)
 layout:
   header: max-w-5xl

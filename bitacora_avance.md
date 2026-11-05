@@ -92,6 +92,7 @@ Para elevar la UI/UX del Momento 1, nos inspiramos en:
 | 2026-11-04 | Galería: subtítulo | Momento 1 (v2) | Línea corta en gris bajo el nombre, en la tarjeta y en la vista ampliada: "Plataforma · Contexto" (p. ej. "Web · Catálogo de farmacia"). Texto de plantilla por ahora. |
 | 2026-11-04 | Escala tipográfica | Momento 1 (v2) | Escala definida en `DESIGN.md` (Display, H2, H3, cuerpo, pequeño, botones, micro). Interlineados en múltiplos de 4 (se elimina `leading-relaxed`: 19,5 y 22,75 px). Sin tamaños de 10 y 11 px (mínimo 12; excepción logo AP). Botón de tarjeta a 14px en escritorio. Descripción de tarjeta fija en 12/20: a 14px se cortaba. H1 a line-height 1.05. Siguiente paso: espacios en múltiplos de 4. |
 | 2026-11-04 | Cuadrícula de 4px | Momento 1 (v2) | Todo el proyecto (también tableros): marco de tarjeta 6 → 8px; radio de imagen 10 → 8px (igual que botones y logo); imagen a texto 14 → 12px; nombre a subtítulo 2 → 4px; íconos 14 → 16px; punto de sección 6 → 8px; píldoras y botón Cerrar del tablero sin medios pasos. En la galería, el aire de la captura baja a 8/12px y queda alineada con el texto. Regla en `DESIGN.md` › spacing. |
+| 2026-11-04 | Compensación óptica en la galería | Momento 1 (v2) | El pie de las tarjetas UI/UX baja de 16/20 a 12/16px: el texto se veía más lejos del borde que el botón de los tableros por el aire invisible del interlineado. Tableros sin cambio. Regla en `DESIGN.md` › spacing. |
 
 > **Nota v2:** el "Sistema de Diseño (Brand Identity)" de arriba describe la v1. La fuente de verdad desde la v2 es `DESIGN.md`.
 
