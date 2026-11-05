@@ -87,9 +87,9 @@ Documento único de referencia del portafolio. El historial de cambios está en 
    - Sin WebGL2 el hero se ve sin fondo, sin errores.
 3. Tableros de impacto (Power BI, tarjetas a 2 columnas; abren en vivo en un modal)
 4. Diseño UI/UX: galería que se amplía en la misma página (`assets/js/gallery.js`)
-   - Miniaturas en marco uniforme 16:9: la pieza se ve completa (`object-contain`), centrada sobre gris `line` (#E2E8F0, más oscuro que `subtle` para que las capturas claras se recorten), con aire. Sirve para piezas 16:9, 9:16 o cualquier proporción. Solo el nombre visible debajo (sin etiqueta de proyecto: no aportaba).
+   - Miniaturas en marco uniforme 16:9: la pieza se ve completa (`object-contain`), centrada sobre gris `line` (#E2E8F0, más oscuro que `subtle` para que las capturas claras se recorten), con aire. Sirve para piezas 16:9, 9:16 o cualquier proporción. Debajo: nombre y un subtítulo corto en gris (`.card-subtitle`, "Plataforma · Contexto", máx. ~6 palabras, p. ej. "Web · Catálogo de farmacia"). Sin etiqueta de proyecto (no aportaba). El subtítulo se usa en todas las piezas o en ninguna.
    - Toda la tarjeta es clicable: cursor de mano, hover sutil y foco visible en la tarjeta.
-   - Vista ampliada (`#gallery-modal`), con la estructura de la tarjeta de tablero: pieza sobre el mismo gris `line`, sin sombra ni borde (solo esquinas de 10px); panel con título y texto (con scroll), y "Cerrar" claro (`.btn-card`) a todo el ancho, fijo al pie. Escritorio = pieza a la izquierda, panel de 320px a la derecha. Móvil = pieza arriba, panel debajo (máx. 42% del alto).
+   - Vista ampliada (`#gallery-modal`), con la estructura de la tarjeta de tablero: pieza sobre el mismo gris `line`, sin sombra ni borde (solo esquinas de 10px); panel con título, subtítulo y texto (con scroll), y "Cerrar" claro (`.btn-card`) a todo el ancho, fijo al pie. Escritorio = pieza a la izquierda, panel de 320px a la derecha. Móvil = pieza arriba, panel debajo (máx. 42% del alto).
    - Navegación: flechas (a los lados en escritorio, abajo en móvil) y contador "2 / 4" centrado al pie de la pieza; ← → en teclado, deslizar en móvil; Esc o clic en el fondo también cierran. Al cerrar, el foco vuelve a la pieza.
    - Video: MP4/WebM corto (5 a 15 s), sin sonido, en bucle, ideal < 3 MB. Miniatura = imagen fija con marca "Video". Al abrir se reproduce solo, siempre con controles; con `prefers-reduced-motion` no arranca solo.
    - Sin JS, cada pieza es un enlace normal a su imagen o video.
@@ -101,7 +101,7 @@ Documento único de referencia del portafolio. El historial de cambios está en 
 | :--- | :--- | :--- |
 | Tokens | `src/css/tokens.css` | Colores como canales RGB (permiten opacidad: `border-line/80`), curva, sombra |
 | Base | `src/css/base.css` | `body`, selección, foco, movimiento reducido |
-| Componentes | `src/css/components.css` | `.site-header`, `.brand-mark` (logo AP), `.hero`, `.hero-bg`, `.hero-title`, `.btn-hero`, `.tools-list`, `.tool`, `.tool-logo`, `.section-label`, `.btn-dark`, `.btn-light`, `.btn-card`, `.bento-card`, `.card-media`, `.card-title`, `.card-text`, `.card-caption`, `.card-tag`, `.dashboard-modal`, `.gallery-item`, `.gallery-link`, `.gallery-media`, `.gallery-badge`, `.gallery-modal`, `.gallery-stage`, `.gallery-info`, `.gallery-desc`, `.gallery-nav` |
+| Componentes | `src/css/components.css` | `.site-header`, `.brand-mark` (logo AP), `.hero`, `.hero-bg`, `.hero-title`, `.btn-hero`, `.tools-list`, `.tool`, `.tool-logo`, `.section-label`, `.btn-dark`, `.btn-light`, `.btn-card`, `.bento-card`, `.card-media`, `.card-title`, `.card-text`, `.card-caption`, `.card-tag`, `.card-subtitle`, `.dashboard-modal`, `.gallery-item`, `.gallery-link`, `.gallery-media`, `.gallery-badge`, `.gallery-modal`, `.gallery-stage`, `.gallery-info`, `.gallery-desc`, `.gallery-nav` |
 | Entrada | `src/css/input.css` | Importa en orden; compila a `assets/style.css` con `npm run build` |
 | Comportamiento | `assets/js/dashboards.js`, `assets/js/gallery.js`, `assets/js/hero-swarm.js`, `assets/js/footer-scene.js` | Modal del tablero en vivo; vista ampliada de la galería; enjambre de partículas del hero; luces del footer |
 | Marcado | `index.html` | Una `<section>` por bloque; utilidades de Tailwind solo para layout |
@@ -115,11 +115,11 @@ Convenciones:
 
 - **Tablero (`.bento-card` + `.btn-card[data-dashboard]`)**: vista previa 16:9, título, descripción y botón. En escritorio abre un `<dialog>` con el iframe; en móvil (<768px) abre una pestaña nueva.
 - **Modal de tablero (`.dashboard-modal`)**: barra de carga `.dashboard-loader` encima del iframe; se oculta 1,5 s después del evento `load` (`RENDER_MARGIN_MS` en `dashboards.js`). El foco inicial va a la ventana (`autofocus` en el `<dialog>`).
-- **Pieza UI (`figure.bento-card.gallery-item`)**: enlace `[data-gallery-item]` con la miniatura, `.card-caption` (solo nombre) y `<template data-gallery-desc>` con el texto ampliado. Se abre en `#gallery-modal`.
+- **Pieza UI (`figure.bento-card.gallery-item`)**: enlace `[data-gallery-item]` con la miniatura, `.card-caption` (nombre + `.card-subtitle`) y `<template data-gallery-desc>` con el texto ampliado. Se abre en `#gallery-modal`.
 
 ## Agregar contenido
 
 - **Tablero nuevo:** copiar un `<article class="bento-card">` de `#tableros`, cambiar imagen (`imagenes/preview/`), título, texto, `href` y `data-dashboard-title`.
-- **Pieza UI nueva (imagen):** copiar un `<figure class="bento-card gallery-item">` de `#diseno` y cambiar: `href` (imagen grande), `src` y `alt` de la miniatura, `aria-label` ("Ampliar: Nombre"), nombre y el contenido del `<template>`.
+- **Pieza UI nueva (imagen):** copiar un `<figure class="bento-card gallery-item">` de `#diseno` y cambiar: `href` (imagen grande), `src` y `alt` de la miniatura, `aria-label` ("Ampliar: Nombre"), nombre, subtítulo y el contenido del `<template>`.
 - **Pieza UI nueva (video):** usar el ejemplo comentado al final de `#diseno`: `href` al video, `data-type="video"`, la miniatura es el poster y lleva `.gallery-badge`.
 - **Texto ampliado:** una línea de propósito y de 2 a 4 decisiones con números (`<ul><li>`). Mostrar la decisión y su porqué, no solo la medida. Ejemplo: "Padding 12/16 px sobre cuadrícula de 4 px".

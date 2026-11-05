@@ -89,6 +89,7 @@ Para elevar la UI/UX del Momento 1, nos inspiramos en:
 | 2026-11-04 | Galería: contraste y estructura de tarjeta | Momento 1 (v2) | Fondo de miniaturas y de la vista ampliada a gris `line` (#E2E8F0) para recortar capturas claras. Vista ampliada como la tarjeta de tablero: pieza sin sombra, título arriba (luego etiqueta y texto), "Cerrar" claro a todo el ancho al pie; contador entre las flechas. Se quita la barra superior. |
 | 2026-11-04 | Galería sin etiqueta | Momento 1 (v2) | Se quita la etiqueta "Proyecto" de las miniaturas y de la vista ampliada: no aportaba información. Queda solo el nombre. |
 | 2026-11-04 | Galería de una sola capa (descartada) | Momento 1 (v2) | Se probó la tarjeta entera en gris `line`, sin borde ni caja interna (referencia Godly). Se descarta: se vuelve a la tarjeta blanca con la pieza sobre caja gris. |
+| 2026-11-04 | Galería: subtítulo | Momento 1 (v2) | Línea corta en gris bajo el nombre, en la tarjeta y en la vista ampliada: "Plataforma · Contexto" (p. ej. "Web · Catálogo de farmacia"). Texto de plantilla por ahora. |
 
 > **Nota v2:** el "Sistema de Diseño (Brand Identity)" de arriba describe la v1. La fuente de verdad desde la v2 es `DESIGN.md`.
 
