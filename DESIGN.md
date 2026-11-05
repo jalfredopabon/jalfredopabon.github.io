@@ -59,7 +59,14 @@ Documento único de referencia del portafolio. El historial de cambios está en 
 - **Ruta local:** `C:\Users\JosePabon\Music\proyecto_portafolio_digital`
 - **Contenido:** 4 tableros de Power BI y una galería UI/UX; contacto solo por LinkedIn
 - **Previsualizar:** abrir `index.html` en el navegador (funciona sin servidor). Tras cambiar CSS: `npm run build`
-- **Publicar:** fusionar en `main` y hacer push; GitHub Pages actualiza en segundos. **Solo cuando José lo pida**
+- **Publicar:** **solo cuando José lo pida.** GitHub Pages publica desde `main` del remoto `origin` (https://github.com/jalfredopabon/jalfredopabon.github.io.git); subir solo `rediseno` no cambia el sitio. Procedimiento usado el 2026-11-04 (sin cambiar de rama):
+  1. `git fetch origin`
+  2. Verificar que la fusión es directa (fast-forward): `git merge-base --is-ancestor origin/main rediseno`. Si falla, `main` tiene commits que `rediseno` no tiene: **detenerse y consultar a José**, no forzar.
+  3. Subir la rama y adelantar `main` en un solo paso: `git push origin rediseno rediseno:main`
+  4. Sincronizar el `main` local: `git fetch origin main:main`
+  5. Verificar la construcción: `gh api repos/jalfredopabon/jalfredopabon.github.io/pages/builds/latest --jq '{status,commit}'` (pasa de `building` a `built` en 1-2 min; `commit` debe coincidir con el último de `rediseno`)
+  6. Registrar la publicación en `bitacora_avance.md`
+  - Nunca `git push --force` sobre `main`. Respaldo de la v1: etiqueta `v1-portafolio-original`
 
 ## Principio
 
