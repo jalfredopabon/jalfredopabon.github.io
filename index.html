@@ -319,13 +319,9 @@
   </dialog>
 
   <!-- ===================== VISTA AMPLIADA DE LA GALERÍA ===================== -->
-  <!-- Escritorio: pieza a la izquierda, texto a la derecha. Móvil: pieza arriba, texto debajo -->
+  <!-- Misma estructura que la tarjeta de tablero: pieza, título, texto y botón abajo.
+       Escritorio: pieza a la izquierda, panel a la derecha. Móvil: pieza arriba, panel debajo -->
   <dialog id="gallery-modal" class="gallery-modal" aria-labelledby="gallery-modal-title" autofocus>
-    <div class="gallery-modal-bar">
-      <span class="font-mono text-[11px] text-ink-subtle" data-gallery-counter aria-live="polite"></span>
-      <button type="button" class="btn-light !px-4 !py-1.5" data-gallery-close>Cerrar</button>
-    </div>
-
     <div class="gallery-stage" data-gallery-stage>
       <button type="button" class="gallery-nav gallery-nav--prev" data-gallery-prev aria-label="Pieza anterior">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M15 18l-6-6 6-6"/></svg>
@@ -334,12 +330,19 @@
       <button type="button" class="gallery-nav gallery-nav--next" data-gallery-next aria-label="Pieza siguiente">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M9 6l6 6-6 6"/></svg>
       </button>
+      <!-- Contador: va con la navegación, centrado al pie de la pieza -->
+      <span class="gallery-counter" data-gallery-counter aria-live="polite"></span>
     </div>
 
     <div class="gallery-info">
-      <span class="card-tag self-start" data-gallery-tag></span>
-      <h2 id="gallery-modal-title" class="text-base font-bold tracking-tight text-ink" data-gallery-title></h2>
-      <div class="gallery-desc" data-gallery-desc-target></div>
+      <div class="gallery-info-body">
+        <h2 id="gallery-modal-title" class="text-base font-bold tracking-tight text-ink sm:text-lg" data-gallery-title></h2>
+        <span class="card-tag self-start" data-gallery-tag></span>
+        <div class="gallery-desc" data-gallery-desc-target></div>
+      </div>
+      <div class="gallery-info-footer">
+        <button type="button" class="btn-card" data-gallery-close>Cerrar</button>
+      </div>
     </div>
   </dialog>
 

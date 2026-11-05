@@ -83,7 +83,7 @@
     tagEl.hidden = !item.tag;
     descEl.textContent = '';
     if (item.desc) descEl.appendChild(item.desc.content.cloneNode(true));
-    descEl.scrollTop = 0;
+    descEl.parentElement.scrollTop = 0; // el panel con scroll vuelve arriba
     counter.textContent = (current + 1) + ' / ' + links.length;
   }
 

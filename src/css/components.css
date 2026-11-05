@@ -188,7 +188,12 @@
     outline-offset: 2px;
   }
 
-  /* Marco uniforme 16:9: la pieza se ve completa (contain), centrada sobre el gris, con aire */
+  /* Marco uniforme 16:9: la pieza se ve completa (contain), centrada sobre gris `line`
+     (más oscuro que `subtle` para que las capturas claras se recorten del fondo), con aire */
+  .gallery-media {
+    @apply bg-line;
+  }
+
   .gallery-media > img {
     @apply object-contain p-4 sm:p-5;
     transition: transform 0.5s var(--ease-out);
@@ -207,7 +212,7 @@
     @apply h-2.5 w-2.5;
   }
 
-  /* Vista ampliada. Áreas: móvil = barra / pieza / texto; escritorio = pieza | barra + texto */
+  /* Vista ampliada. Áreas: móvil = pieza / panel; escritorio = pieza | panel */
   .gallery-modal {
     @apply m-auto h-[92svh] w-[94vw] max-w-none overflow-hidden rounded-2xl border border-line bg-surface p-0 text-ink shadow-sm;
     @apply md:h-[88vh] md:w-[min(1280px,94vw)];
@@ -225,42 +230,51 @@
   .gallery-modal[open] {
     display: grid;
     grid-template-columns: minmax(0, 1fr);
-    grid-template-rows: auto minmax(0, 1fr) auto;
-    grid-template-areas: "bar" "stage" "info";
+    grid-template-rows: minmax(0, 1fr) auto;
+    grid-template-areas: "stage" "info";
   }
 
   @media (min-width: 768px) {
     .gallery-modal[open] {
       grid-template-columns: minmax(0, 1fr) 320px;
-      grid-template-rows: auto minmax(0, 1fr);
-      grid-template-areas: "stage bar" "stage info";
+      grid-template-rows: minmax(0, 1fr);
+      grid-template-areas: "stage info";
     }
   }
 
-  .gallery-modal-bar {
-    grid-area: bar;
-    @apply flex items-center justify-between gap-4 border-b border-line px-4 py-3 sm:px-5 md:border-l;
-  }
-
+  /* Mismo gris que la miniatura: la pieza se recorta sola, sin sombra ni borde */
   .gallery-stage {
     grid-area: stage;
-    @apply relative flex min-h-0 items-center justify-center bg-subtle;
+    @apply relative flex min-h-0 items-center justify-center bg-line;
     touch-action: pan-y; /* el deslizamiento horizontal lo maneja gallery.js */
   }
 
-  /* Aire para que las flechas no tapen la pieza: abajo en móvil, a los lados en escritorio */
+  /* Aire para que flechas y contador no tapen la pieza: abajo en móvil; a los lados y abajo en escritorio */
   .gallery-stage-media {
-    @apply flex h-full w-full items-center justify-center px-4 pb-16 pt-4 md:px-16 md:py-8;
+    @apply flex h-full w-full items-center justify-center px-4 pb-16 pt-4 md:px-16 md:pb-14 md:pt-10;
   }
 
   .gallery-stage-media > img,
   .gallery-stage-media > video {
-    @apply max-h-full max-w-full rounded-[10px] object-contain shadow-sm;
+    @apply max-h-full max-w-full rounded-[10px] object-contain;
   }
 
+  .gallery-counter {
+    @apply absolute bottom-3 left-1/2 flex h-9 -translate-x-1/2 items-center font-mono text-[11px] text-ink-muted md:bottom-4 md:h-auto;
+  }
+
+  /* Panel: título, etiqueta y texto (con scroll); Cerrar fijo al pie, a todo el ancho */
   .gallery-info {
     grid-area: info;
-    @apply flex max-h-[38svh] flex-col gap-2 overflow-y-auto border-t border-line px-4 py-4 sm:px-5 md:max-h-none md:border-l md:border-t-0 md:py-5;
+    @apply flex max-h-[42svh] min-h-0 flex-col border-t border-line md:max-h-none md:border-l md:border-t-0;
+  }
+
+  .gallery-info-body {
+    @apply flex min-h-0 flex-1 flex-col gap-2 overflow-y-auto px-4 pb-3 pt-4 sm:px-5 md:pt-6;
+  }
+
+  .gallery-info-footer {
+    @apply px-4 pb-4 pt-1 sm:px-5 sm:pb-5;
   }
 
   .gallery-desc {
@@ -294,7 +308,8 @@
   }
 
   /* Con una sola pieza no hay a dónde navegar */
-  .gallery-modal[data-single] .gallery-nav {
+  .gallery-modal[data-single] .gallery-nav,
+  .gallery-modal[data-single] .gallery-counter {
     display: none;
   }
 
