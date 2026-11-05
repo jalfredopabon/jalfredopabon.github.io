@@ -36,7 +36,7 @@ layout:
   grid: 1 columna en móvil, 2 desde md
 motion:
   ease: cubic-bezier(0.16, 1, 0.3, 1)
-  card-hover: ninguno en tableros (su botón indica la acción). Excepción: las piezas de la galería UI/UX sí reaccionan (borde, sombra, imagen al 102%) porque la imagen misma es la acción
+  card-hover: ninguno en tableros (su botón indica la acción). Excepción: las piezas de la galería UI/UX sí reaccionan (sombra, imagen al 102%) porque la imagen misma es la acción
 ---
 
 ## Proyecto
@@ -87,7 +87,8 @@ Documento único de referencia del portafolio. El historial de cambios está en 
    - Sin WebGL2 el hero se ve sin fondo, sin errores.
 3. Tableros de impacto (Power BI, tarjetas a 2 columnas; abren en vivo en un modal)
 4. Diseño UI/UX: galería que se amplía en la misma página (`assets/js/gallery.js`)
-   - Miniaturas en marco uniforme 16:9: la pieza se ve completa (`object-contain`), centrada sobre gris `line` (#E2E8F0, más oscuro que `subtle` para que las capturas claras se recorten), con aire. Sirve para piezas 16:9, 9:16 o cualquier proporción. Solo el nombre visible debajo (sin etiqueta de proyecto: no aportaba).
+   - Tarjeta de una sola capa (referencia: Godly): toda la tarjeta es gris `line` (#E2E8F0), sin borde ni caja interna; la pieza se apoya directo sobre ella. Distinta a propósito de las tarjetas de tablero (blancas, con botón).
+   - Miniaturas en marco uniforme 16:9: la pieza se ve completa (`object-contain`), centrada, con aire. El gris es más oscuro que `subtle` para que las capturas claras se recorten. Sirve para piezas 16:9, 9:16 o cualquier proporción. Solo el nombre visible debajo (sin etiqueta de proyecto: no aportaba).
    - Toda la tarjeta es clicable: cursor de mano, hover sutil y foco visible en la tarjeta.
    - Vista ampliada (`#gallery-modal`), con la estructura de la tarjeta de tablero: pieza sobre el mismo gris `line`, sin sombra ni borde (solo esquinas de 10px); panel con título y texto (con scroll), y "Cerrar" claro (`.btn-card`) a todo el ancho, fijo al pie. Escritorio = pieza a la izquierda, panel de 320px a la derecha. Móvil = pieza arriba, panel debajo (máx. 42% del alto).
    - Navegación: flechas (a los lados en escritorio, abajo en móvil) y contador "2 / 4" centrado al pie de la pieza; ← → en teclado, deslizar en móvil; Esc o clic en el fondo también cierran. Al cerrar, el foco vuelve a la pieza.

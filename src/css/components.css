@@ -162,14 +162,20 @@
   /* ---------- Galería UI/UX ---------- */
   /* Excepción a la tarjeta estática: aquí la imagen ES la acción (no hay botón),
      así que la pieza reacciona: cursor de mano, borde y sombra sutiles, foco visible. */
+  /* Una sola capa (como Godly): toda la tarjeta es gris `line` y la pieza se apoya directo sobre ella.
+     Sin borde ni caja interna. Distinta a propósito de las tarjetas de tablero (blancas, con botón) */
   .gallery-item {
-    @apply relative flex flex-col transition-[border-color,box-shadow] duration-300;
+    @apply relative flex flex-col border-transparent bg-line shadow-none transition-shadow duration-300;
     transition-timing-function: var(--ease-out);
   }
 
   .gallery-item:hover {
-    @apply border-line-strong;
     box-shadow: var(--shadow-lift);
+  }
+
+  /* El marco 16:9 ya deja aire bajo la pieza: el nombre sube para no quedar flotando */
+  .gallery-item > .card-caption {
+    @apply pt-0;
   }
 
   /* El enlace cubre toda la tarjeta (imagen + nombre) */
@@ -188,10 +194,10 @@
     outline-offset: 2px;
   }
 
-  /* Marco uniforme 16:9: la pieza se ve completa (contain), centrada sobre gris `line`
-     (más oscuro que `subtle` para que las capturas claras se recorten del fondo), con aire */
+  /* Marco uniforme 16:9 sin fondo propio: la pieza se ve completa (contain), centrada sobre
+     el gris de la tarjeta (más oscuro que `subtle` para que las capturas claras se recorten), con aire */
   .gallery-media {
-    @apply bg-line;
+    @apply bg-transparent;
   }
 
   .gallery-media > img {
