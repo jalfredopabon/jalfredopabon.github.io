@@ -96,6 +96,7 @@ Para elevar la UI/UX del Momento 1, nos inspiramos en:
 | 2026-11-04 | Galería: primera pieza real | Momento 1 (v2) | Componente 1 = "Navegación lateral colapsable" (Power BI · Respuesta humanitaria), `imagenes/ui/Sidebar.png`. Descripción basada en lo visible, sin medidas inventadas. Pendiente: medidas reales y confirmar si "ConEsperanza" se puede mostrar. Componentes 2 a 4 siguen provisionales. |
 | 2026-11-04 | Galería: 2 piezas | Momento 1 (v2) | Se quitan los componentes 3 y 4 (provisionales). Quedan la navegación lateral (real) y el componente 2 (provisional). Las piezas se irán agregando a medida que existan. |
 | 2026-11-04 | Galería: portada de informe | Momento 1 (v2) | Componente 2 = "Portada de informe" (Power BI · Consorcio humanitario), `imagenes/ui/hero_section.png`. Corrección: `Sidebar.png` renombrado a `sidebar.png` en git (Windows no distingue mayúsculas; GitHub Pages sí). Pendiente: exportar la portada a ~1900px y confirmar permiso para mostrar logos de socios. |
+| 2026-11-04 | Publicación en línea (2) | Momento 1 (v2) | `rediseno` subida y `main` adelantada a `fd21d49` (fusión directa, sin conflictos); GitHub Pages publica footer sin texto, galería ampliable con 2 piezas reales, escala tipográfica y cuadrícula de 4px. Publicado a pedido de José, con los pendientes de permiso de logos y resolución de la portada aún abiertos. |
 
 > **Nota v2:** el "Sistema de Diseño (Brand Identity)" de arriba describe la v1. La fuente de verdad desde la v2 es `DESIGN.md`.
 
