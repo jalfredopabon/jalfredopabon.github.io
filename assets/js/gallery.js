@@ -4,7 +4,7 @@
  * Cada pieza es un enlace normal a su imagen o video (funciona sin JS):
  *   <figure class="gallery-item">
  *     <a href="imagen-grande.webp" data-gallery-item> <img …> </a>
- *     <figcaption><span>Nombre</span><span class="card-tag">Proyecto</span></figcaption>
+ *     <figcaption><span>Nombre</span></figcaption>
  *     <template data-gallery-desc> …texto ampliado… </template>
  *   </figure>
  * Video: el <a> apunta al .mp4/.webm y lleva data-type="video"; la <img> de la miniatura sirve de poster.
@@ -24,7 +24,6 @@
   var media = modal.querySelector('[data-gallery-media]');
   var stage = modal.querySelector('[data-gallery-stage]');
   var titleEl = modal.querySelector('[data-gallery-title]');
-  var tagEl = modal.querySelector('[data-gallery-tag]');
   var descEl = modal.querySelector('[data-gallery-desc-target]');
   var counter = modal.querySelector('[data-gallery-counter]');
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -40,14 +39,12 @@
     var figure = link.closest('figure');
     var thumb = link.querySelector('img');
     var name = figure.querySelector('figcaption > span:first-child');
-    var tag = figure.querySelector('.card-tag');
     return {
       src: link.getAttribute('href'),
       isVideo: link.getAttribute('data-type') === 'video',
       poster: thumb ? thumb.getAttribute('src') : '',
       alt: thumb ? thumb.getAttribute('alt') : '',
       title: name ? name.textContent : '',
-      tag: tag ? tag.textContent : '',
       desc: figure.querySelector('template[data-gallery-desc]')
     };
   }
@@ -79,8 +76,6 @@
     media.appendChild(el);
 
     titleEl.textContent = item.title;
-    tagEl.textContent = item.tag;
-    tagEl.hidden = !item.tag;
     descEl.textContent = '';
     if (item.desc) descEl.appendChild(item.desc.content.cloneNode(true));
     descEl.parentElement.scrollTop = 0; // el panel con scroll vuelve arriba
